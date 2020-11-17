@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: lightskyblue;
+        }
+
+        .main {
+            width: 500px;
+            height: 500px;
+            /* background-color: lime; */
+            border: 2px dashed red;
+            margin: 0 auto;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top:-250px;
+            margin-left:-250px;
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            background-color: mediumpurple;
+            animation: run 1s linear infinite;
+            /* margin-left: 400px;
+            margin-top: 400px; */
+
+
+        }
+
+        @keyframes run {
+            0%{
+                transform:translate(0,0);
+                background-color: mediumseagreen;
+            }
+            25%{
+                transform:translate(400px,0);
+                background-color: mintcream;
+            }
+            50%{
+                transform:translate(400px,400px);
+                background-color: orange;
+            }
+            75%{
+                transform:translate(0,400px);
+                background-color: plum;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 1226px;
+            height: 460px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ul {
+            width: 4904px;
+            position: absolute;
+            top:0;
+            left:0;
+            animation: run 4s linear infinite;
+        }
+
+        li {
+            width: 1226px;
+            height: 460px;
+            background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/676ddccc418842904f82ccdc66bbaa34.jpg?w=2452&h=920) center center no-repeat;
+            background-size: cover;
+            float: left
+        }
+        @keyframes run{
+            0%{
+                left:0px;
+            }
+            25%{
+                left:-1226px;
+            }
+            50%{
+                left:-2452px;
+            }
+            75%{
+                left:-3678px;
+            }
+            100%{
+                left:-4904px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+            <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    </div>
+
+</body>
+
+</html>

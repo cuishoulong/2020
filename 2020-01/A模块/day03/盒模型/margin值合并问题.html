@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+        }
+        #d1{
+            background: red;
+            margin-bottom: 50px;
+        }
+        #d2{
+            background:blue;
+            margin-top:100px;
+            cursor: pointer;
+            /* cursor: pointer;给不是A标签的其他属性添加小手标志 */
+
+        }
+    </style>
+</head>
+<body>
+    <!-- margin值合并，垂直方向上如果相邻级别的两个元素一个上一个下，那么margin会跟随大的那个，小的那个会被吞掉 -->
+    <div id="d1"></div>
+    <div id="d2"></div>
+</body>
+</html>

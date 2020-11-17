@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 将值转换为字符串有两种方式,两种都一样
+        // String([value])
+        // ([value]).toString()
+        console.log((123).toString());//字符串123
+        console.log(String(123));//字符串123
+        console.log(String('1px'));//字符串1px
+        // String([value])与([value]).toString()都会把值转换为字符串
+
+        // +有两种意思，一种是数字运算，一种是字符串拼接,且字符串拼接权重高于数学运算
+        console.log(1+'true');//字符串1true
+        console.log(1+'20');//字符串120
+        console.log(1+20);//字符串21
+        console.log(1+{});//字符串1[object,object]
+        console.log([]+{});//字符串[object,object]
+        console.log(16+200+undefined+[]+{}+1+"12");//字符串NaN[object Object]112   
+        //注意：在数字运算中任何与NaN有关的数学运算都为NaN 
+
+        let a="2018";
+        let b="09";
+        console.log(a+'年'+b+'月'); 
+    </script>
+
+</body>
+</html>

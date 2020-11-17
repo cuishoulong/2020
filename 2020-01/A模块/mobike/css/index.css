@@ -1,0 +1,139 @@
+.bannerBox{
+    height: 762px;
+    position: relative;
+}
+.md{
+    width: 1080px;
+    margin:0 auto;
+    box-sizing: border-box;
+    padding:0 20px;
+}
+.swiper-container{
+    width: 100%;
+    height: 100%;
+}
+#slide1,#slide2,#slide3,#slide4{
+    background: url(../images/hero-bg-3.jpg) center center no-repeat;
+    background-size: cover;
+}
+#slide2{
+    background-image: url(../images/hero-bg-4.jpg);
+}
+#slide3{
+    background-image: url(../images/hero-bg-5.jpg);
+}
+#slide4{
+    background-image: url(../images/hero-bg-6.jpg);
+}
+
+.nav{
+    width: 100%;
+    height: 56px;
+    position: absolute;
+    top:13px;
+    left:0;
+    /* background-color: rosybrown; */
+    z-index: 100;
+}
+.navIn{
+    height: 100%;
+    /* background-color: royalblue; */
+    padding-top:9px;
+}
+.navIn .logo{
+    float: left;
+    width: 100px;
+    height: 37px;
+}
+.navIn .navInRight{
+    float: right;
+}
+.navIn .navInRight a{
+    display: block;
+    float: left;
+    color:#fff;
+    font-size: 16px;
+    padding:8px 20px;
+}
+/* 按钮文字 */
+.adv{
+    position: absolute;
+    top:40%;
+    left:0;
+    width: 100%;
+    /* background-color: saddlebrown; */
+    z-index: 100;
+}
+.advIn>h1{
+    line-height: 1;
+    /* 去除h1多余的上下空白部分 */
+    font-size: 68px;
+    color: #fff;
+}
+.advIn>a{
+    display: block;
+    font-size: 22px;
+    color: #fff;
+    padding:14px 26px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 294px;
+    background-color: rgba(0,0,0,.3);
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0,0,10px,1px,rgba(0,0,0,.3);
+}
+
+/* 最热列表 */
+
+.hotLis>li{
+    width: 25%;
+    height: 260px;
+    float: left;
+    border: 2px solid #fff;
+    border-width: 2px 1px 0;
+    background-color: saddlebrown;
+    background: url(../images/promo-01.jpg) center center no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+}
+.hotLis>li:first-child{
+    border-left-width: 0;
+}
+.hotLis>li:last-child{
+    border-right-width: 0;
+}
+.hotLis>li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.hotLis>li h4{
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 20px;
+}
+@media all and (max-width:1080px) {
+    .hotLis>li{
+        width:50%;
+    }
+    .md{
+        width:100%;
+    }
+    /* 去除版心造成的下方滚动条效果 */
+    .bannerBox{
+        height:515px;
+    }
+    .advIn>h1{
+        font-size: 44px;
+    }
+    .navIn .navInRight{
+        display: none;
+    }
+}
+@media all and (max-width:640px) {
+    .hotLis>li{
+        width:100%;
+    }
+}

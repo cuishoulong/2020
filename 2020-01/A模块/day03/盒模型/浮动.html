@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            background-color: blueviolet;
+        }
+        .d1{
+            width:50px;
+            height:50px;
+            background-color: brown;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- float浮动特点：
+    1.脱离文档流，不占用空间，如现在第一个div浮动，第二个就会顶上
+    2.浮动方向跟随父级
+    3.如果浮动的话，脱离文档流以后，无法继承父级的宽高，由自身内容决定
+    4.行内元素本来写宽高不起作用，浮动以后写的宽高就起作用了
+-->
+
+    <div class="d1"></div>
+    <div></div>
+</body>
+</html>

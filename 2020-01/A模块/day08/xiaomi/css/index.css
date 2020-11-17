@@ -1,0 +1,263 @@
+/* 
+ 首页的css
+
+*/
+.md {
+    width: 1226px;
+    margin: 0 auto;
+}
+
+.adv {
+    height: 120px;
+    background: url("../images/adv1.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+/* 导航 */
+.navBox {
+    background: #333;
+    font-size: 12px;
+}
+
+.navBox .left {
+    height: 40px;
+    float: left;
+    line-height: 40px;
+}
+
+.navBox .right {
+    height: 40px;
+    line-height: 40px;
+    float: right;
+}
+
+.navBox a {
+    color: #b0b0b0;
+    float: left;
+}
+
+.navIn>.left>span,
+.navIn .right>span {
+    color: #424242;
+    float: left;
+    margin: 0 4px;
+}
+
+/* .navIn .right>span{
+    float:left;
+    margin:0 4px;
+    color:#424242;
+} */
+.navIn .cart {
+    width: 120px;
+    height: 40px;
+    background: #424242;
+    text-align: center;
+    margin-left: 10px;
+}
+
+/* 
+ 鼠标滑上按钮
+ */
+.navIn .cart:hover {
+    background: #fff;
+    color: darkorange;
+    font-weight: bold;
+}
+
+.grayArea {
+    background: #f5f5f5;
+}
+
+.phoneTop {
+    height: 58px;
+    line-height: 58px;
+}
+
+.phoneBottom {
+    height: 614px;
+}
+
+.phoneTop h3 {
+    float: left;
+    font-size: 22px;
+    font-weight: 200;
+}
+
+.phoneTop .more {
+    float: right;
+    font-size: 16px;
+    color: #424242;
+}
+
+.phoneBottom>.left {
+    width: 234px;
+    height: 614px;
+    background: url("../images/bg1.webp") center center no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.phoneBottom>.right {
+    height: 614px;
+    width: 992px;
+    float: left;
+}
+
+.phoneBottom>.right>li {
+    width: 234px;
+    height: 300px;
+    background: #fff;
+    float: left;
+    margin: 0 0 14px 14px;
+    text-align: center;
+}
+
+.phoneBottom li a {
+    padding: 20px 0;
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.phoneBottom li img {
+    width: 160px;
+    display: block;
+    margin: 0 auto;
+}
+
+.phoneBottom li h5 {
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.phoneBottom li .des {
+    font-size: 12px;
+    color: #b0b0b0;
+    margin: 6px 0 12px 0;
+}
+
+.phoneBottom li .price {
+    color: #ff6700;
+}
+
+/* 白色区域 */
+/* .whiteAreaIn {
+    height: 1000px;
+    background-color: chartreuse;
+} */
+
+/* banner区域 */
+
+.bannerWrap {
+    position: relative;
+}
+
+.bannerIn a {
+    display: block;
+    height: 460px;
+    background: url(../images/banner1.webp) center center no-repeat;
+    background-size: cover;
+}
+
+/* 侧边栏 */
+.sildeBar {
+    width: 234px;
+    height: 460px;
+    box-sizing: border-box;
+    padding: 20px 0;
+    background: rgba(105, 101, 101, 0.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.sildeBar li {
+    height: 42px;
+    line-height: 42px;
+    padding-left: 30px;
+
+}
+
+.sildeBar li a {
+    font-size: 14px;
+    color: #fff;
+}
+
+.sildeBar li a .icon-arrow-right {
+    float: right;
+    margin-right: 30px;
+    font-weight: 300;
+}
+
+.sildeBar li:hover {
+    background: #ff6700;
+}
+
+/* 弹窗 */
+.content {
+    width: 1238px;
+    height: 460px;
+    background-color: crimson;
+    position: absolute;
+    left: 234px;
+    top: 0;
+    display: none;
+}
+
+.sildeBar li:hover .content {
+    display: block;
+}
+
+.arrowLeft,
+.arrowRight {
+    width: 41px;
+    height: 69px;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    background: url(../images/icon-slides.png) center center no-repeat;
+}
+
+.arrowLeft {
+    left: 234px;
+    background-position: -84px 0;
+}
+
+.arrowLeft:hover {
+    background-position: 0 0;
+}
+
+.arrowRight {
+    right: 0;
+    background-position: -124px 0;
+}
+
+.arrowRight:hover {
+    background-position: -42px 0;
+}
+.bannerWrap .page{
+    /* width:100px; */
+    height:15px;
+    /* background-color: #fff; */
+    position: absolute;
+    bottom: 10px;
+    right:20px;
+}
+.bannerWrap .page>li{
+    float: left;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(102, 102, 102, 0.6);
+    border:2px solid rgba(189, 189, 189, 0.4);
+    margin:0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* 小手 */
+}
+.bannerWrap .page>li:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: transparent;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 单选如果不添加相同的name值，可以多个选择，无法实现单选效果 
+         且文字与标签需要关联，要不然达不到想要的效果
+         所以需要在文字处加一个for属性，在input内加一个id属性，两个的值要一样，且文字处需多加一个#
+         -->
+    男<input type="radio" name="a">
+    女<input type="radio" name="a">
+    <label for="#man">男</label>
+    <input type="radio" name="a" id="man">
+</body>
+</html>

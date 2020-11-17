@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* background-origin是设置背景图片的起始区域的，有三个值
+        注意：想要效果直观，先加background-repeat:no-repeat禁止平铺
+        padding-box从padding-box开始
+        content-box从主体内容部分开始
+        border-box从边框开始 */
+        div{
+            width:200px;
+            height: 200px;
+            display: inline-block;
+            border: 50px dashed red;
+            background-repeat:no-repeat;
+            padding:80px;
+            background-image: url(1.jpg);
+        }
+        .box1{
+            background-origin:border-box;
+        }
+        .box2{
+            background-origin:padding-box;
+        }
+        .box3{
+            background-origin:content-box;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: brown;
+        }
+        div{
+            width: 241px;
+            height: 187px;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-left:-120px;
+            margin-top:-93px;
+            background: url(images/smile.jpg) 0 center no-repeat;
+            animation:run 1s steps(6) infinite;
+        }
+        @keyframes run{
+            100%{
+                background-position: -1446px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

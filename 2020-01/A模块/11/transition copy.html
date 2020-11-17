@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 200px;
+            height: 200px;
+            background-color: khaki;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top:-100px;
+            margin-left:-100px;
+            border-radius: 50%;
+            background:url(55.jpg) center center no-repeat;
+            background-size: contain;
+            transition: all 2s linear;
+            /* 名字 时间 运动轨迹 延迟 循环次数 */
+            /* animation:run 1s linear 0.5s forwards; */
+            /* animation:run 1s linear 0.5s infinite; */
+        }
+        .main:hover{
+            transform:rotateZ(360deg);
+        }
+        /* @keyframes run{
+            0%{
+                transform: rotate(0);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="main">
+
+    </div>
+</body>
+</html>

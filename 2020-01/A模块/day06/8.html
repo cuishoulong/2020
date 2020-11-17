@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            /* width:100px; */
+            /* height: 400px; */
+            background-color: mediumturquoise;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: mediumvioletred;
+            float: left;
+
+        }
+    </style>
+</head>
+<body>
+    <!--面试题：盒子塌陷
+        现象：如果给子元素添加浮动，而父级没有写高度，那么会造成父级塌陷
+        解决办法：1.给父级元素添加高度
+                 2.给父元素末尾添加一个带有clear:both；样式的标签
+                 3.给父级使用overflow：hidden
+
+
+     -->
+    <div class="main">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

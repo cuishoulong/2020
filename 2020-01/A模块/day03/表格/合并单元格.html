@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width:600px;
+            border-collapse:collapse;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>标题</th>
+            <th>标题</th>
+            <th>标题</th>
+        </tr>
+        <tr>
+            <td colspan="2">100</td>
+            <!-- <td>100</td> -->
+            <!-- colspan合并行，但是需要把多出来的行给删除 -->
+            <td>100</td>
+        </tr>
+        <tr>
+            <td rowspan="2">200</td>
+            <!-- rowspan合并列 -->
+            <td>200</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <!-- <td>300</td> -->
+            <td>300</td>
+            <td>300</td>
+        </tr>
+    </table>
+</body>
+</html>

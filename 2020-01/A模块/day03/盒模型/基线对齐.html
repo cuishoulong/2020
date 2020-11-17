@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-size:0;
+            /* vertical-align: top; */
+            /* 基线向上对齐 */
+            /* vertical-align:middle; */
+            /* 中线对齐 */
+            /* vertical-align:bottom; */
+            /* 底线对齐 */
+        }
+        div{
+            width:200px;
+            height: 200px;
+            background: blue;
+            /* display: inline-block; */
+            font-size: 12px;
+            float:left;
+        }
+        .d2{
+            background: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 正常排列的两个行内块中间会有一条线的距离，如何消除
+    1.因为换行导致的有一条线，所以两个div写在一行上就好了
+    2.在*里面添加一个font-size:0  但是如果一个盒子内有字的话会产生基线偏移，导致不对齐
+        解决方法： vertical-align:top;
+ -->
+    <div class="d1">s1</div>
+    <div class="d2">s1</div>
+</body>
+</html>

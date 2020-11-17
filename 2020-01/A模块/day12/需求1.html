@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 需求：小于768px的时候显示一个颜色
+             大于768到1200 显示一个颜色
+             大于1200的时候显示一个颜色  -->
+             <style>
+                 *{
+                     margin: 0;padding: 0;
+                 }
+                 div{
+                     width: 100px;
+                     height: 100px;
+                     background-color: burlywood;
+                 }
+                 @media screen and (max-width:768px){
+                     div{
+                         background-color: cadetblue;
+                     }
+                 }
+                 @media screen and (min-width:1000px){
+                     div{
+                         background-color: chartreuse;
+                     }
+                 }
+                 @media screen and (min-width:1200px){
+                     div{
+                         background-color: cornflowerblue;
+                     }
+                 }
+             </style>
+</head>
+<body>
+    <div>
+        11
+    </div>
+</body>
+</html>

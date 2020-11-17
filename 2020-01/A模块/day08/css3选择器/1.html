@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main>li:nth-child(2){
+            background-color: blue;
+        }
+        /* 偶数行 */
+        .main>li:nth-child(2n){
+            background-color: blue;
+        }
+        .main>li:nth-child(even){
+            background-color: rgb(202, 169, 60);
+        }
+        /* 奇数行 */
+        .main>li:nth-child(2n+1){
+            background-color: rgb(217, 255, 0);
+        }
+        .main>li:nth-child(odd){
+            background-color: rgb(255, 0, 98);
+        }
+        /* li类型第三个 */
+        .main>li:nth-of-type(3){
+            background-color: blueviolet;
+        }
+        /* li类型倒数第三个 */
+        .main>li:nth-last-of-type(3){
+            background-color: rgb(43, 205, 226);
+        }
+        /* li类型正数第一个 */
+        .main>li:first-child{
+         background:red;
+     }
+        /* 倒数第一个 */
+        .main>li:nth-last-child(1){
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <ul class="main">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+</body>
+</html>

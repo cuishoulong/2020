@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* background-clip是设置背景图片的裁剪区域的，有三个值
+        注意：想要效果直观，先加background-repeat:no-repeat禁止平铺
+        padding-box超出padding-box裁剪
+        content-box超出主体内容部分裁剪
+        border-box超出边框裁剪 */
+        div{
+            width:200px;
+            height: 200px;
+            display: inline-block;
+            border: 50px dashed red;
+            background-repeat:no-repeat;
+            padding:80px;
+            background-image: url(1.jpg);
+        }
+        .box1{
+            background-clip:border-box;
+        }
+        .box2{
+            background-clip:padding-box;
+        }
+        .box3{
+            background-clip:content-box;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>
+</body>
+</html>

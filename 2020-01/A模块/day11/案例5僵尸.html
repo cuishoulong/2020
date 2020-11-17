@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#000;
+        }
+        .dead{
+            width: 200px;
+            height: 312px;
+            background:url("sprites.png") no-repeat;
+            margin:0 auto;
+            animation:dead 1s steps(10) infinite;
+        }
+        @keyframes dead{
+            0%{
+                background-position:0 0;
+            }
+            100%{
+                background-position:-2000px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dead"></div>
+</body>
+</html>

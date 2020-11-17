@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+        /* min大于等于  max小于等于 */
+        @media screen and (max-width:1000px) and (min-width:900px){
+            div{
+                width:200px;
+                background-color: blueviolet;
+            }
+        /* }
+        @media screen and (max-width:500px){
+            div{
+                width:100px;
+                background-color: brown;
+            } */
+        }
+    </style>
+</head>
+<body>
+    <div>滴滴滴滴</div>
+</body>
+</html>

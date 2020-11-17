@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1.*是通配符选择器，代表所有元素，权重0 */
+        *{
+            color:red;
+        }
+        /* 2.标签选择器,对这一类的标签，权重1 */
+        p{
+            background-color: lime;
+            color: mediumblue;
+        }
+         /*3.类选择器 
+         起名字的时候在结构中用class="名字"
+	     使用的时候：.名字
+	     可以重复使用,也可以设置多个，但中间要用空格隔开
+	     权重：10 */
+        .a1{
+            color:midnightblue
+        }
+        /* 4.属性选择器
+        选中具有某个属性名的所有元素
+        选中某个属性名与值的所有元素 ,写一个值就只能对一个属性值的起作用
+        权重：10*/
+        [index]{
+            width:100px;
+            height:100px;
+            background-color: orangered;
+        }
+        [index="i2"]{
+            border:1px solid black;
+        }
+        /* 5.id选择器 
+        起名字的时候：再结构中用id="名字"
+        使用的时候："#名字"
+        注意：在一个文档中，ID名字不能重复(相当于身份证，唯一的)
+        权重：100
+        */
+        #d1{
+            width:20px;
+        }
+        /* 6.子选择器：
+        连接符：>
+        含义：选择子元素谁（第一层级的儿子元素） */
+        .main>div{
+            width:100px;
+            /* 权重:10+1 */
+        }
+        .main>.a1{
+            height:100px;
+            /* 权重：10+10 */
+        }
+        /* 7. 后代选择器
+	         连接符：空格
+	         选择后代里面所有的（不管是儿子孙子，都算后代）div
+	         权重：10+后面的权重 */
+        .main div{
+            width:100px;
+        }
+        /* 8.分组选择器
+        符号：,
+        作用：可以把共同的样式代码提取出来
+        权重：分别看，此时是10 */
+        .c1,.c2{
+            width:100px;
+            height: 100px;
+            display: inline-block;
+        }
+        .c1{
+            background-color: yellow;
+        }
+        .c2{
+            background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+         <p id="d1">p1</p>
+    <h1>h1</h1>
+    <p class="a1" index="i1">s</p>
+    <div index="i2"></div>
+    <div class="main">
+        <div>
+            <span>span1</span>
+        </div>
+        <span class="a1">span2</span>
+    </div>   
+    </div>
+
+    <div class="box2">
+        <div class="c1">d1</div>
+        <p class="c2">p1</p>
+    </div>
+</body>
+</html>

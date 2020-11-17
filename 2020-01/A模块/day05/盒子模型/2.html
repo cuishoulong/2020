@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+            padding-top:20px;
+            /* 转换成IE盒模型 
+            转换为IE盒模型后，代码中写的宽和高是总体(padding上下+border上下+content 高)的高，如果用到了padding和border，浏览器会自动的减去，计算出来的content部分*/
+            box-sizing: border-box;
+            /* box-sizing: content-box; 
+            在标准盒模型下：代码中写的宽和高是content部分的宽和高*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box">box</div>
+</body>
+</html>

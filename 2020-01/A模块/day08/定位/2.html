@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width:1000px;
+            margin:0 auto;
+            background-color: darkgreen;
+            /* position: fixed; */
+            position: relative;
+            /* position: absolute; */
+            /* 参照物三选一即可,但必须要是祖先级，且是最近查找 */
+            /* left:200px; */
+        }
+        /* 
+        绝对定位：
+            参照物是别人，参照物设置的时候必须是组先级元素
+            如果有多个参照物，浏览器会按照就近原则，如果都不设置的话，会默认为body
+            层级高于普通文档流
+            脱离文档流，不占用位置
+            绝对定位后宽度无法继承，由自身内容撑起，需要自己设置宽高，行内元素本来设置宽高不起作用，绝对定位后宽高可以起作用
+            给绝对定位的元素宽使用百分比的时候，百分比是参照物的
+            块级元素不写元素会自动撑满父级，但是一旦给元素设置了定位，它的宽度就是由自身内容决定的
+        */
+        .box {
+            width: 10%;
+            height: 100px;
+            background-color: cornflowerblue;
+            /* position:relative; */
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            /* bottom:0px; */
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box"></div>
+        <div class="box2"></div>
+    </div>
+
+</body>
+
+</html>

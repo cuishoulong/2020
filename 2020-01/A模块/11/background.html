@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 1000px;
+            height: 1000px;
+            background-color: lightcoral;
+            /* 背景颜色 */
+            background-image: url(1.jpg);
+            /* 背景图片 */
+            background-repeat:no-repeat;
+            /* no-repeat不平铺 repeat平铺 repeat-x沿X轴平铺 repeat-y沿y轴平铺 */
+            /* background-position:right top; */
+            /* 背景图片定位：两个值，第一个是左右，第二个上下 可以为center center居中
+              还可以用百分比或者px来写*/
+              background-size:1000px 1000px;
+              /* 分别代表图片宽和高 ,也可以设置百分比
+              还有cover 和contain两个值
+              cover:让北京图片铺满整个盒子，用cover的时候会等比例放大，有时候会因为一部分内容超出盒子大小，而导致一部分图片不能完全显示
+              contain:以最合适的大小显示，只要是宽度或高度一边碰到盒子的边就会停止放大
+              */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

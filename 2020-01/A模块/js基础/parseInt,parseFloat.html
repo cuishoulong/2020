@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // parseInt的运行机制与Number是有区别的，parseInt会先把值转换为字符串，然后从左到右开始查找有效数字，直到遇到非有效数字符才会停止，但无法识别小数,而且如果括号内不只是有有效数字的话，需要加上''如果不加会报错
+        console.log(parseInt('12px'));//12
+        //console.log(parseInt(12px));如果有非数字符而不写''的话会报错
+        console.log(parseInt('px12'));//NaN
+        console.log(parseInt('12.5px'));//12
+        console.log(parseInt(''));//NaN
+        console.log(parseInt('true'));//NaN
+        console.log(parseInt(true));//NaN
+        
+        //parseFloat在parseInt的基础上增加了可以识别小数
+        console.log(parseFloat('12.5px'));//12.5
+        console.log(parseFloat(''));//NaN
+        console.dir(Number);
+        console.log(9007199254740993==9007199254740992);//true  浏览器是有最大保护数的，超出了就无法识别，所以产生了错误的结果
+        console.log(BigInt(900719925474099888));//900719925474099840n BigInt是ES6新增的数据类型，是用来管理最大数最的，多出的部分会为n
+    </script>
+</body> 
+</html>

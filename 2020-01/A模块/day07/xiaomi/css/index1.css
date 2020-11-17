@@ -1,0 +1,47 @@
+/* 
+index1样式 
+*/
+.advBox{
+    height:120px;
+    background: url(../images/adv1.jpg) center center no-repeat;
+    background-size: cover;
+}
+.navBox{
+    background: #333333;
+}
+.navBox>.navIn{
+    width:1226px;
+    margin:0 auto;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+}
+.navBox>.navIn>.left{
+    float: left;
+}
+.navBox>.navIn>.right{
+    float: right;
+}
+.navBox>.navIn a{
+    color: #b0b0b0;
+    float: left;
+}
+.navBox>.navIn a:hover{
+    color: #fff;
+}
+.navBox>.navIn span{
+    color: #424242;
+    float: left;
+    margin:0 4px;
+}
+.navBox>.navIn>.right>.cart{
+    width:120px;
+    text-align: center;
+    background-color: #424242;
+    margin-left: 20px;
+}
+.navBox>.navIn>.right>.cart:hover{
+    background-color: #fff;
+    font-weight: bolder;
+    color: lightpink;
+}

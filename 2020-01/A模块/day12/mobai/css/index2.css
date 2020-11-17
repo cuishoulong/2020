@@ -1,0 +1,200 @@
+body,
+html,
+.banner {
+    /* width: 100%; */
+    height: 100%;
+}
+
+.banner {
+    background: url(../images/bg1.jpg) center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.nav {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* background-color: rosybrown; */
+    height: 80px;
+    box-sizing: border-box;
+    padding-top:12px;
+
+}
+
+.md {
+    width: 1080px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding:0 20px;
+}
+
+.navIn {
+    height: 56px;
+    /* background: royalblue; */
+    box-sizing: border-box;
+    /* padding:0 20px; */
+}
+.navIn .logo{
+    float: left;
+    margin-top:9px;
+}
+.navRight{
+    float:right;
+    margin-top:10px;
+}
+.navRight li{
+    float: left;
+}
+.navRight li a{
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    padding:8px 20px;
+}
+/* 按钮部分  */
+.bannerCenter{
+    width: 100%;
+    position: absolute;
+    top:50%;
+    left:0;
+}
+.bannerCenter h3{
+    font-size: 68px;
+    color: #fff;
+    margin-bottom:20px;
+}
+.bannerCenter a{
+    width: 294px;
+    height: 59px;
+    font-size: 22px;
+    color:#fff;
+    font-weight: bold;
+    padding:14px 26px;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 8px;
+    box-shadow: rgba(59, 54, 48, 0.6) 0px 6px 30px 0px;
+}
+.bannerCenter a:hover{
+    background:rgba(0, 0, 0, .8);
+}
+/* banner底部 */
+.bannerBottom{
+    width: 100%;
+    height: 42.4px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    background: rgba(74, 62, 62, 0.4);
+    font-size: 16px;
+    color: #fff;
+    box-sizing: border-box;
+    padding-top:10px;
+}
+.bannerBottom span{
+    font-size: 12px;
+    border-radius: 4px;
+    padding:0 8px;
+    margin-right:8px;
+    background:linear-gradient(to bottom, #ec614f 0%, #ff2e2e 100%);
+    background:-webkit-linear-gradient(to bottom, #ec614f 0%, #ff2e2e 100%);
+}
+/* 最热列表 */
+.hotLi li{
+    width:25%;
+    height: 260px;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    padding:2.4vw;
+    border-width: 2px 1px;
+    float: left;
+}
+.hotLi li h3{
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+.hotLi li:nth-child(1){
+    background: url(../images/li1.jpg) center center no-repeat;
+    background-size: cover;
+}
+.hotLi li:nth-child(2){
+    background: url(../images/li2.jpg) center center no-repeat;
+    background-size: cover;
+}
+.hotLi li:nth-child(3){
+    background: url(../images/li3.jpg) center center no-repeat;
+    background-size: cover;
+}
+.hotLi li:nth-child(4){
+    background: url(../images/li4.jpg) center center no-repeat;
+    background-size: cover;
+}
+/* 小于1080时li宽50%,nav 后半部分消失,640宽100% */
+@media all and (max-width:1080px) {
+    .hotLi li{
+        width:50%;
+    }
+    .navRight{
+        display: none;
+    }
+}
+@media all and (max-width:640px) {
+    .hotLi li{
+        width:100%;
+    }
+}
+
+/* 三块块 微信 红包 摩范分 */
+section{
+    border-bottom: 1px solid black;
+}
+.threeBox>div{
+    width:33%;
+    height: 50px;
+    /* box-sizing: border-box; */
+    padding:45px 0;
+    /* background-color: royalblue; */
+    float: left;
+    font-size: 16px;
+}
+.threeBox>div span{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: url(../images/weixin.png) center center no-repeat;
+    background-size: contain;
+    margin-right:10px;
+}
+.threeBox>div span,.threeBox>div .threeBoxRight{
+float: left;
+}
+div .threeBoxRight{
+    padding:5px;
+}
+.threeBox>div h4{
+    font-weight: 400;
+}
+.threeBox>div p{
+    font-weight: 300;
+}
+.threeBox>div:nth-child(2) span{
+    background: url(../images/hongbao.png) center center no-repeat;
+    background-size: contain;
+}
+.threeBox>div:nth-child(3) span{
+    background: url(../images/mobaifen.png) center center no-repeat;
+    background-size: contain;
+}
+/* 小于640变为100% */
+@media all and (max-width:1080px) {
+    .threeBox>div{
+        width:50%;
+    }
+}
+@media all and (max-width:640px) {
+    .threeBox>div{
+        width:100%;
+    }
+}

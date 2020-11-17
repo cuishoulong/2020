@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            outline: none;
+            /* 去除textarea点击后的加深边框线效果 */
+            resize:none;
+            /* 阻止用户拉动边框 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 常用的表单元素：
+        input类多种type值：text文本框   password密码框  reset重置  submit提交 radio单选 button按钮 checkbox多选
+            多种属性：默认文字placeholder 自动获取焦点autodocus 非空校验required 值value 自动勾选checked  -->
+
+            <!-- 文本输入框 placeholder是默认显示 -->
+            <input type="text" placeholder="请输入用户名">
+            <!-- 密码框 -->
+            <input type="password" placeholder="请输入密码">
+            <!-- 重置 -->
+            <input type="reset">
+            <!-- 此时重置按钮reset 不起作用，想要其起作用需要在表单外加一个form -->
+
+    <form action="">
+        <!-- 文本输入框 placeholder是默认显示 -->
+        <!-- autofocus自动获取焦点 -->
+        <input type="text" placeholder="请输入用户名" autofocus>
+        <!-- 密码框 -->
+        <!-- required自动校验是否填写信息 -->
+        <input type="password" placeholder="请输入密码" required>
+        <!-- 重置 -->
+        <input type="reset">
+        <!-- 提交 -->
+        <input type="submit">
+        <!-- 按钮两种方式 -->
+        <input type="button" value="按钮名">
+        <!-- button默认也有提交功能，提交后会重置信息，如果不想使用此功能就在button内添加属性type="button" -->
+        <button>按钮名</button>
+        <button type="button">去除后的按钮名</button>
+        <!-- 单选 -->
+        <!-- checked默认勾选 -->
+        <input type="radio" checked>
+        <!-- 多选 -->
+        <input type="checkbox">
+        <!-- 大文本框 cols是行 rows是高 点击后边框颜色会变深-->
+        <textarea name="" id="" cols="50" rows="10"></textarea>
+    </form>
+
+    <!-- 下拉边框 -->
+    <select name="" id="">
+        <option value="">1</option>
+        <!-- selected默认选中 -->
+        <option value="" selected>2</option>
+        <!-- disabled禁止选中 -->
+        <option value="" disabled>3</option>
+    </select>
+</body>
+
+</html>

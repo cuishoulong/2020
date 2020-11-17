@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 300px;
+            background-color: mediumturquoise;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: mediumvioletred;
+            float: left;
+
+        }
+        /* .clearfix::before{
+            content:"加油！";
+        } */
+
+        
+        .clearfix:after{
+            content:"";
+            display: block;
+            clear:both;
+        }
+
+        /* .clearfix:after {
+            content: "";
+            font-size: 0;
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="main clearfix">
+        <div class="box">sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+    </div>
+</body>
+
+</html>

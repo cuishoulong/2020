@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../day13/css/reset.css">
+    <style>
+        main {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content:center;
+            overflow: hidden;
+        }
+
+        /* section>div {
+            width: 20vw;
+            height: 20vw;
+            background-color: blanchedalmond;
+            display: flex;
+        } */
+
+        section {
+            width: 50vw;
+            height: 50vw;
+            background-color: blueviolet;
+            display: flex;
+            /* justify-content:center; */
+            justify-content:space-evenly;
+            flex-wrap:wrap;
+            align-content:space-evenly;
+
+        }
+        /* section>div:nth-child(1){
+            align-self:flex-start;
+        }
+        section>div:nth-child(2){
+           align-self:flex-end;
+        } */
+        div{
+            justify-content:space-between;
+            width: 20vw;
+            height: 20vw;
+            background-color: blanchedalmond;
+            display: flex;
+        }
+        span{
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            background-color: brown;
+        }
+        section>div:first-child{
+            justify-content:center;
+            align-items:center;
+        }
+        section>div:nth-child(2)>span:nth-child(2){
+            align-self:flex-end;
+        }
+        section>div:nth-child(3)>span:nth-child(2){
+            align-self:center;
+        }
+        section>div:nth-child(3)>span:nth-child(3){
+            align-self: flex-end;
+        }
+        section>div:nth-child(4){
+            flex-direction:column;
+        }
+        .rower>span{
+            align-self:flex-end;
+        }
+        
+        </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div>
+                <span></span>
+            </div>
+            <div>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <span></span><span></span><span></span>
+            </div>
+            <div>
+                <div class="row"><span></span><span></span></div>
+                <div class="rower"><span></span><span></span</div>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>

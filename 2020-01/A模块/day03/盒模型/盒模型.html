@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            display: inline-block;
+            /* width:100px;
+            height: 100px; */
+            background-color: black;
+        }
+        #d1{
+            width:200px;
+            height:200px;
+            display: inline-block;
+            padding: 50px;
+            background-color: blue;
+            border:10px solid chartreuse ;
+            margin: 30px;
+        }
+        #d2{
+            width:200px;
+            height:200px;
+            display: inline-block;
+            padding: 50px;
+            background-color: blue;
+            border:10px solid chartreuse ;
+            margin: 30px;
+            box-sizing: border-box;
+            /* 转换为IE盒模型 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 盒模型:centent主题内容  padding内补白，内容与边框的距离  border边框 margin外边距，盒模型与盒模型的距离
+    盒模型宽（高）：内容(宽/高)+padding*2+border -->
+    <!-- box-sizing: border-box;转换为IE盒子模型,
+    IE盒模型宽是设置的宽，centent内容宽（高）是设置的width-border*2-padding*2 -->
+    <div id="d1"><span>centent</span></div>
+    <div id="d2"><span>centent</span></div>
+</body>
+</html>

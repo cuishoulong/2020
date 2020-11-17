@@ -1,0 +1,102 @@
+/* 一屏的宽高 */
+html,body,.banner{
+    width: 100%;
+    height: 100%;
+}
+.banner{
+    background: url(../images/bg1.jpg) center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.nav{
+    position: absolute;
+    top:0;
+    left:0;
+    /* background-color: tomato; */
+    height: 80px;
+    width: 100%;
+}
+.md{
+    width: 1080px;
+    padding:0 20px;
+    box-sizing: border-box;
+    margin:0 auto;
+}
+.navIn{
+    height:56px;
+    /* background-color: violet; */
+    margin-top: 12px;
+}
+.navIn .logo{
+    float: left;
+    margin-top:9px;
+}
+.navIn .navLinks{
+    float: right;
+}
+.navLinks li{
+    float: left;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.navLinks li>a{
+    display: block;
+color: #fff;
+padding:8px 20px;
+}
+/* 文字部分 */
+.textAdv{
+    position: absolute;
+    left:0;
+    top:50%;
+    width:100%;
+    /* background-color: wheat; */
+}
+.textIn h1{
+    font-size:68px;
+    color: #fff;
+    font-weight: 400;
+    margin:0 0 20px -2px;
+}
+.textAdv a{
+    width: 294px;
+    height: 59px;
+    box-sizing: border-box;
+    display: block;
+    font-size: 22px;
+    padding:14px 26px;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow:rgba(74, 62, 62, 0.6) 0px 6px 30px 0px;
+    background: rgba(0, 0, 0, .6);
+    font-weight: bold;
+}
+/* 热门列表 */
+.hotLists>li{
+    width: 25%;
+    height: 260px;
+    background: url(../images/li1.jpg) center center no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    padding:2.4vw;
+    float: left;
+    border:2px solid #fff;
+    border-width:2px 1px 2px;
+}
+.hotLists>li h3{
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+
+/* 小于1080 */
+@media all and (max-width:1080px){
+    .hotLists>li{
+        width:50%;
+    }
+}
+@media all and (max-width:640px){
+    .hotLists>li{
+        width:100%;
+    }
+}

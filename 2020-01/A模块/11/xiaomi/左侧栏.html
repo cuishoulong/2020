@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .main {
+            width: 1226px;
+            height: 460px;
+            margin: 0 auto;
+            /* background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/294d206e6b4c7f62251842db940fb194.jpg?w=2452&h=920) center center;
+            background-size: 1226px 460px; */
+            position: relative;
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+        }
+
+        /* ul>li{
+            width:234px;
+            height:42px;
+            line-height: 42px;
+        } */
+        ul>li>a {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            width: 234px;
+            height: 42px;
+            line-height: 42px;
+            text-indent: 30px;
+            background: url(./images/箭头.png) no-repeat 200px center;
+        }
+
+        ul>li>a:hover {
+            background-color: #ff6700;
+        }
+
+        .leftArrow,
+        .rightArrow {
+            display: block;
+            width: 41px;
+            height: 69px;
+            background: url(./images/icon-slides.png);
+        }
+
+        .leftArrow {
+            position: absolute;
+            top: 50%;
+            left: 234px;
+            margin-top: -20px;
+            background-position: -83px 0;
+        }
+
+        .leftArrow:hover {
+            background-position: 0 0;
+        }
+
+        .rightArrow {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            margin-top: -20px;
+            background-position: -123px 0;
+        }
+
+        .rightArrow:hover {
+            background-position: -43px 0;
+        }
+
+        .clearfix:after {
+            content: "";
+            font-size: 0;
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .main ol>li a img {
+            width: 1226px;
+            height: 460px;
+            float: left;
+        }
+
+        .main ol {
+            width: 4904px;
+            
+        }
+
+        .rightArrow:active~ol {
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            left: -1226px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+            <a href="" class="leftArrow"></a>
+            <a href="" class="rightArrow"></a>
+            <ol>
+                <li><a href=""><img src="images/1.webp" alt=""></a></li>
+                <li><a href=""><img src="images/2.webp" alt=""></a></li>
+                <li><a href=""><img src="images/3.webp" alt=""></a></li>
+                <li><a href=""><img src="images/4.webp" alt=""></a></li>
+            </ol>
+
+        <ul>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+            <li><a href="">手机电话卡</a></li>
+        </ul>
+
+    </div>
+</body>
+
+</html>
