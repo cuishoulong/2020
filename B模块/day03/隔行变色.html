@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        li {
+            height: 20px;
+        }
+
+        #main {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .col1 {
+            background: red;
+        }
+
+        .col2 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="main">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    var main = document.getElementById('main');
+    console.log(main);
+    var Lis = main.getElementsByTagName('li');
+    console.log(Lis);
+    for (var i = 0; i < Lis.length; i++) {
+        if (i % 2 == 0) {
+            // Lis[i].style.background = "red";
+            Lis[i].className="col1";
+        } else {
+            // Lis[i].style.background = "blue";
+            Lis[i].className="col2";
+        }
+
+
+        Lis[i].onmouseover = function () {
+            this.oldColor=this.style.background;
+            // var oldColor=this.style.background;
+            this.style.background = "black";
+        };
+        Lis[i].onmouseout= function () {
+            this.style.background =this.oldColor;
+        };
+
+    }
+</script>

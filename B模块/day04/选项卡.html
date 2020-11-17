@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        #main{
+            width: 500px;
+            /* height: 500px; */
+            margin:0 auto;
+        }
+        ul>li{
+            width: 40px;
+            height: 20px;
+            border:1px solid black;
+            text-align: center;
+            border-bottom:1px solid transparent;
+        }
+        ul{
+            display:flex;
+            flex-direction:row;
+        }
+        #main>div{
+            height: 300px;
+            border:1px solid black;
+            display: none;
+        }
+        #main>.appear{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul>
+            <li>红</li>
+            <li>黄</li>
+            <li>蓝</li>
+        </ul>
+        <div class="appear">红</div>
+        <div>黄</div>
+        <div>蓝</div>
+    </div>
+</body>
+</html>
+<script>
+    var main=document.getElementById('main');
+    var lis=main.getElementsByTagName('li');
+    var box=main.getElementsByTagName('div');
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].index=i;
+        lis[i].onmouseover=function(){
+            for(var c=0;c<box.length;c++){
+                box[c].className="";
+            }
+            var index=this.index;
+            box[index].className='appear';
+        }
+        
+    }
+</script>
