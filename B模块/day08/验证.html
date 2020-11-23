@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 50px;
+            display: inline-block;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="inp">
+    <!-- <div id="inp"></div> -->
+    <button id="btn">获取</button>
+</body>
+
+</html>
+<script>
+    var inp = document.getElementById('inp');
+    // console.log(inp);
+    var btn = document.getElementById('btn');
+    var str = "qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP0123456789";
+    function getCode(str) {
+        var res = "";
+        for (var i = 0; i < 4; i++) {
+            var item = Math.round(Math.random() * (str.length - 1));
+            //这里要用Math.round，因为是向上取整所以要-1，如果写为floor就时向下取整，就不用-1了
+            if (res.indexOf(str[item]) > -1) {
+                i--;
+                continue;
+            }
+            res += str[item];
+        }
+        return res;
+        // console.log(res)
+        // inp.placeholder=res;
+        // inp.value=res;
+        // inp.innerText=res;
+    }
+    inp.value = getCode(str);
+
+    function twoGetCode(str){
+        var res="";
+        while(res.length<4){
+            var item = Math.round(Math.random() * (str.length - 1));
+            res += str[item];
+        }
+        return res;
+    }
+    btn.onclick = function () {
+        // inp.value = getCode(str);
+        inp.value = twoGetCode(str);//while 方法
+
+    }
+
+
+</script>

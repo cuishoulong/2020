@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        #main {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        li {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid black;
+            float: left;
+            margin-left: 20px;
+            position: relative;
+            top: 1px;
+        }
+
+        li:nth-child(1) {
+            margin: 0;
+        }
+
+        #main div {
+            height: 300px;
+            border: 1px solid black;
+            display: none;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #main div.appear {
+            display: block;
+            background: red;
+        }
+
+        #main li.appear {
+            background: red;
+            border-bottom-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul>
+            <li class="appear">音乐</li>
+            <li>电视</li>
+            <li>综艺</li>
+            <p class="clear"></p>
+        </ul>
+        <div class="appear">音乐</div>
+        <div>电视</div>
+        <div>综艺</div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // var omain=document.getElementById('main');
+    // var olis=omain.getElementsByTagName('li');
+    // var odivs=omain.getElementsByTagName('div');
+    // for(var i=0;i<olis.length;i++){
+    //     console.log(i);
+    //     olis[i].index=i;
+    //     console.log(olis[i],olis[i].index);
+    //     olis[i].onclick=function(){
+    //         console.log(this.index);
+    //     }
+    // }
+    var omain=document.getElementById('main');
+    var olis=omain.getElementsByTagName('li');
+    var odivs=omain.getElementsByTagName('div');
+    for(var i=0;i<olis.length;i++){
+        olis[i].index=i;
+        olis[i].onclick=function(){
+            for(var i=0;i<olis.length;i++){
+                odivs[i].className='';
+                olis[i].className='';
+            }
+            olis[this.index].className='appear';
+            odivs[this.index].className='appear';
+        }
+    }
+</script>

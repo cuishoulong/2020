@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    console.log(1);
+    (function(){console.log(1)})();
+
+    function fn(x,y){
+        console.log(x+y);
+    }
+    fn(1,2);
+    function cn(){
+        var he=0;
+        for(var i=0;i<arguments.length;i++){
+            // console.log(arguments[i]);
+            he+=arguments[i];
+        }
+        return he;
+    }
+    // var ad=cn(1,2,3);
+    // console.log(ad);
+    console.log(cn(1,2,3));
+    
+    function total(){
+        var hh=0;
+        for(var i=0;i<arguments.length;i++){
+            if(!isNaN(arguments[i])){
+                hh+=Number(arguments[i]);
+            }
+        }
+        return hh;
+    }
+    console.log(total(1,"22px",11,23));
+    console.log(typeof(total(1,"22px",11,23)));
+</script>

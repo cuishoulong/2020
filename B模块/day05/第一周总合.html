@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body{
+            background-color: burlywood;
+        } */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        ul {
+            margin: 0 auto;
+            /* background-color: burlywood; */
+            width: 500px;
+        }
+
+        li {
+            height: 40px;
+        }
+
+        #main {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        #main li {
+            width: 100px;
+            height: 40px;
+            border: 1px solid black;
+            display: inline-block;
+            margin-left: 20px;
+            text-align: center;
+            line-height: 40px;
+            position: relative;
+            top: 1px;
+        }
+
+        #main li:nth-child(1) {
+            margin: 0;
+        }
+
+        #main div {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            display: none;
+        }
+
+        #main li.appear {
+            background: green;
+            border-bottom-color: transparent;
+        }
+
+        #main div.appear {
+            display: block;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">关灯</button>
+    <ul id="firstUl">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="main">
+        <ul>
+            <li class="appear">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="appear">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    //反序输出
+    function cn() {
+        for (i = arguments.length - 1; i >= 0; i--) {
+            console.log(arguments[i]);
+        }
+    }
+    cn(1, 2, 3, 4);
+    //求和
+    function fn() {
+        var total = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            if (!isNaN(arguments[i])) {
+                total += Number(arguments[i]);
+            }
+        }
+
+        return total;
+    }
+    console.log(fn(1, 2, 9, '11px', '6', '12'));
+
+    //开关灯
+    var btn = document.getElementById('btn');
+    var bodys = document.getElementsByTagName('body');
+    btn.onclick = () => {
+        btn.innerText == "关灯" ? (btn.innerText = "开灯", bodys[0].style.background = "black") : (btn.innerText = "关灯",
+            bodys[0].style.background = "yellow");
+    }
+
+    //隔行变色
+    var firstUl = document.getElementById('firstUl');
+    var lis = firstUl.getElementsByTagName('li');
+    // console.log(lis);
+    for (var i = 0; i < lis.length; i++) {
+        i % 2 == 0 ? lis[i].style.background = 'red' : lis[i].style.background = 'blue';
+        lis[i].index = lis[i].style.background;
+        lis[i].onmouseover = function () {
+            this.style.background = 'green';
+        }
+        lis[i].onmouseout = function () {
+            this.style.background = this.index;
+        }
+    }
+
+    //选项卡
+    var main = document.getElementById('main');
+    var olis = main.getElementsByTagName('li');
+    var oDivs = main.getElementsByTagName('div');
+    for (var i = 0; i < olis.length; i++) {
+        olis[i].index = i;
+        olis[i].onclick = function () {
+            // console.log(i);
+            for (var i = 0; i < olis.length; i++) {
+                olis[i].className = '';
+                oDivs[i].className = '';
+            }
+            olis[this.index].className = 'appear';
+            oDivs[this.index].className = 'appear';
+        }
+    }
+
+    //for in循环    注意：切记不可使用obj.key，因为key是变量
+    var obj={name:'cc',age:20,sex:'男'};
+    for(var key in obj){
+        console.log(key);//属性名
+        console.log(obj[key]);//属性值
+    }
+
+    //switch  case是绝对等于===  注意：要写break，否则会穿透
+    var num=10;
+    switch(num){
+        case 5:
+        num--;
+        break;
+        case 9:
+        num--;
+        break;
+        default: console.log(num);
+    }
+
+    //while 当条件成立会一直执行   还有一个do{函数体}while(判断语句)    do while会先执行函数体，再根据while判断   
+    while(num>0){
+        num--;
+        console.log(num);
+    }
+    //if else if else    还有两个符号&&且  ||或     注意：if只要前面条件成立，后面不执行
+    if(num>5&&num<20){
+        num--;
+        console.log(num)
+    }else if(num==5||num<5){
+        num-2;
+        console.log(num)
+    }else{
+        console.log(num);
+    }
+    //continue结束本轮循环，开启下一轮    break结束整个循环
+</script>

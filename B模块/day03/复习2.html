@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #main{
+            width: 400px;
+            margin:0 auto;
+            list-style: none;
+        }
+        li{
+            height:50px;
+        }
+        button{
+            display: block;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">关灯</button>
+    <ul id="main">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</body>
+</html>
+<script>
+    var main=document.getElementById('main');
+    var lis=main.getElementsByTagName('li');
+    // console.log(main);
+    // console.log(lis);
+    //正序
+
+    for(var i=0;i<lis.length;i++){
+        i%2==0?lis[i].style.background='red':lis[i].style.background='blue';
+        lis[i].onmouseover=function(){
+            this.oldColor=this.style.backgroundColor;
+            this.style.backgroundColor='black';
+        }
+        lis[i].onmouseout=function(){
+            this.style.backgroundColor=this.oldColor;
+        }
+    }
+
+    //反序输出
+    for(var i=lis.length-1;i>=0;i--){
+        console.log(lis[i].innerText);
+    }
+
+    //开关灯
+    var body=document.getElementsByTagName('body');
+    var btn=document.getElementById('btn');
+    btn.onclick=function(){
+        this.innerText=="关灯"?(body[0].style.background="black",this.innerText="开灯"):(body[0].style.background="#fff",this.innerText="关灯");
+    }
+
+
+</script>

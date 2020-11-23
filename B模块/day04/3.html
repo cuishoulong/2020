@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var obj = {
+        "name": "li",
+        "age": 12
+    }
+    for (var key in obj) {
+        console.log(obj[key]);
+    }
+    var num=4;
+    // while是只要条件成立就执行里面的内容
+    // while(num>3){
+    //     num++;
+    //     console.log(num);
+    // }
+
+    // do{函数体}while(判断条件)    先执行do后的表达式，然后判断while条件，成立继续执行，不成立结束
+    // do{
+    //     num++;
+    //     console.log(num);
+    // }while(num>3)
+
+
+    // function fn(x,y,z){
+    //     console.log(1);
+    // }
+    // console.log(fn);
+    //fn.length得到的是形参的个数3
+    //fn.name 函数的名字
+//函数
+//代表某种功能
+//函数是一个引用数据类型，在存储的时候，开辟一个堆内存，把函数里面的代码当成字符进行存储(空间地址)，然后把地址给函数名
+// + 形参：形式上的参数
+// + 实参：真实传递的参数
+// + 不确定穿的的参数个数：arguments是一个(类数组),有索引，有长度
+//         + arguments.length真实传递的参数个数
+//         + arguments[0]具体的某个参数
+//         + arguments.callee当前函数本身
+    function ac(){
+        console.log(arguments);
+        //arguments是形参集合，当不知道形参个数的时候可以用这个，结果是一个类数组
+        //拿到具体的参数arguments[索引]
+        //arguments.length可以拿到形参的个数
+        //arguments.callee函数本身
+    };
+    ac(1,2,3,4);
+
+    function ad(x,y){
+        x+y;
+        return 100;
+    }
+    var res=ad(10,11);
+//实名函数
+//箭头函数
+//匿名函数
+//  + 函数表达式
+//  + 自执行函数
+//  函数表达式
+ var a=function(){
+     console.log(1);
+ } 
+ //自执行函数5种
+ (function(){
+     console.log(2);
+ }());
+
+ +function(){}();
+ -function(){}();
+ ~function(){}();
+ !function(){}();
+
+ //箭头函数
+ var res=(x,y)=>{
+     console.log('箭头函数');
+ }
+ res();
+ var res=x=>{return x+1};
+ //如果只有一个形参，()可以省去
+ var res=x=>x+1;
+ //如果函数体只有一个return，return也可以省去
+ console.log(1+''+[]+{}+function(){}+NaN);//1[object Object]function(){}NaN
+
+ var fn=(...arg)=>{
+     console.log(arg);
+ }
+ fn(1,2,3,4)
+</script>

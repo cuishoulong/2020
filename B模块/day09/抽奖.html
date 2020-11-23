@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id=inp>
+</body>
+</html>
+<!-- 做一个抽奖程序，页面中有一个区域显示中奖人员的编号，在JS中写一段代码，要求每隔1秒中随机创建一个四位的数字（每一位数字的取值范围0-9），当10秒结束后，结束定时器，最后显示的四位数字即是中奖的号码 -->
+<script>
+    var inp=document.querySelector("#inp");
+    function smoke(){
+        var str="";
+        for(var i=0;i<4;i++){
+            num=Math.floor(Math.random()*10);
+            str+=num;
+        }
+        return str;
+    }
+    smoke();
+   var time1=setInterval(function(){
+        inp.value=smoke();
+    },1000);
+    var time2=setTimeout(function(){
+        clearInterval(time1);
+        time1=null;
+        clearTimeout(time2);
+        time2=null;
+    },10000);
+        
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+</body>
+</html>
+<script>
+    var main=document.querySelector('#main');
+    var ops=document.querySelectorAll('#main>p');
+    console.log(main);
+    console.log(ops);
+    var h1=document.createElement('h1');
+    var conten=document.createTextNode('哈哈');
+    var res=h1.appendChild(conten);
+    // main.appendChild(res);
+    main.removeChild(ops[0]);
+
+    main.insertBefore(res,ops[1]);
+    var mainClone=main.cloneNode(true);
+    console.log(mainClone);
+</script>
