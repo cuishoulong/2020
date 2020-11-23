@@ -55,8 +55,8 @@
 
     - 3、把本地仓库的代码提交到远程仓库
         + 1、本地仓库和远程仓库建立连接
-            + git remove -v(查看本地和远程仓库的连接状态)
-            + git remove add origin 远程仓库地址(和远程仓库的某个新项目建立连接，origin这个名可以改，但是大家都统一叫这个)
+            + git remote -v(查看本地和远程仓库的连接状态)
+            + git remote add origin 远程仓库地址(和远程仓库的某个新项目建立连接，origin这个名可以改，但是大家都统一叫这个)
         + 2、git pull origin master (拉取远程仓库的代码到本地)
         + 3、git push origin master (推送本地的代码到远程仓库)
 
