@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d2{
+            width:200px;
+            height: 200px;
+            background-color:yellow;
+            float:left;
+        }
+        .d1{
+            width:300px;
+            /* height: 300px;
+            1.给父级设置一个高 */
+            background-color: violet;
+            /* overflow:hidden;
+            2.给父级设置一个overflow:hidden; */
+        }
+        .d3{
+            clear:left;
+            /* clear是清除浮动，有3个属性，left清除左浮动，right清除右浮动，both全部(左右)清除
+            3.在父元素末尾设置一个标签，添加clear属性 */
+        }
+    </style>
+</head>
+<body>
+    <div class="d1">
+        <div class="d2"></div>
+        <div class="d3"></div>
+    </div>
+</body>
+</html>

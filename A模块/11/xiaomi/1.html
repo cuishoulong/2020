@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+
+        }
+        div{
+            width:1226px;
+            background-color: yellow;
+            margin:0 auto;
+            border-top:20px solid transparent;
+        }
+        ul>li{
+            width:234px;
+            height:260px;
+            background-color: turquoise;
+            float: left;
+            margin:0 0 14px 14px;
+        }
+        ul>li:nth-child(1),ul>li:nth-child(6){
+            margin-left:0;
+        }
+        ul>li:nth-last-child(1),ul>li:nth-last-child(2){
+            width:234px;
+            height:122px;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p class="clear"></p>
+    </div>
+</body>
+</html>

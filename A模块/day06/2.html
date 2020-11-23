@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            font-size: 0;
+        }
+        .box1,.box2{
+            width:100px;
+            height: 100px;
+            background-color: lightskyblue;
+            display: inline-block;
+            /* float: left; */
+            font-size: 14px;
+
+            vertical-align:top;
+            /* 顶线对齐 */
+            vertical-align:middle;
+            /* 中线对齐 */
+            vertical-align: bottom;
+            /* 底线对齐*/
+
+            /* 基线对齐vertical-align
+                中线对齐:middle
+                底线对齐:bottom
+                顶线对齐:top;
+             */
+        }
+        .box2{
+            background-color: lime;
+        }
+    </style>
+    <!-- div变行内块后并排中间有间距
+     原因：两个div之间换行了
+     解决方法：
+     1. 让两个div同一行
+     2. 给父级元素设置font-size:0
+     3. 用float浮动并排 -->
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2">1</div>
+</body>
+</html>

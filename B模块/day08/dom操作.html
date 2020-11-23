@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main">
+        <p>p1</p>
+        <p id="p2">p2</p>
+        <p>p3</p>
+    </div>
+</body>
+
+</html>
+<script>
+    // parentNode:获取唯一父元素节点
+    console.log(main.parentNode);
+    // childNodes:获取所有子节点
+    console.log(main.childNodes);
+    // children:获取所有子元素节点(ie6-8不兼容)
+    console.log(main.children);
+    //previousSibling获取上一个哥哥节点
+    console.log(main.previousSibling);
+    //previousElementSibling获取上一个哥哥元素节点(IE6-8不兼容)
+    console.log(main.previousElementSibling);
+    //nextSibling 获取下一个兄弟节点
+    console.log(main.nextSibling);
+    //nextElementSibling获取下一个兄弟元素(ie6-8下不兼容)
+    console.log(main.nextElementSibling);
+    //firstChild 获取当前元素的第一个子节点
+    console.log(main.firstChild);
+    //firstElementChild 获取当前元素的第一个子元素(ie6-8下不兼容)
+    console.log(main.firstElementChild);
+    //lastChild获取最后一个子节点
+    console.log(main.lastChild);
+    //lastElementChild获取最后一个子元素(ie6-8下不兼容)
+    console.log(main.lastElementChild);
+//封装children
+    function Mychild(name){
+        var Childs=name.childNodes;
+        var myChilds=[];
+        for(var i=0;i<Childs.length;i++){
+        if(Childs[i].nodeType==1){
+            myChilds.push(Childs[i]);
+        }
+    }
+    return myChilds;
+    }
+  
+console.log(Mychild(main));
+
+// 封装previousElementSibling
+function Mypre(name){
+    var myPrevious=name.previousSibling;
+    console.log(myPrevious);
+    while(myPrevious&&myPrevious.nodeType!==1){
+        myPrevious=myPrevious.previousSibling;
+    }
+    return myPrevious;
+}
+console.log(Mypre(p2));
+
+
+//dom的增删改
+    //document.createElement("标签");创建元素节点
+    //document.createTextNode("哈哈");创建文本节点
+    //容器.appendChild(元素);把一个元素放到容器的末尾
+    //容器.insertBefore(新元素，老元素)  在容器中把新的元素插入到老的元素前面
+    //容器.removeChild(元素);   在容器中删除某个元素
+    //元素.cloneNode();//克隆   括号内没有参数时，只克隆当前元素   如果参数写为true会把元素里面的所有后代元素都克隆
+    //元素.setAttribute("属性名","属性值");//给元素添加自定义属性
+    //元素.getAttribute("属性名");//查看元素自定义属性
+    //元素.removeAttribute("属性名");//删除元素指定自定义属性
+
+    var box=document.createElement('h5');
+    var text=document.createTextNode('哈哈');
+    var res=box.appendChild(text);
+    main.appendChild(res);
+    main.insertBefore(newele,oldele);//把newele插入到oldele前面
+    
+</script>

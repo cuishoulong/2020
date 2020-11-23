@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // Number数字类型
+        //  正数，负数，零，小数
+        //  NaN 全称为not a number 非有效数字，但是也属于number数字类型
+        //  Infinity 正无穷大 -Infinity负无穷大
+
+        //console.log(NaN === NaN); //false  NaN和任何值都不相等，包括自己本身
+        //console.log(1 === 1); //true
+
+        // 题：确认n是不是有效数字，当前方法成立吗？
+        // 回答：不成立，因为NaN和任何值都不相等，包括它本身，所以该对比永远不可能为true所以不成立
+        // let n=NaN;
+        // if(n==NaN){
+        //     console.log('当前数字非有效数字');
+        // }
+
+        // 检验一个值是否非数字   isNaN 特点总结：
+        //1.显示的结果是相反的，所以如果为true就不是有效数字，如果为false就是有效数字
+        //2.会将内容先转换为数字再进行比较，如果遇到非数字的就为true，表示为非有效数字与Number([value])机制一样
+        //  console.log(isNaN(1));//false
+        //console.log(isNaN(NaN));//true
+        //console.log(isNaN(Infinity));//false
+
+        console.log(isNaN('12'));//false
+        console.log(isNaN('12p'));//true
+
+        // 把其他数据类型转换为数字类型的方法
+        //    Number([value]),isNaN就是使用的这个机制
+        //    parseInt([value])
+        //    parseFloat([value])
+
+        // Number是js内置的转换机制，他会把其他数据类型强制转换为数字类型
+        //   特点：一旦字符串中出现非有效数子符，就会显示为NaN，只有全部为有效数字符才会转换为数字类型
+                // 会先把值转换为字符串然后进行数字转换
+                // 如果为空就是0
+                // 布尔值的true是1 false是0
+                // 对象数据类型大部分为NaN,如果数组只有一个值时为数字
+        console.log(Number('12'));//12
+        console.log(Number('12.5'));//12.5
+        console.log(Number('12px'));//NaN
+        console.log(Number(true));//1
+        console.log(Number(false));//0
+        console.log(Number(null));//0
+        console.log(Number(undefined));//NaN
+        //console.log(Number(Symbol(12)));//报错，不可转换为数字类型
+        // 对象数据类型转换为数字：需要先转换为字符串类型，然后在转换为数字
+        console.log(Number(function fuc(){}));//NaN
+        console.log(Number({name:'崔'}));//NaN
+        console.log(Number(['10']));//10
+        console.log(Number(["10","20"]));//NaN
+        console.log(Number([]));//0
+        console.log(Number(''));//0
+        console.log(Number({}));//NaN
+        console.log(Number(undefined));//NaN
+        console.log(Number(null));//0
+    </script>
+</body>
+
+</html>

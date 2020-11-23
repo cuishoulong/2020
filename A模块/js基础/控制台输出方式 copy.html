@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1">
+
+    </div>
+    <input type="text" name="" id="i1">
+    
+    <script>
+        // console控制台输入
+        console.log(1,2,3);
+        // 可以输入多个，且在控制台输出的类型为值的类型，如果输入对象数据类型就是object,object
+        console.dir({name:'dd'});
+        // console.dir()具体的输出一个值，且一次只能输出一个
+        console.warn('当前错误')
+        // console.warn()在控制台以警告的方式输出内容
+        let a;
+        console.time(a);
+        console.timeEnd(a);
+        // console.time代表进程的开始，console.timeEnd代表进程的结束，两个通常会配套使用，输出结果为进程开始到结束所需要的时间
+        let fuc=[
+            {
+                name:'王',
+                id:1
+            },
+            {
+                name:'李',
+                id:2
+            }
+        ]
+        console.table(fuc);
+        //  console.table()把json格式的数据以表格的方式展现在控制台
+
+
+        //======================
+        //window提示窗
+        alert(111);
+        // alert将数据转换为字符串的格式然后在页面进入时弹出，且在console以前执行
+        console.log(11);
+
+        // confirm在alert的基础上增加了取消按钮，且可以用变量来接受到点击的按钮，如果点击确定就输出true,如果点击取消就输出false
+        let d=confirm(123);
+        console.log(d);
+
+        let c=prompt(22);
+        console.log(c);
+        // prompt在confirm的基础上增加了可填信息，也可用变量来接收，如果点击确定且填写信息输出内容就是填写内容，如果只是点击确定就输出空，如果点击取消就是null
+
+        //============================
+        // 插入信息
+        document.write(1111);
+        // document.write()在页面中插入信息，会先转换为字符串再插入，如果为对象数据类型，就会显示object，object
+        let a1=document.getElementById('d1');
+        d1.innerHTML='<i>innerHTML插入标签</i>';
+        // innerHTML可插入标签和内容，也会先转换为字符串，且需要给具体的值加，所以需要先获取到具体的值,有一点需注意，如果是=就是会覆盖原有内容，只想添加的话要用+=
+        d1.innertext="dddd";
+        // innertext是只能添加文本
+
+        let ii=document.getElementById('i1');
+        ii.value="value添加的值";
+        // value也需要添加给具体的值，所以也需要先获取
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 定位分4种
+            satic默认
+            relative相对定位
+            absolute绝对定位
+            fixed固定定位
+
+        */
+        * {
+            margin: 0;
+            padding: 0px;
+            list-style: none;
+        }
+        .main{
+            height:2000px;
+            background-color: lightslategray;
+            width:1226px;
+            margin: 0 auto;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: turquoise;
+        }
+
+        /* position:relative相对定位，不脱离文档流 
+            相对定位的元素层级高于普通文档流
+            给绝对定位做参照物
+            相对定位相对的是自身
+        .box1 {
+            position: relative;
+            left: 50px;
+            top: 50px;
+        }
+        .
+
+        /* position:absolute;绝对定位，脱离文档流，
+        层级高于普通文档流
+        如果给它设置一个参照物的话，需要在它的长辈级元素上设置position:relative;它会向上查找最近的长辈元素的相对定位，如果不设置的话默认为body
+        相对定位的元素无法继承父级的宽，但如果原本是行内元素，设置的宽高就会起作用了
+        参照物有一个即可：position:absolute;  position:relative; position:fixed; */
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: lawngreen;
+            position: absolute;
+            /* top: 100px;
+            left: 100px; */
+            top:0;
+        }
+
+        .box3 {
+            width: 400px;
+            height: 400px;
+            background-color: lightsalmon;
+            position: relative;
+        }
+        /* position:fixed;固定定位
+         */
+        .fixed{
+            width:100px;
+            height:200px;
+            background-color: linen;
+            position:fixed;
+            right:0;
+            bottom: 0;
+        }
+        .fixed li{
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box1"></div>
+        <div class="box3">
+            <div class="box2"></div>
+        </div>
+        <div class="box3"></div>
+        <div class="fixed">
+            <ul>
+                <li>固</li>
+                <li>定</li>
+                <li>定</li>
+                <li>位</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

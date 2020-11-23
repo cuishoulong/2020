@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">112</div>
+    <input type="text" id="d2">
+
+
+    <script>
+        // 文档插入
+
+        // docoment.write将输入内容转换为字符串然后在插入文档
+        document.write(1111);
+        document.write({name:1});
+        //对象数据类型的会自动转换为object,object
+        
+        let cc=document.getElementById('d1');
+        let dd=document.getElementById('d2');
+        // document限定为整个上下文文档，get获取，element元素，by中，id('d1')是id为d1的值
+        console.log(cc);
+        cc.innerHTML="211";
+        // innerHTML在文档中中添加字符串211，但会覆盖原有的字符，所以需要为+=
+
+        d2.value+="滴滴滴";
+
+        
+
+        //==========================================
+        // console可以输入任意类型的数据，控制台展示的也是其数据类型
+        // cnsolelog可以同时输出多个值
+        console.log(1);
+        console.log('aa',1);
+        console.log({name:'珠峰'})
+        function func(){
+
+        };
+        console.log(func);
+        // console.dir只能输出一个值或一个对象的详细信息
+        console.dir(func);
+        // console.warn()以警告的方式再控制台输出
+        console.warn('当前结果不规范')
+
+        let arr=[
+            {name:'珠峰',
+            id:100},
+            {name:'周',
+            id:200}
+        ];
+        //console.table把多维的json数据类型以表格的形式输出
+        console.table(arr);
+        // console.time(arr)代表arr开始执行，console.timeEnd(arr)代表arr结束执行，一般两个会配套执行，然后控制台输出执行时间
+        console.time(arr);
+        console.timeEnd(arr);
+
+        // console.log()可以输出任意类型的数据，并在控制台输出其的类型，可以多个值一起输出
+        // console.dir()可以输出数据的详细信息，但一次只能输出一个
+        // console.table()把json数据类型的值以表格的方式在控制台展现出来
+        // console.warn() 以警告的方式在控制台输出
+        // console.time(a)是a的开始的时间，console.timeEnd(a)是a结束的时间，通常两个会一起使用，然后会输出a运行的时间
+
+
+        //=========================
+        // window弹窗
+        // alert在进入页面时弹出窗口，且在consloe.log之前执行，alert输出内容都会转化为字符串
+        alert('今天大家都很帅');
+        console.log(100);
+
+        // confirm()在alert的基础上增加了取消按钮
+        let a=confirm(111);
+        // 创建一个变量来接收confirm返回的值，如果确定就是true如果取消就是false
+        console.log(a);
+
+        // prompt在confim的基础上添加了可填信息，在控制台输出结果的表现根据点击的按钮有关，如果点击确定就是填写的信息，如果没写就为空，如果点击取消就是null
+        let b=prompt();
+        console.log(b);
+    </script>
+</body>
+</html>

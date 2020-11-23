@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            resize: none;
+            /* 禁止拖拽尺寸 */
+            outline:none;
+            /* 去掉点击边框加粗 */
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="GET">
+     <!-- text文本输入框
+        action是请求或上传地址
+        method是提交方式
+            placeholder提示文本
+            autofocus获取焦点
+            required非空校验
+    -->
+    <input type="text" placeholder="文本" autofocus required name="username">
+    <!-- password密码框 -->
+    <input type="password" name="password">
+    <!-- reset重置 -->
+    <input type="reset">    
+    <!-- submit提交    -->
+    <input type="submit">
+    <!-- button 按钮 -->
+    <input type="button" value="重置按钮">
+    <button>重置</button>
+    <button type="button">重置</button>
+    <!-- radio单选 
+         checked默认选中
+         disabled禁止选中   
+    -->
+    <!-- 实现多选需要给input添加一个name属性，且属性名需一致 
+        单选按钮实现文字关联功能：
+        把文字用label标签包起来，让lable里的属性值与要关联的input内id属性值一致即可实现
+    -->
+    <label for="man">男</label>
+    <input type="radio" checked name="a1" id="man">
+    <label for="nv">女</label>
+    <input type="radio" name="a1" id="nv">
+    <input type="radio" disabled>
+    <!-- checkbox多选 -->
+    <input type="checkbox">
+    <input type="date">
+    <!-- textarea文本域 -->
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    </form>
+    <!-- 
+        text文本 password密码 reset重置 subimt提交 radio单选 checked 多选 color颜色 date日历 
+        属性：placeholder提示文本 checked自动选择 disabled禁止选择 autofocus获取焦点 required非空校验
+     -->
+     <!-- 多选框，select，option是选项，disable禁止选中，selected默认选中 -->
+     <select name="" id="">
+         <option value="" disabled selected>请选择地址</option>
+         <option value="">河南</option>
+         <option value="" >云南</option>
+     </select>
+</body>
+</html>

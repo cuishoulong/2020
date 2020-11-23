@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:100px;
+            height: 100px;
+            background-color: lightgreen;
+            animation:run 2s linear 0.5s infinite;
+            /* animation是自定义动画
+            第一个值是自定义动画名
+            第二个是动画时间
+            第三个是匀速
+            第四个是延时
+            第五个是无限循环 */
+        }
+        /* @keyframes定义关键帧 */
+        @keyframes run{
+            0%{
+                transform:rotate(0);
+            }
+            50%{
+                transform:rotate(180deg);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

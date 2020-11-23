@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 9.交集选择器
+        选中同时具备某些名字的元素
+        权重：相加 */
+        /* 同时具备div标签和box1类的元素 */
+        div.box1{
+            color:teal;
+        }
+        /* 同时具备box1和box3的元素 */
+        .box1.box3{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1 box3">box1</div>
+    <p class="box1">p1</p>
+</body>
+</html>

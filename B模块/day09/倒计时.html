@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            height: 50px;
+            line-height: 50px;
+            text-align:center;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+
+    </div>
+</body>
+</html>
+<script>
+    //现在时间：     目标时间：2020-11-20 17：00：00
+    function zero(num){
+        return num<10?"0"+num:num;
+    }
+   var timer=setInterval(function(){
+        var oldTime="2020-11-20 17:00:00";
+        var newTime=new Date(oldTime).getTime()-new Date().getTime();
+        var fullyear=Math.floor(newTime/12/30/24/60/60/1000);
+        var month=Math.floor(newTime/30/24/60/60/1000);
+        var day=Math.floor(newTime/24/60/60/1000);
+
+        var hours=Math.floor(newTime/60/60/1000);
+        var minutes=Math.floor(newTime/60/1000-hours*60);
+        var seconds=Math.floor(newTime/1000-minutes*60-hours*60*60);
+        var millisSeconds=newTime%1000;
+        if(fullyear==0&&month==0&&day==0&&hours==0&&minutes==0&&seconds==0&&seconds==0&&millisSeconds==0){
+            main.innerText="00"+'-'+"00"+'-'+"00"+' '+"00"+':'+"00"+':'+"00"+':'+"00";
+            clearInterval(timer);
+            timer=null;
+        }
+        main.innerText=zero(fullyear)+'-'+zero(month)+'-'+zero(day)+' '+zero(hours)+':'+zero(minutes)+':'+zero(seconds)+':'+zero(millisSeconds)
+    },0)
+</script>

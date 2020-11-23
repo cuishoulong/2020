@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width:1100px;
+            margin: 0 auto;
+        }
+        ul li{
+            float: left;
+            margin:0 0 50px 50px;
+        }
+
+        .main {
+            width: 500px;
+            height: 500px;
+            /* margin: 0 auto; */
+            /* background-color: coral; */
+            /* border: 1px solid black; */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box1 {
+            height: 200px;
+            background-color: rgb(150, 237, 100);
+        }
+
+        .boxa1 {
+            position: absolute;
+            bottom: -50px;
+            width: 500px;
+            height: 300px;
+            background-color: cornflowerblue;
+        }
+
+        .boxa2 {
+            width: 500px;
+            height: 100px;
+            background-color: darkkhaki;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .main:hover .boxa1 {
+            bottom: 100px;
+            /* 进行0.6秒 linear匀速运动 */
+            transition: all 0.6s linear;
+        }
+
+        .main:hover {
+            box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.3);
+            /* 阴影，第一个值是x轴 第二个值是y轴 第三个值是模糊度 第四个值是阴影大小 第五个是颜色 */
+        }
+        .clear{
+            clear:both;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="main">
+            <div class="box1"></div>
+            <a href="">
+                <div class="boxa1"></div>
+                <div class="boxa2"></div>
+            </a>
+        </li>
+        <li class="main">
+            <div class="box1"></div>
+            <a href="">
+                <div class="boxa1"></div>
+                <div class="boxa2"></div>
+            </a>
+        </li>
+        <li class="main">
+            <div class="box1"></div>
+            <a href="">
+                <div class="boxa1"></div>
+                <div class="boxa2"></div>
+            </a>
+        </li>
+        <li class="main">
+            <div class="box1"></div>
+            <a href="">
+                <div class="boxa1"></div>
+                <div class="boxa2"></div>
+            </a>
+        </li>
+        <li class="clear"></li>
+    </ul>
+
+</body>
+
+</html>

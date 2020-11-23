@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .a1{
+            width: 20px;
+            height: 200px;
+            background-color: brown;
+            margin: 0 auto;
+            position: relative;
+            transform-origin: top center;
+            animation: run 3s infinite;
+        }
+        .a2{
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            bottom:-15px;
+            left:-15px;
+            border-radius: 50%;
+            background: url(https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2125117868,750116573&fm=26&gp=0.jpg) center center no-repeat;
+            background-size: cover;
+        }
+        @keyframes run{
+            0%{
+                transform:rotate(-45deg);
+            }
+            50%{
+                transform:rotate(0);
+            }
+            75%{
+                transform:rotate(45deg);
+            }
+            100%{
+                transform:rotate(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="a1">
+        <div class="a2"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            background-color: khaki;
+        }
+        div:hover{
+            width:200px;
+            height:200px;
+            transition:width 2s linear 1s , height 2s linear 2s;
+            /* transition第一个值为需要动画得属性，可以代替为all
+            第二个值为动画时间
+            第三个是匀速
+            第四个是延迟 */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

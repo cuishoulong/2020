@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 选择正数第2个li */
+        ul>li:nth-child(2){
+            background-color: red;
+        }
+        /* 选择正数第一个li */
+        ul>li:first-child{
+            background-color: seagreen;
+        }
+        /* 选择倒数第二个li */
+        ul>li:nth-last-child(2){
+            background-color: rosybrown;
+        }
+        /* 选择倒数第一个li */
+        ul>li:last-child{
+            background-color: royalblue;
+        }
+        /* 2n或even选择偶数行的li */
+        ul>li:nth-child(2n){
+            background-color: tan;
+        }
+        /* 2n+1或add选择奇数行的li */
+        ul>li:nth-child(2n+1){
+            background-color: yellow;
+        }
+        /* 选择div的子元素中符合2n+1与h2的元素 */
+        div>h2:nth-child(2n+1){
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <div>
+        <p>p1</p>
+        <p>p2</p>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <h2>h2</h2>
+    </div>
+</body>
+</html>

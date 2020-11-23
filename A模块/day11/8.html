@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clearfix:after {
+            content: "";
+            font-size: 0;
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        /* *zoom:1 是兼容IE6的暂时写不写都没关系*/
+        .clearfix {
+            *zoom: 1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 1920px;
+            height: 1080px;
+            background: url(images/05.webp) center center no-repeat;
+            background-size: cover;
+            /* background-color: black; */
+            overflow: hidden;
+        }
+
+        .main {
+            width: 800px;
+            height: 240px;
+            position: absolute;
+            top:60%;
+            left:50%;
+            margin-left:-400px;
+            animation: main 10s infinite;
+        }
+
+        div {
+            width: 200px;
+            height: 180px;
+            float: left;
+        }
+        .a1{
+            margin-top: 30px;
+            background: url(images/01.png) 0 center no-repeat;
+            animation:run 1s steps(8) infinite;
+        }
+        .a2{
+            margin-top: 30px;
+            width:200px;
+            background: url(images/02.png) 0 center no-repeat;
+            animation:run 1s steps(8) infinite;
+        }
+        .a3{
+            width: 170px;
+            height: 240px;
+            background: url(images/03.png) 0 center no-repeat;
+            animation:run2 0.5s steps(8) infinite;
+        }
+        .a4{
+            margin-top: 30px;
+            width:210px;
+            height: 200px;
+            background: url(images/04.png) 0 center no-repeat;
+            animation:run3 0.5s steps(8) infinite;
+        }
+        @keyframes main{
+            0%{
+                transform:translate(200vw,-100vw) scale(0.1);
+            }
+            40%{
+                transform:translate(0,0);
+            }
+            100%{
+                transform:translate(-100vw,-100vw) scale(0.1);
+            }
+        }
+        @keyframes run{
+            100%{
+                background-position: -1600px 0;
+                transform:rotate(360deg);
+            }
+        }
+        @keyframes run2{
+            100%{
+                background-position: -1360px 0;
+            }
+        }
+        @keyframes run3{
+            100%{
+                background-position: -1680px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main clearfix">
+        <div class="a1"></div>
+        <div class="a2"></div>
+        <div class="a3"></div>
+        <div class="a4"></div>
+    </div>
+</body>
+
+</html>

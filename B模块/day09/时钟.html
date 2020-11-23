@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            font-size: 0;
+            list-style: none;
+            width: 500px;
+            margin:0 auto;
+            text-align: center;
+        }
+        li{
+            font-size: 16px;
+            text-align: center;
+            line-height: 50px;
+            display: inline-block;
+            width: 60px;
+            height: 50px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <ul id="main">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
+<script>
+    var lis=document.querySelectorAll('#main>li');
+    setInterval(function(){
+        var res=new Date();
+        var weekStr=['周日','周一','周二','周三','周四','周五','周六']
+        lis[0].innerText=res.getFullYear()+'年';
+        lis[1].innerText=res.getMonth()+1+'月';
+        lis[2].innerText=res.getDate()+"日";
+        lis[3].innerText=res.getHours()+'时';
+        lis[4].innerText=res.getMinutes()+"分";
+        lis[5].innerText=res.getSeconds()+"秒";
+        lis[6].innerText=weekStr[res.getDay()];
+    },1000)
+</script>

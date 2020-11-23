@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            /* 倾斜 */
+            font-style:italic;
+            /* 正常 */
+            /* font-style:normal; */
+            width:100px;
+            height:30px;
+            /* height:100px; */
+            background-color: red;
+            /* 块级元素快速水平居中，要设置宽 */
+            margin:0 auto;
+            /* 让文字垂直居中，高度等于行号 */
+            line-height:30px;
+            /* 让文字水平居中 */
+            text-align: center;
+            /* 给元素加边框，第一个值是大小，第二个值是样式，第三个是颜色  常用样式  实线solid 虚线dashed*/
+            border: 5px dashed rebeccapurple;
+        }
+        /* 鼠标划过的样式，当前是给P加的，所以在P后加:hover */
+        p:hover{
+            background-color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>aaaaa</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width:500px;
+            height: 500px;
+            background-color: rgb(191, 214, 168);
+            margin:0 auto;
+            border: 5px solid lightgreen;
+        }
+        .box1{
+            width:100px;
+            height: 100px;
+            background-color: lightpink;
+            /* background: -webkit-linear-gradient(left,transparent,#03e9f4); */
+            animation: run 1s linear infinite;
+            /* animation: run 2s linear forwards; */
+            /* forwards让动画停留在最后一帧 */
+            /* backwards如果动画中有延迟，想要迅速以第一帧开始，可以加一个backwards属性 */
+            /* both是forwards和backwards的结合 */
+        }
+        @keyframes run{
+            0%{
+                transform:translate(0,0);
+            }
+            25%{
+                transform:translate(400px,0);
+                /* background-color: lightseagreen; */
+            }
+            50%{
+                transform:translate(400px,400px);
+                /* background-color: rgb(76, 32, 178); */
+            }
+            75%{
+                transform:translate(0,400px);
+                /* background-color: rgb(178, 32, 122); */
+            }
+            100%{
+                transform:translate(0,0);
+                /* background-color: rgb(151, 178, 32); */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box1"></div>
+    </div>
+</body>
+</html>

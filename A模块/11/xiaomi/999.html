@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 500px;
+            height: 500px;
+            /* margin: 0 auto; */
+            /* background-color: coral; */
+            border: 1px solid black;
+            overflow: hidden;
+            
+            /* 平移 */
+            /* transform:translateX(500px); */
+            /* transform:translateY(100px); */
+            transition:all 2s initial;
+
+
+        }
+        .main:hover{
+            /* 旋转 */
+            transform:rotateZ(45deg);
+                        /* 缩放 */
+            /* transform:scale(0.5); */
+            /* 旋转中心 */
+            transform-origin: right bottom;
+        }
+        .box1{
+            height:200px;
+            background-color: rgb(150, 237, 100);
+        }
+        .boxa1{
+            width:500px;
+            height: 300px;
+            background-color: cornflowerblue;
+        }
+        .boxa2{
+            width:500px;
+            height: 100px;
+            background-color: darkkhaki;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box1"></div>
+        <a href="">
+            <div class="boxa1"></div>
+            <div class="boxa2"></div>
+        </a>
+    </div>
+</body>
+</html>

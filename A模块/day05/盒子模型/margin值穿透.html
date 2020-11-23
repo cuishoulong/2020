@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 面试题：margin值穿透：
+        有一个大盒子，里面有一个小盒子，想要让小盒子离大盒子上部有一定距离，给小盒子设置了margin-top，造成了大盒子会跟着小盒子一起下掉，这种就是margin值穿透 
+        
+        解决方法：
+        第一种.给大盒子设置padding-top值
+        第二种.给大盒子设置一个透明上边框
+        方法三.给大盒子设置一个overflow：hidden
+        */
+        *{
+            margin:0;
+            padding:0;
+        }
+        .main{
+            width:300px;
+            height: 300px;
+            box-sizing:border-box;
+            background-color: rebeccapurple;
+            /* padding-top:20px; */
+            border-top:20px solid transparent;
+            /* transparent是透明色 */
+            /* overflow:hidden;溢出隐藏 */
+        }
+        .box{
+            margin-top: 20px;
+            width:100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-size:0;
+        }
+        div{
+            width:200px;
+            height: 200px;
+            background: blue;
+            display: inline-block;
+        }
+        .d2{
+            background: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 正常排列的两个行内块中间会有一条线的距离，如何消除
+    1.因为换行导致的有一条线，所以两个div写在一行上就好了
+    2.在*里面添加一个font-size:0 -->
+    
+    <div class="d1"></div>
+    <div class="d2"></div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.clear{
+    clear:both;
+}
+.main{
+    width:1200px;
+    margin:0 auto;
+    padding-top:20px;
+    background-color: red;
+}

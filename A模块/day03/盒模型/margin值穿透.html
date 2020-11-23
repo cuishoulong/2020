@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d1{
+            width:500px;
+            height:500px;
+            background:red;
+            /* padding-top:100px; */
+            /* border-top:10px solid blue; */
+            /* border:1px solid transparent;
+            解决方法1：设置一个透明的边框线，transparent透明 */
+            
+            /* padding-top:50px;
+            解决方法2:直接不给小盒子设置margin-top，在大盒子内设置个padding-top */
+
+            overflow:hidden;
+            /* 解决方法3：给大盒子添加overflow:hidden;样式 */
+        }
+        .d2{
+            width:200px;
+            height: 200px;
+            background: cadetblue;
+            margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- margin值穿透现象
+    当一个大盒子里包含一个小盒子时，大盒子没有设置padding-top或border-top时，我们给小盒子设置，大盒子会跟随下掉 -->
+
+    <div class="d1">
+        <div class="d2"></div>
+    </div>
+</body>
+</html>

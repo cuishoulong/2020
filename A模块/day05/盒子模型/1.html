@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 样式：
+        content主体内容
+        padding：内容与边框的距离
+        border：边框
+        margin：盒子与盒子之间的距离 
+        计算总盒子的高：content高+padding上下+border上下
+        计算总盒子的宽：content宽+padding左右+border左右
+        */
+        div {
+            background-color: mediumpurple;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            padding: 100px;
+            text-align: center;
+            line-height: 100px;
+            border: 1px dashed red;
+
+        }
+
+        .box1 {
+            margin-left: 50px;
+            /* margin-right:100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">15</div>
+    <div class="box1">15</div>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width: 400px;
+            height: 1000px;
+            border:2px solid red;
+            /* 给设置display:flex的元素称之为容器，子元素称为项目
+            display有两个值：flex弹性盒   inline-flex行内弹性盒
+            容器有两根主轴 flex-direction:row;代表水平排列，默认为row,垂直排列为column
+            */
+            display:flex;
+            flex-direction:row;
+            /* flex-direction:column; */
+            /* flex-direction:column-reverse; */
+
+            /* flex布局默认不换行，超出容器大小了会自动给子元素缩小，需要手动换行  flex-wrap:wrap; */
+            flex-wrap:wrap;
+
+            /* 复合属性，第一个代表主轴方向，第二个是换行flex:flow:row wrap; */
+
+            /* 根据主轴来制定对齐方式  左对齐justift-content:flex-start 右对齐justify-content:flex-end 居中justify-content:center   两边对齐justify-content:space-around 环绕对其，项目两边的距离是相等的，加起来等于中间间隔的距离justify-content:space-between  等距离平铺justify-content: space-evenly*/
+            justify-content:flex-start;
+            justify-content:flex-end;
+            justify-content:center;
+            justify-content:space-around;
+            justify-content:space-between;
+            justify-content: space-evenly;
+
+            /* 侧轴对齐align-items 什么是侧轴，去除主轴以外的另外一根就是侧轴，   align-items:flex-start开始对齐   align-items:flex-end末尾对其   align-items:center 中间对齐  align-items:baselin文字底线对齐  align-items:stretch给项目自动铺满高*/
+            /* align-items:center; */
+            /* align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。（也就是说得有项目换行） */
+            align-content:flex-end;
+            align-content:flex-start;
+            align-content:center;
+            align-content:space-between;
+            align-content:stretch;
+        }
+        li{
+            width: 100px;
+            height: 100px;
+             /*background-color: blue; */
+            flex:1;
+            
+        }
+        li:nth-child(even){
+            background-color: blue;
+        }
+        li:nth-child(ADD){
+            background-color: rgb(102, 255, 0);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</body>
+</html>

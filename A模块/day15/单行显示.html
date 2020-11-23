@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* div{
+        width: 100px;
+        height: 50px;
+        background-color: chocolate;
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    } */
+    p{
+         width:500px;
+         border:1px solid green;
+         /* 超出隐藏 */
+         overflow: hidden;
+         /* 文字隐藏的方式是... */
+         text-overflow: ellipsis; 
+         /* 不换行 */
+         white-space: nowrap;
+        word-spacing:20px; /*  单词间距*/
+         letter-spacing: 20px;/* 汉字间距 */
+         filter: grayscale(1);
+     }
+</style>
+<body>
+    <div>
+        <p>11 11111111111111111111111111111111</p>
+        
+    </div>
+</body>
+</html>

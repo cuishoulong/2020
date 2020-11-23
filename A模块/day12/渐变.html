@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            /* 线性渐变 */
+            /* 默认从上到下 */
+            background: -webkit-linear-gradient(red,black);
+            /* 从左到右 */
+            background: -webkit-linear-gradient(left,red,black);
+            /* 从左上角到右下角 */
+            background: -webkit-linear-gradient(left top,red,black);
+            /* 可以调节颜色占比用百分号 */
+            background: -webkit-linear-gradient(left top,red 10%,black 50%);
+            /* 百分之五十 */
+            background: -webkit-linear-gradient(red 50%,black 50%);
+            /* 径向渐变 */
+            background:radial-gradient(circle,red,green);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:lightseagreen;
+        }
+        .box{
+           width: 10px;
+           height: 200px;
+           background:darkorchid;
+           margin:0 auto;
+           position:relative;
+           animation: clock 2s infinite;
+           transform-origin: center top;
+        }
+        .ball{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background:yellow;
+            position:absolute;
+            bottom:-50px;
+            left:-20px;
+        }
+        @keyframes clock{
+            0%,100%{
+                transform:rotate(-45deg);
+            }
+            25%{
+                transform:rotate(0deg);
+            }
+            50%{
+                transform:rotate(45deg);
+            }
+            75%{
+                transform:rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="ball"></div>
+    </div>
+</body>
+</html>

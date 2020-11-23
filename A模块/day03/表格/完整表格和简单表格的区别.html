@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width:600px;
+            border-collapse:collapse;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <!-- 这是打乱顺序的完整列表 -->
+        <caption>完整表格</caption>
+        <tfoot>
+            <tr>
+                <td>底</td>
+                <td>底</td>
+                <td>底</td>
+            </tr>
+        </tfoot>
+        <thead>
+            <tr>
+                <th>头</th>
+                <th>头</th>
+                <th>头</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>身</td>
+                <td>身</td>
+                <td>身</td>
+            </tr>
+        </tbody>
+    </table>
+<!-- 两个列表的区别：完整列表有thead tbody tfoot,简单列表没有，它们作用在于即使打乱顺序，thead还是会在上面,tbody在中间，tfoot在最后 -->
+    <table border="1">
+        <!-- 这是打乱顺序的简单列表 -->
+        <caption>简单列表</caption>
+        <tr>
+            <td>身</td>
+            <td>身</td>
+            <td>身</td>
+        </tr>
+        <tr>
+            <td>底</td>
+            <td>底</td>
+            <td>底</td>
+        </tr>
+        <tr>
+            <th>头</th>
+            <th>头</th>
+            <th>头</th>
+        </tr>
+    </table>
+</body>
+</html>
