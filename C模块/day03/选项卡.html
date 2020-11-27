@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+            font-size: 0;
+        }
+
+        #main {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        li {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            display: inline-block;
+            margin-left: 20px;
+            border: 1px solid red;
+            position: relative;
+            text-align: center;
+            top: 1px;
+        }
+
+        li:nth-child(1) {
+            margin-left: 0;
+        }
+
+        #main div {
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            border: 1px solid red;
+            display: none;
+        }
+
+        #main li.appear {
+            background: red;
+            border-bottom-color: transparent;
+        }
+
+        #main div.appear {
+            display: block;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul>
+            <li class="appear">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="appear">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+
+</html>
+<script>
+    var main = document.querySelector('#main');
+    var lis = main.querySelectorAll("li");
+    var divs = main.querySelectorAll("div");
+    //第一种
+    // for(var i=0;i<lis.length;i++){
+    //     lis[i].index=i;
+    //     lis[i].onclick=function(){
+    //         for(var i=0;i<lis.length;i++){
+    //             divs[i].className="";
+    //             lis[i].className="";
+    //         }
+    //         lis[this.index].className="appear";
+    //         divs[this.index].className="appear";
+    //     }
+    // }
+
+    //第二种
+    // for (var i = 0; i < lis.length; i++) {
+    // (function(i){
+    //     lis[i].onclick=function(){
+    //     for(var j=0;j<lis.length;j++){
+    //         console.log(j);
+    //         divs[j].className="";
+    //         lis[j].className="";
+    //     }
+    //     lis[i].className="appear";
+    //     divs[i].className="appear";
+    // }
+    // })(i)}
+
+    //第三种
+        for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick = (function (i) {
+            return function () {
+                lis[i].onclick = function () {
+                    for (var j = 0; j < lis.length; j++) {
+                        console.log(j);
+                        divs[j].className = "";
+                        lis[j].className = "";
+                    }
+                    lis[i].className = "appear";
+                    divs[i].className = "appear";
+                }
+            }
+        })(i)
+    }
+
+    //第四种
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+            for (var j = 0; j < lis.length; j++) {
+                divs[j].className = "";
+                lis[j].className = "";
+            }
+            lis[i].className = "appear";
+            divs[i].className = "appear";
+        }
+    }
+
+   
+</script>
