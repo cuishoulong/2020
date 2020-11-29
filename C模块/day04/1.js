@@ -76,6 +76,7 @@ var res=fn(ary);
 console.log(ary);//[0,2,3,4]
 console.log(res);//[100]
 
+
 var num=10;
 var obj={num:20};
 obj.fn=(function(num){
@@ -91,4 +92,46 @@ var fn=obj.fn;
 fn(5);
 obj.fn(10);
 console.log(num,obj.num)
+
+window.val=1;
+var json={
+    val:10,
+    dbl:function(){
+       //this==>json
+        this.val*=2;
+    }
+}
+json.dbl();//98---20
+var dbl=json.dbl;//
+dbl();//96---2
+json.dbl.call(window);//96----4
+alert(window.val+json.val);//"24"
+
+
+var name="window";
+var tom={
+   name:"tom",
+   show:function(){
+      console.log(this.name);
+   },
+   wait:function(){
+      //this==>tom
+      var fun=this.show;
+      fun();
+   }
+}
+tom.wait();
+
+(function(){
+   var val=1;
+   var json={
+       val:10,
+       dbl:function(){
+         //  this==>json
+           val*=2;
+       }
+   }
+   json.dbl();
+   alert(json.val+val);
+})()
 
