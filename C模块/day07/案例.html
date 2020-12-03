@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.min.css">
+    <style>
+        #main {
+            width: 400px;
+            height: 500px;
+            background: beige;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        ul {
+            height: 300px;
+            background-color: red;
+        }
+
+        #botBox {
+            background-color: black;
+            height: 200px;
+            box-sizing: border-box;
+            padding-top: 100px;
+            padding-left: 20px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        li {
+            height: 40px;
+            margin-top: 20px;
+            display: flex;
+            margin-left: 20px;
+        }
+
+        button,
+        input,
+        .toprRight {
+            text-align: center;
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        .toprRight {
+            margin-left: 20px;
+            background: black;
+            padding: 0 20px;
+            color: #fff;
+        }
+
+        button,
+        input {
+            width: 50px;
+            height: 100%;
+            color: #fff;
+            background-color: black;
+            border: #fff;
+        }
+
+        input {
+            background-color: #fff;
+            border-radius: 10px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul id="topBox">
+            <li>
+                <div class="topLeft">
+                    <button>+</button>
+                    <input type="text" value="0" class="num">
+                    <button>-</button>
+                </div>
+                <div class="toprRight">单价:<span>1</span>元 小计:<span class="close">0</span>元</div>
+            </li>
+            <li>
+                <div class="topLeft">
+                    <button>+</button>
+                    <input type="text" value="0" class="num">
+                    <button>-</button>
+                </div>
+                <div class="toprRight">单价:<span>2</span>元 小计:<span class="close">0</span>元</div>
+            </li>
+        </ul>
+        <div id="botBox">
+            <p>商品共<span>0</span>件</p>
+            <p>共花了<span>0</span>元</p>
+            <p>最贵单品单价<span>0</span>元</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let main = document.querySelector("#main");
+    let lis = main.querySelectorAll("li");
+    // var pull = function (lisIn) {
+    //     // var lisIn = lis[i];
+    //     var close = lisIn.querySelectorAll("button")[0]; //+
+    //     var reduce = lisIn.querySelectorAll("button")[1]; //-
+    //     var inp = lisIn.querySelector("input"); //数
+    //     var price = lisIn.querySelectorAll("span")[0].innerText; //单价
+    //     var adds = lisIn.querySelectorAll("span")[1]; //和
+    //     return lisIn;
+    // }
+    var pull = function (lisIn) {
+        // var lisIn = lis[i];
+        this.close = lisIn.querySelectorAll("button")[0]; //+
+        this.reduce = lisIn.querySelectorAll("button")[1]; //-
+        this.inp = lisIn.querySelector("input"); //数
+        this.price = lisIn.querySelectorAll("span")[0].innerText; //单价
+        this.adds = lisIn.querySelectorAll("span")[1]; //和
+        // return lisIn;
+    }
+    Object.prototype.closef = function () {
+        inp.value = Number(inp.value) + 1;
+        adds.innerText = price * inp.value;
+    }
+    // for (var i = 0; i < lis.length; i++) {
+        
+    // }
+    var l1=new pull(lis[0]);
+    var l2=new pull(lis[1])
+    l1.close.onclick=function(){
+        console.log(li.inp);
+        // inp.value = Number(inp.value) + 1;
+        // adds.innerText = price * inp.value;
+    }
+</script>

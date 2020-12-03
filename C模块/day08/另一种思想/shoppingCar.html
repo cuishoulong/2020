@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 800px;
+            height: 500px;
+            background-color: skyblue;
+
+        }
+
+        #box {
+            margin: 100px auto;
+        }
+
+        #box ul li {
+            margin-top: 20px;
+            margin-left: 20px;
+            height: 60px;
+        }
+
+        #box ul li button {
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            color: white;
+            font-size: 30px;
+            line-height: 30px;
+        }
+
+        #box ul li h5 {
+            display: inline-block;
+            height: 50px;
+            width: 100px;
+            line-height: 50px;
+            padding-left: 45px;
+            box-sizing: border-box;
+        }
+
+        #box ul li .price {
+            background-color: black;
+            width: 200px;
+            height: 50px;
+            float: right;
+            margin-right: 200px;
+            color: white;
+            font-size: 15px;
+            line-height: 50px;
+            padding-left: 20px;
+        }
+
+        #allNum,
+        #allMon,
+        #price1 {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <button class='jia'>+</button>
+                <h5 class="numb">0</h5> <button class='jian'>-</button>
+                <div class="price">单价:1元 小计: <span class="pri">0</span>元</div>
+            </li>
+            <li>
+                <button class='jia'>+</button>
+                <h5 class="numb">0</h5> <button class='jian'>-</button>
+                <div class="price">单价:6.5元 小计:<span class="pri">0</span>元</div>
+            </li>
+            <li>
+                <button class='jia'>+</button>
+                <h5 class="numb">0</h5> <button class='jian'>-</button>
+                <div class="price">单价:1.5元 小计:<span class="pri">0</span>元</div>
+            </li>
+            <li>
+                <button class='jia'>+</button>
+                <h5 class="numb">0</h5> <button class='jian'>-</button>
+                <div class="price">单价:2.5元 小计:<span class="pri">0</span>元</div>
+            </li>
+            <li>
+                <button class='jia'>+</button>
+                <h5 class="numb">0</h5> <button class='jian'>-</button>
+                <div class="price">单价:3.5元 小计:<span class="pri">0</span>元</div>
+            </li>
+
+        </ul>
+        <div class="Num">商品共合计<div id="allNum">0</div>件</div>
+        <div class="Money">共花费了<div id="allMon">0</div>元</div>
+        <div class="Nocheap">其中最贵商品的单价是<div id="price1">0</div>元</div>
+    </div>
+</body>
+
+</html>
+<script src="Sc.js
+"></script>

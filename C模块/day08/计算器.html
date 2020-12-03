@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        #main {
+            width: 479px;
+            height: 591px;
+            background: url("bg1.png");
+            margin: 0 auto;
+            color: #fff;
+            padding: 30px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .shopContent li {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .shopContent button {
+            width: 52px;
+            height: 44px;
+        }
+
+        .add {
+            background: url("add.png");
+        }
+
+        .sub {
+            background: url("sub.png");
+        }
+
+        .num {
+            width: 44px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            border-radius: 5px;
+            background: #fff;
+            color: #333;
+        }
+
+        .shopInfo {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+        }
+
+        .shopInfo p {
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul class="shopContent">
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">1</b>元 小计：<span class="xjMoney">0</span> 元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">2</b>元 小计：<span class="xjMoney">0</span> 元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">3</b>元 小计：<span class="xjMoney">0</span> 元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">4</b>元 小计：<span class="xjMoney">0</span> 元
+                </span>
+            </li>
+        </ul>
+        <div class="shopInfo">
+            <p>商品共<span class="totalNum">0</span>件</p>
+            <p>共花了<span class="totalMoney">0</span>元</p>
+            <p>其中最贵的商品单价是<span class="specileItemPrice">0</span>元</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    
+    //点击按钮的时候，让数量相应的增加或减
+
+    //获取所有按钮
+    var buttons = document.querySelectorAll(".shopContent button");
+    //获取总共件数的元素节点
+    var totalNumEle=document.querySelector(".shopInfo .totalNum");
+    //获取全部的件数的元素
+    var numArrayEle=document.querySelectorAll(".shopContent .num");
+    //获取所有的小计元素节点
+    var xjMoneyEle=document.querySelectorAll(".shopContent .xjMoney");
+    //获取总钱数节点
+    var totalMoneyEle=document.querySelector(".shopInfo .totalMoney");
+    //获取所有li
+    var lis=document.querySelectorAll(".shopContent li");
+    //最贵单品单价
+    var specileItemPriceEle=document.querySelector(".shopInfo .specileItemPrice");
+    //给按钮绑定点击事件
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () {
+            //获取按钮的自定义属性，用来判断
+            var flag = this.getAttribute("flag");
+            //获取父级结点
+            var parentEle=this.parentNode;
+            //用父级来限制上下文，获取值的节点
+            var numEle=parentEle.querySelector(".num");
+            //老值
+            var oldNum=Number(numEle.innerText);
+            //新值
+            var nowNum=0;
+            //单价
+            var itemPrice=Number(parentEle.querySelector(".itemPrice").innerText);
+            //获取小计元素节点
+            var xjMoney=parentEle.querySelector(".xjMoney");
+            //小计总件
+            var totalNum=0;
+            //总钱数
+            var totalMoney=0;
+            if(flag==1){
+                //加法按钮
+                nowNum=oldNum+1;
+            }else{
+                //加法按钮
+                if(oldNum-1<0){
+                    nowNum=0;
+                    return;
+                }
+                nowNum=oldNum-1;
+            }
+            //总件数
+            numEle.innerText=nowNum;
+            for(var i=0;i<numArrayEle.length;i++){
+                totalNum+=Number(numArrayEle[i].innerText);
+                totalMoney+=Number(xjMoneyEle[i].innerText);
+            }
+            //总花费
+            console.log(totalMoney);
+            totalNumEle.innerText=totalNum;
+            totalMoneyEle.innerText=totalMoney;
+            var ary=[];
+            for(var i=0;i<lis.length;i++){
+                if(lis[i].querySelector(".num").innerText>0){
+                    ary.push(lis[i].querySelector(".itemPrice").innerText)
+                }
+            } 
+            if(ary.length>0){
+                specileItemPriceEle.innerText=(ary.sort(function(a,b){return b-a}))[0];
+            }
+            xjMoney.innerText=itemPrice*nowNum;
+        }
+    }
+</script>

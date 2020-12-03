@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.min.css">
+    <style>
+        #main {
+            width: 400px;
+            height: 500px;
+            background: beige;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        ul {
+            height: 300px;
+            background-color: red;
+        }
+
+        #botBox {
+            background-color: black;
+            height: 200px;
+            box-sizing: border-box;
+            padding-top: 100px;
+            padding-left: 20px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        li {
+            height: 40px;
+            margin-top: 20px;
+            display: flex;
+            margin-left: 20px;
+        }
+
+        button,
+        input,
+        .toprRight {
+            text-align: center;
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        .toprRight {
+            margin-left: 20px;
+            background: black;
+            padding: 0 20px;
+            color: #fff;
+        }
+
+        button,
+        input {
+            width: 50px;
+            height: 100%;
+            color: #fff;
+            background-color: black;
+            border: #fff;
+        }
+
+        input {
+            background-color: #fff;
+            border-radius: 10px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul id="topBox">
+            <li>
+                <div class="topLeft">
+                    <button>+</button>
+                    <input type="text" value="0" class="num">
+                    <button>-</button>
+                </div>
+                <div class="toprRight">单价:<span>1</span>元 小计:<span class="close">0</span>元</div>
+            </li>
+            <li>
+                <div class="topLeft">
+                    <button>+</button>
+                    <input type="text" value="0" class="num">
+                    <button>-</button>
+                </div>
+                <div class="toprRight">单价:<span>2</span>元 小计:<span class="close">0</span>元</div>
+            </li>
+        </ul>
+        <div id="botBox">
+            <p>商品共<span>0</span>件</p>
+            <p>共花了<span>0</span>元</p>
+            <p>最贵单品单价<span>0</span>元</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let lis = topBox.querySelectorAll("li"), //li
+        btn = topBox.querySelectorAll("button"), //+或-
+        inp = topBox.querySelectorAll("input"), //值
+        price = topBox.querySelectorAll("span"); //单价或小计
+
+    let botS = botBox.querySelectorAll("span"); //底部三个span
+    // console.log(inp);
+
+
+    btn[0].onclick = function () {
+        //值
+        inp[0].value = Number(inp[0].value) + 1;
+        //小计
+        price[1].innerText = Number(price[0].innerText) * inp[0].value;
+        //件数
+        botS[0].innerText = Number(inp[0].value) + Number(inp[1].value);
+        //花费
+        botS[1].innerText = Number(price[1].innerText) + Number(price[3].innerText);
+        //最贵单品
+        var obj = {};
+        obj[inp[0].value] = Number(price[0].innerText);
+        obj[inp[1].value] = Number(price[2].innerText);
+        var str = [];
+        for (key in obj) {
+            if (obj[key] <= 0) {
+                delete obj[key];
+            }
+            str[length] = Number(obj[key]);
+        }
+        str.sort(function (a, b) {
+            return b - a
+        });
+        botS[2].innerText = str[0];
+    }
+    btn[1].onclick = function () {
+        if (Number(inp[0].value) > 0) {
+            //值
+            inp[0].value = Number(inp[0].value) - 1;
+            //小计
+            price[1].innerText = Number(price[0].innerText) * inp[0].value;
+            //件数
+            botS[0].innerText = Number(inp[0].value) + Number(inp[1].value);
+            //花费
+            botS[1].innerText = Number(price[1].innerText) + Number(price[3].innerText);
+            //最贵单品
+            var obj = {};
+            obj[inp[0].value] = Number(price[0].innerText);
+            obj[inp[1].value] = Number(price[2].innerText);
+            var str = [];
+            for (key in obj) {
+                if (obj[key] <= 0) {
+                    delete obj[key];
+                }
+                str[length] = Number(obj[key]);
+            }
+            str.sort(function (a, b) {
+                return b - a
+            });
+            botS[2].innerText = str[0];
+        }
+    }
+    btn[2].onclick = function () {
+        //值
+        inp[1].value = Number(inp[1].value) + 1;
+        //小计
+        price[3].innerText = Number(price[2].innerText) * inp[1].value;
+        //件数
+        botS[0].innerText = Number(inp[0].value) + Number(inp[1].value);
+        //花费
+        botS[1].innerText = Number(price[1].innerText) + Number(price[3].innerText);
+        //最贵单品
+        var obj = {};
+        obj[inp[0].value] = Number(price[0].innerText);
+        obj[inp[1].value] = Number(price[2].innerText);
+        var str = [];
+        for (key in obj) {
+            if (obj[key] <= 0) {
+                delete obj[key];
+            }
+            str[length] = Number(obj[key]);
+        }
+        str.sort(function (a, b) {
+            return b - a
+        });
+        botS[2].innerText = str[0];
+    }
+    btn[3].onclick = function () {
+        if (Number(inp[1].value) > 0) {
+            //值
+            inp[1].value = Number(inp[1].value) - 1;
+            //小计
+            price[3].innerText = Number(price[2].innerText) * inp[1].value;
+            //件数
+            botS[0].innerText = Number(inp[0].value) + Number(inp[1].value)
+            //花费
+            botS[1].innerText = Number(price[1].innerText) + Number(price[3].innerText);
+            //最贵单品
+            var obj = {};
+            obj[inp[0].value] = Number(price[0].innerText);
+            obj[inp[1].value] = Number(price[2].innerText);
+            var str = [];
+            for (key in obj) {
+                if (obj[key] <= 0) {
+                    delete obj[key];
+                }
+                str[length] = Number(obj[key]);
+            }
+            str.sort(function (a, b) {
+                return b - a
+            });
+            botS[2].innerText = str[0];
+        }
+    }
+</script>

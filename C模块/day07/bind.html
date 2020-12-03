@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">div</div>
+</body>
+</html>
+<script>
+    //需求，当点击时改变this指向
+    var obj={name:"li"};
+    function fn(){
+        console.log(this);
+    }
+    box.onclick=fn.bind(obj);
+    // box.onclick=fn.call(obj);为什么不用call
+    //因为call会立即执行，我们需要的是点击后才执行
+</script>

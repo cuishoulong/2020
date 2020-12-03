@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        input{
+            list-style: none;
+        }
+        button{
+            border: none;
+            outline: none;
+        }
+        .main{
+            width: 479px;
+            height: 591px;
+            margin: 10px auto;
+            background: url('bg1.png');
+            border-radius: 10px;
+            padding: 30px;
+            box-sizing: border-box;
+            color: #fff;
+            position: relative;
+            background:red;
+        }
+        .main li{
+            display: flex;
+            align-items:center;
+            margin-bottom: 20px;
+            justify-content: space-evenly;
+        }
+        .main li>b{
+            width: 52px;
+            height: 44px;
+            background: url('add.png') center center no-repeat;
+            background-size: cover;
+            cursor: pointer;
+            background: green;
+        }
+        .main li .reduce{
+            background-image: url('sub.png');
+        }
+        .main li strong{
+            width: 45px;
+            height: 38px;
+            line-height: 40px;
+            text-align: center;
+            background: #fff;
+            color: #333;
+            border-radius: 5px;
+        }
+        .main li .message{
+            color: #999;
+            display: inline-block;
+        }
+        .main .bottom{
+            position: absolute;
+            left: 30px;
+            bottom: 20px;
+        }
+        .main .bottom p{
+            margin-bottom: 15px;
+            color: #999;
+        }
+        .main .bottom button{
+            width: 60px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main" id="main">
+        <ul>
+            <li>
+                <b class="add"></b>
+                <strong>0</strong>
+                <b class="reduce"></b>
+                <p class="message">
+                    单价：<span>6.5</span>元
+                    小计：<span>0</span>元
+                </p>
+            </li>
+            <li>
+                <b class="add"></b>
+                <strong>0</strong>
+                <b class="reduce"></b>
+                <p class="message">
+                    单价：<span>3.5</span>元
+                    小计：<span>0</span>元
+                </p>
+            </li>
+            <li>
+                <b class="add"></b>
+                <strong>0</strong>
+                <b class="reduce"></b>
+                <p class="message">
+                    单价：<span>1.5</span>元
+                    小计：<span>0</span>元
+                </p>
+            </li>
+            <li>
+                <b class="add"></b>
+                <strong>0</strong>
+                <b class="reduce"></b>
+                <p class="message">
+                    单价：<span>10</span>元
+                    小计：<span>0</span>元
+                </p>
+            </li>
+            <li>
+                <b class="add"></b>
+                <strong>0</strong>
+                <b class="reduce"></b>
+                <p class="message">
+                    单价：<span>15</span>元
+                    小计：<span>0</span>元
+                </p>
+            </li>
+            <li>
+                <b class="add"></b>
+                <strong>0</strong>
+                <b class="reduce"></b>
+                <p class="message">
+                    单价：<span>1</span>元
+                    小计：<span>0</span>元
+                </p>
+            </li>
+        </ul>
+        <div class="bottom" id="info">
+            <p>商品共计 <button>0</button> 件</p>
+            <p>共花了<button>0</button>元</p>
+            <p>最贵商品单价<button>0</button>元</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    //大盒子
+    var main=document.getElementById('main');
+    //所有li
+    var lis=main.getElementsByTagName('li');
+    //底部的盒子
+    var info=document.getElementById('info');
+    //底部的全部变量button
+    var btns=info.getElementsByTagName('button');
+
+    //每次循环执行一次，fn
+    for(var i=0;i<lis.length;i++){
+        fn(lis[i])
+    }
+    //fn里面的参数是的li节点
+    function fn(attr){
+        //获取所有的b元素   +-
+        var bs=attr.getElementsByTagName('b');
+        //获取件数的元素节点
+        var str=attr.getElementsByTagName('strong')[0];
+        //获取所有的span，第一个为单价，第二个为小计
+        var spans=attr.getElementsByTagName('span');
+        //单价的值
+        var val=spans[0].innerText;
+        //小计的元素节点
+        var pri=spans[1];
+        //件数
+        var num=Number(str.innerText);
+        var newNum=Number(str.innerText);
+        //+号点击事件
+        bs[0].onclick=function(){
+            num++;
+            //给price赋值
+            str.innerText=num;
+            //给小计赋值
+            pri.innerHTML=num*val;
+            computed();
+        }
+        //-号点击事件
+        bs[1].onclick=function(){
+            if(num-1<0){
+                num=0;
+            }else{
+                num--;
+            }
+            //给price赋值
+            str.innerText=num;
+             //给小计赋值
+            pri.innerHTML=num*val;
+            computed();
+        };
+    }
+    //
+    function computed(){
+        var Num=0;
+        var Money=0;
+        var ary=[];
+        for(var i=0;i<lis.length;i++){
+            //每个件数的累加给num
+            var current=lis[i].getElementsByTagName('strong')[0].innerText;
+            console.log(current);
+            // Num+=Number(lis[i].getElementsByTagName('strong')[0].innerText);
+            // var a=Number(lis[i].getElementsByTagName('span')[1].innerHTML)
+            // Money+=a;
+            // if(current>0){
+            //     ary.push(lis[i].getElementsByTagName('span')[0].innerHTML)
+            // }
+        }
+        // console.log(Num);
+
+        // btns[0].innerText=Num;
+        // btns[1].innerHTML=Money;
+        // var res=ary.sort(function(a,b){return a-b}).pop();
+        // btns[2].innerHTML=res;
+    }
+</script>

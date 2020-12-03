@@ -196,3 +196,9 @@ console.log(f.sum === Fn.prototype.sum);//true
 f.sum();//20
 Fn.prototype.sum();//NaN
 console.log(f.constructor);//Object
+
+
+var str={
+    name:"li",
+    age:11
+}

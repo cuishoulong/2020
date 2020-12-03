@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        button{
+            outline: none;
+            cursor: pointer;
+            border:none;
+        }
+        #main{
+            width: 500px;
+            height: 560px;
+            background:red;
+            margin:0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .topBox li{
+            display: flex;
+            justify-content: space-around;
+            margin-top:20px;
+            line-height: 50px;
+        }
+        .topBox button{
+            width: 50px;
+            height: 50px;
+            background:beige;
+            text-align: center;
+        }
+        .rightBox{
+            width: 120px;
+            height: 50px;
+            text-align: center;
+            background:green;
+        }
+        .bottomBox{
+            position:absolute;
+            left:38px;
+            bottom:20px;  
+        }
+        .bottomBox p{
+            line-height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul class="topBox">
+            <li>
+                <button class="add" flag="1">+</button>
+                <span class="num">0</span>
+                <button class="sub" flag="0">-</button>
+                <span class="rightBox">
+                    单价<span class="price">1</span>小计<span class="count">0</span>
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <span class="num">0</span>
+                <button class="sub" flag="0">-</button>
+                <span class="rightBox">
+                    单价<span class="price">2</span>小计<span class="count">0</span>
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <span class="num">0</span>
+                <button class="sub" flag="0">-</button>
+                <span class="rightBox">
+                    单价<span class="price">3</span>小计<span class="count">0</span>
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1">+</button>
+                <span class="num">0</span>
+                <button class="sub" flag="0">-</button>
+                <span class="rightBox">
+                    单价<span class="price">8</span>小计<span class="count">0</span>
+                </span>
+            </li>
+        </ul>
+        <div class="bottomBox">
+            <p>共<span class="countNum">0</span>件</p>
+            <p>共<span class="countPrice">0</span>元</p>
+            <p>其中最贵的单品单价<span class="maxPrice">0</span>元</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    //获取所有的按钮+-
+    var buttons=document.querySelectorAll("#main button");
+    //获取所有的li
+    var lis=main.querySelectorAll("li");
+    //获取总件数节点
+    var countNumEle=main.querySelector(".countNum");
+    //获取总消费的节点
+    var countPriceEle=main.querySelector(".countPrice");
+    //获取已购最贵单品的节点
+    var maxPriceEle=main.querySelector(".maxPrice")
+    //遍历每个按钮
+    for(var i=0;i<buttons.length;i++){
+        buttons[i].onclick=function(){
+            //判断是否为+或-
+            var flag=this.getAttribute("flag");
+            //获取它的父级节点
+            var parentEle=this.parentNode;
+            //父级限制上下文，获取对应的子元素，件数的节点
+            var num=parentEle.querySelector(".num");
+            //新值老值
+            var oldNum=Number(num.innerText)
+            var newNum=0;
+            //获取单价的值
+            var price=Number(parentEle.querySelector(".price").innerText);
+            //获取小计的节点
+            var countEle=parentEle.querySelector(".count");
+            if(flag==1){
+                //+时给件数赋值
+                newNum=oldNum+1;
+            }else{
+                 //-时给件数赋值
+                if(oldNum-1>=0){
+                    newNum=oldNum-1;
+                }
+            }
+            num.innerText=newNum;
+            countEle.innerText=newNum*price;
+
+            //存储总件数的值
+            var totalNum=0;
+            //存储总消费金额
+            var totalPrice=0;
+            //存储ary数组
+            var ary=[];
+            var maxPrice=0;
+            //遍历li
+            for(var i=0;i<lis.length;i++){
+                //计算总件数
+                totalNum+=Number(lis[i].querySelector(".num").innerText);
+                //计算总消费金额
+                totalPrice+=Number(lis[i].querySelector(".count").innerText);
+                //计算已购的最大单价
+                if(Number(lis[i].querySelector(".num").innerText)>0){
+                    ary.push(Number(lis[i].querySelector(".price").innerText));
+                }
+                if(ary.length>0){
+                   maxPrice=ary.sort(function(a,b){return b-a})[0];
+                }else{
+                    maxPrice=0;
+                }
+
+            }
+            //给总件数赋值
+            countNumEle.innerText=totalNum;
+            //给总消费赋值
+            countPriceEle.innerText=totalPrice;
+            console.log(ary)
+            maxPriceEle.innerText=maxPrice;
+        }
+    }
+</script>

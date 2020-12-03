@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #main {
+            width: 800px;
+            height: 400px;
+            background: red;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 0 auto;
+        }
+
+        #main span {
+            width: 300px;
+            height: 360px;
+            background: green;
+            overflow: auto;
+        }
+
+        button {
+            width: 100px;
+            height: 100px;
+            background: beige;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <span id="left">
+            AV闹VP阿女怕女怕女怕女怕女怕女怕女怕女啊女啊女潘VPAV哪怕女啊女票VP啊楼上那可能是你AV怕吗【吗【【啊看v吗了【没法噜啦啦噜啦啦噜啦啦噜啦啦噜啦啦噜啦啦买买买买买买买买买买买摸摸就看你就内件空包空包空包金卡白金卡家家乐家家乐家家乐近年来那就甲泼尼龙南京【甲泼尼龙紧急迫降价哦姐姐甲泼尼龙家婆仅仅凭借努力南京哪里哦我可是巨巨坑视频女警啊打开就跑哪里接啊恐怕你曾经哇破解参考书里就哦CPA靠你了卖家阿卡丽女的vHD数据库你此举肯定能马上就怕吕娜我疲倦了可能哦就AV离开你但怎么就AV离开你的圈里看你的圈里看到你惧怕离开的捐款了你的就AV离开的呢家里看女阿菊快乐啊距离昆明家里困难发简历困难顽皮狗；没VS网购开票v；什么了额个v口味偏；两码事快没了色【反馈；滤膜上看v【；两面三刀【跑开v；里面是v看；两码事拍【kva；练手，
+            恶口v马赛克了VS可怜的发卡；里面v发票卡；绿牡丹</span>
+        <button>转</button>
+        <span id="right"></span>
+    </div>
+</body>
+
+</html>
+<script>
+    var button = document.querySelector("button");
+    button.onclick = function () {
+        var texts = left.innerText;
+        if (texts.length != 0) {
+            var time1 = setInterval(function () {
+                right.innerText += texts[0];
+                texts = texts.replace(texts[0], "");
+                left.innerText = texts;
+                if (texts[0] == undefined) {
+                    clearInterval(time1);
+                }
+            }, 1);
+        } else {
+            var time1 = setInterval(function () {
+                texts=right.innerText;
+                left.innerText += texts[0];
+                texts = texts.replace(texts[0], "");
+                right.innerText = texts;
+                if (texts[0] == undefined) {
+                    clearInterval(time1);
+                }
+            }, 1);
+        }
+    }
+</script>
