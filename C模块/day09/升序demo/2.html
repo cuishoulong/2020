@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #main {
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            line-height: 50px;
+            border-bottom: 1px solid green;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul>
+            <li>1</li>
+            <li>5</li>
+            <li>3</li>
+            <li>4</li>
+            <li>2</li>
+        </ul>
+        <button>倒序</button>
+    </div>
+</body>
+
+</html>
+<script>
+    var lis = document.querySelectorAll("li");
+    var lisAry=Array.from(lis);
+    var ulEle = document.querySelector("ul");
+    var button = document.querySelector("button");
+    var parentEle = lis[0].parentNode;
+    var flag=1;
+    button.onclick = function () {
+      flag*=-1;
+      lisAry.sort(function(a,b){
+          return (a.innerHTML-b.innerHTML)*flag;
+      })
+      for(var i=0;i<lisAry.length;i++){
+          parentEle.appendChild(lisAry[i]);
+      }
+    }
+</script>
