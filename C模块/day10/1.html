@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="css/iconfont.css">
+    <!-- 自己写的css -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div id="topBar" class="topBar">
+            <span>排序</span>
+            <a class="sortBtn" href="javascript:;" sorrtFlag="time">
+                <span>上架时间</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div>
+            </a>
+            <a class="sortBtn" href="javascript:;" sorrtFlag="hot">
+                <span>热度</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div>
+            </a>
+            <a class="sortBtn" href="javascript:;" sorrtFlag="price">
+                <span>价格</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div>
+            </a>
+        </div>
+        <!-- 图片列表 -->
+        <ul class="lists">
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    var data = null;
+    var str = ``;
+    var lists = document.querySelector(".lists");
+    var links = document.querySelectorAll(".main .sortBtn");
+    // console.log(links);
+    var lis;
+    // 那数据ajax
+    var xhr = new XMLHttpRequest();
+    //打开请求地址
+    //true为异步，false为同步
+    xhr.open("get", "data/data.json", true);
+    xhr.onreadystatechange = function () {
+        //shr.status符合以2开头的三位数
+        if (xhr.readyState == 4 && /^2\d{2}/.test(200)) {
+            data = JSON.parse(xhr.responseText);
+            // console.log(data);
+            bindHTML(data);
+        }
+    }
+    //发送请求
+    xhr.send();
+    //绑定数据
+    function bindHTML(data) {
+        data.forEach(function (item, index) {
+            str += `
+            <li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src=${item.img} alt="">
+                <p class="title">${item.title}</p>
+                <p>${item.time}</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li>`;
+        })
+        lists.innerHTML = str;
+        lis = Array.from(document.querySelectorAll("#main li"));
+    }
+    for (var i = 0; i < links.length; i++) {
+        var flag=-1;
+        links[i].onclick = function () {
+            flag*=-1;
+            var sortFlag = this.getAttribute("sorrtFlag")
+            if (sortFlag == "time") {
+                //时间排序
+                lis.sort(function (a, b) {
+                    return (a.getAttribute(sortFlag).replace(/-/g, "") - b.getAttribute(sortFlag).replace(
+                        /-/g,
+                        ""))*flag
+                });
+            } else if (sortFlag == "hot") {
+                //热度排序
+                lis.sort(function (a, b) {
+                    return (a.getAttribute(sortFlag) - b.getAttribute(sortFlag))*flag
+                });
+            } else {
+                //价格排序
+                lis.sort(function (a, b) {
+                    return (a.getAttribute(sortFlag) - b.getAttribute(sortFlag))*flag
+                });
+            }
+            for (var i = 0; i < lis.length; i++) {
+                lists.appendChild(lis[i]);
+            }
+        }
+    }
+</script>
