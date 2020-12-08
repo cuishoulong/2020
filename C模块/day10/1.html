@@ -58,7 +58,7 @@
     xhr.open("get", "data/data.json", true);
     xhr.onreadystatechange = function () {
         //shr.status符合以2开头的三位数
-        if (xhr.readyState == 4 && /^2\d{2}/.test(200)) {
+        if (xhr.readyState == 4 && /^2\d{2}/.test(xhr.status)) {
             data = JSON.parse(xhr.responseText);
             // console.log(data);
             bindHTML(data);
