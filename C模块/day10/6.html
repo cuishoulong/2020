@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="css/iconfont.css">
+    <!-- 自己写的css -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div id="topBar" class="topBar">
+            <span>排序</span>
+            <a class="sortBtn" href="javascript:;" sorrtFlag="time">
+                <span>上架时间</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div>
+            </a>
+            <a class="sortBtn" href="javascript:;" sorrtFlag="hot">
+                <span>热度</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div>
+            </a>
+            <a class="sortBtn" href="javascript:;" sorrtFlag="price">
+                <span>价格</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div>
+            </a>
+        </div>
+        <!-- 图片列表 -->
+        <ul class="lists">
+            <!-- <li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src=${item.img} alt="">
+                <p class="title">${item.title}</p>
+                <p>${item.time}</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li> -->
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var date,lis;
+    var ulEle=document.querySelector(".lists");
+    var xhr = new XMLHttpRequest();
+    var btnEle=document.querySelectorAll(".topBar .sortBtn")
+    xhr.open("get", "data/data.json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && /^2\d{2}/g.test(xhr.status)) {
+            date = JSON.parse(xhr.responseText);
+            bindHTML(date)
+        }
+    }
+    xhr.send();
+
+    function bindHTML(date) {
+        var str=``;
+        date.forEach(function (item, index) {
+            str += `<li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src=${item.img} alt="">
+                <p class="title">${item.title}</p>
+                <p>${item.time}</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li>`
+        })
+        ulEle.innerHTML=str;
+        lis=Array.from(document.querySelectorAll(".lists li"))
+    }
+    for(var i=0;i<btnEle.length;i++){
+        var flag=-1;
+        btnEle[i].onclick=function(){
+            var bEles=this.querySelectorAll("b");
+            flag*=-1;
+            var cous=document.querySelectorAll(".courr");
+            for(var i=0;i<cous.length;i++){
+                cous[i].classList.remove("courr");
+            }
+            if(flag==1){
+                bEles[0].classList.add("courr");
+            }else{
+                bEles[1].classList.add("courr");
+            }
+            var sorrtFlag=this.getAttribute("sorrtFlag");
+            lis.sort(function(a,b){
+                return (a.getAttribute(sorrtFlag).replace(/-/g,"")-b.getAttribute(sorrtFlag).replace(/-/g,""))*flag
+            })
+            var nullEle=document.createDocumentFragment();
+            for(var i=0;i<lis.length;i++){
+                nullEle.appendChild(lis[i]);
+            }
+            ulEle.appendChild(nullEle);
+        }
+    }
+
+</script>
