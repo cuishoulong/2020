@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 580px;
+            height: 327px;
+            height: 200px;
+            margin:800px auto;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./img/default.jpg" true-img="./img/1.jpg" alt="">
+    </div>
+</body>
+
+</html>
+<script src="utils.js"></script>
+<script>
+    // 图片延迟加载 “图片懒加载”
+    // 1.结构中，我们用一个盒子包裹着图片（在图片不展示的时候，可以占据着这个位置，并且设置默认的背景图或者背景颜色）
+    // 2.最开始，IMG的SRC中不设置任何的图片地址，把图片的真实地址设置给自定义属性TRUE-IMG（最开始不展示图片:可以让图片隐藏）
+    // 3.当浏览器窗口完全展示到图片位置的时候，我们再去加载真实图片，并且让其显示出来（第一屏幕中的图片一般都会延迟加载，来等待其它资源先加载完）
+    let img=document.querySelectorAll("img")[0];
+    function check(){
+        if(img.flag){
+            return;
+        }
+        let boxH=box.offsetHeight;//图片盒子的总高度
+        let boxT=utils.offset(box).top;//获取当前盒子的上偏移
+        //body偏移量
+        let winH=utils.win("clientHeight");//一屏幕的高
+        let winT=utils.win("scrollTop");//滚动条距离上的距离
+        // console.log(boxH,boxT,winH,winT)
+        if(winH+winT>=boxH+boxT){
+            let trueImg=img.getAttribute("true-img");
+            img.src=trueImg;
+            // console.log(1);
+            img.flag=true;
+        }
+    }
+    window.onscroll=check;
+</script>

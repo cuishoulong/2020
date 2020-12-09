@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        /* 1 */
+        /* #box{
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-top: -100px;
+            margin-left: -100px;
+        } */
+
+        /* 2 */
+        /* #box{
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+        } */
+
+        /* 3 */
+        /* #box{
+            position: absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        } */
+
+        /* 4 */
+        /* body{
+            height:600px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:black;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script src="utils.js"></script>
+<script>
+    let winW = utils.win("clientWidth");
+    let winH = utils.win("clientHeight");
+    //利用js给当前元素设置left和top值
+    box.style.position = 'absolute';
+    box.style.left = (winW - box.offsetWidth) / 2 + "px";
+    box.style.top = (winH - box.offsetHeight) / 2 + "px";
+</script>

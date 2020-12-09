@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 580px;
+            height: 327px;
+            height: 200px;
+            margin: 800px auto;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./img/default.jpg" true-img="./img/1.jpg" alt="">
+    </div>
+</body>
+
+</html>
+<script src="utils.js"></script>
+<script>
+    // 图片延迟加载 “图片懒加载”
+    // 1.结构中，我们用一个盒子包裹着图片（在图片不展示的时候，可以占据着这个位置，并且设置默认的背景图或者背景颜色）
+    // 2.最开始，IMG的SRC中不设置任何的图片地址，把图片的真实地址设置给自定义属性TRUE-IMG（最开始不展示图片:可以让图片隐藏）
+    // 3.当浏览器窗口完全展示到图片位置的时候，我们再去加载真实图片，并且让其显示出来（第一屏幕中的图片一般都会延迟加载，来等待其它资源先加载完）
+    let img = document.querySelectorAll("img")[0];
+
+    function jiazai() {
+        console.log(1);
+        if (img.flag) {
+            return;
+        }
+        let winH = utils.win("clientHeight"); //一屏幕的高
+        let winT = utils.win("scrollTop"); //滚动条上偏移
+        let boxH = box.offsetHeight; //盒子的高
+        let boxT = utils.offset(box).top; //盒子上偏移
+        if (winH + winT >= boxH + boxT) {
+            let trueImg = img.getAttribute("true-img");
+            let newImg = new Image; //创建一个空的img,如果src地址里的图片加载成功，会执行onload,加载失败执行onerror这是默认的
+            newImg.src = trueImg;
+            newImg.onload = function () {
+                img.src = trueImg;
+                img.flag = true;
+                img.style.opacity = 0.01;
+                let num = Number(img.style.opacity);
+                let time1 = setInterval(function () {
+                    num += 0.01;
+                    img.style.opacity = num;
+                    if (num != 1) {
+                        clearInterval(time1);
+                        time = null;
+                    }
+                }, 17)
+            }
+            // newImg.onerror=function(){
+            //     img.src="./img/error.jpg"
+            // }
+        }
+    }
+    window.onscroll = jiazai;
+</script>

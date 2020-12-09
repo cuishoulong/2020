@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img:nth-child(n) {
+            width: 1920px;
+            display: block;
+            height: 1080px;
+            background: green;
+        }
+
+        img:nth-child(2n-1) {
+            background: red;
+        }
+
+        #back {
+            position: fixed;
+            bottom: 20px;
+            right: 2px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: yellow;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <div id="back">冲</div>
+        <img src="" alt="">
+    </div>
+</body>
+
+</html>
+<script src="utils.js"></script>
+<script>
+    let winH = utils.win("clientHeight"); //当前浏览器可视区域的高
+    window.onscroll = function () {
+        //onscroll会重复执行，滚动条一动就执行
+        //当浏览器滚动条卷曲的高度大于一屏时，显示回到顶部
+        let winT = utils.win("scrollTop"); //当前浏览器滚动条距离顶部的距离
+        if (winT >= winH) {
+            back.style.display = "block";
+        } else {
+            back.style.display = "none";
+        }
+
+    }
+    back.onclick = function () {
+        let winT = utils.win("scrollTop");
+        //分成20份，每次减去一份
+        let part = winT / 10;
+        let time1 = setInterval(function () {
+            winT -= part;
+            //赋值
+            utils.win("scrollTop", winT);
+            if (document.documentElement.scrollTop == 0) {
+                clearInterval(time1);
+                time1 = null;
+            }
+        }, 20)
+    }
+</script>

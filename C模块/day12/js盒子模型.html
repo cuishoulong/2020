@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: scroll;
+        }
+
+        #box {
+            width: 200px;
+            height: 1000px;
+            background: red;
+            border: 1px solid green;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box2 {
+            width: 50px;
+            height: 50px;
+            background: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -26px;
+            margin-top: -26px;
+            border: 2px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- css盒子模型
+    宽度+左右的内边距+左右的边框+左右的外边距，
+    盒子大小：宽度+左右的内边距+左右的边框
+    -->
+    <div id="box">
+        <div id="box2">20</div>
+    </div>
+</body>
+
+</html>
+<script>
+    /* js盒子模型
+    > 描述当前盒子的大小分四类共13个
+    + client 获取当前盒子的可视宽高,(width+左右padding/height+上下padding),获取当前盒子左,上边框的高度(左border/上border)
+            + 返回值是数字没有单位，如果是小数，会向上取整,变成整数,内容是否溢出对其没有影响
+            + clientWidth clientHeight clientLeft clientTop
+    + offset
+        + 获取当前盒子的总宽高(在clientWidth/Height的基础上加左右border或上下border)
+       + offsetWidth  offsetHeight offsetLeft offsetTop offsetParent
+    + scroll
+        + 获取当前元素的真实宽高(如果当前盒子的内容没有溢出，那就和clientHeight相等)，如果溢出了就等于上padding+内容的真实高度
+        scrollWidth scrollHeight scrollLeft scrollTop
+    + 获取样式
+    getComputedStyle(ele)   ele.currentStyle
+     */
+    // console.log(box.clientWidth, box.clientHeight, box.clientLeft, box.clientTop); //200 200 1 1
+    // let winH = document.documentElement.clientHeight || document.body.clientHeight;
+    // let winL = document.documentElement.clientLeft || document.body.clientLeft;
+    // let winT = document.documentElement.clientTop || document.body.clientTop;
+    // let winW = document.documentElement.clientWidth || document.body.clientWidth;
+    // console.log(winH, winW, winT, winL);
+
+
+    // function offset(ele) {
+    // var left=ele.offsetLeft;
+    // var top=ele.offsetTop;
+    // var eleParent=ele.offsetParent;
+    //     while (elePar) {
+    //         left += (elePar.offsetLeft+elePar.clientLeft);
+    //         top += (elePar.offsetTop+elePar.clientTop);
+    //         elePar = elePar.offsetParent;
+    //     }
+    //     return {left,top};
+    // }
+    // let bodyLeft = offset(box);
+
+
+//获取盒子到body的距离
+    function offset(ele) {
+        let left = ele.offsetLeft;
+        let top = ele.offsetTop;
+        let parent = ele.offsetParent;
+        while (parent) {
+            left += (parent.offsetLeft + parent.clientLeft);
+            top += (parent.offsetTop + parent.clientTop);
+            parent = parent.offsetParent;
+        }
+        return {
+            left,
+            top
+        }
+    }
+    let bodyLeft = offset(box);
+
+//获取当前页面横向/纵向滚动条
+let winT=document.documentElement.scrollTop||document.body.scrollTop;
+let winL=document.documentElement.scrollLeft||document.body.scrollLeft;
+
+//封装一个方法专门用来设置或者浏览器的某些属性
+function win(attr,value){
+    if(value===undefined){
+        return document.documentElement[attr]||documet.body[attr];
+    }
+    document.documentElement[attr]=value;
+    documet.body[attr]=value;
+}
+win("scrollTop",100);
+console.log(win("clientWidth"))
+</script>
