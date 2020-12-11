@@ -1,26 +1,33 @@
-let utils = (function () {
-    function offset(ele) {
-        let left = ele.offsetLeft;
-        let top = ele.offsetTop;
-        let parent = ele.offsetParent;
-        while (parent) {
-            left += (parent.offsetLeft + parent.clientLeft);
-            top += (parent.offsetTop + parent.clientTop);
-            parent = parent.offsetParent;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
         }
-        return {
-            left,
-            top
-        }
-    }
-    //封装一个方法专门用来设置或者浏览器的某些属性,针对body的
-    function win(attr, value) {
-        if (value === undefined) {
-            return document.documentElement[attr] || document.body[attr];
-        }
-        document.documentElement[attr] = value;
-        document.body[attr] = value;
-    }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    /* 
+    元素的样式
+    ele.style获取或设置元素的行内样式
+        获取的值都是字符串类型的
+        还有就是样式的名字必须是驼峰命名法
+    getComputedStyle:当前元素计算后的样式(看权重，获取到的是最终作用在元素身上的样式)
+        它是window身上的一个方法
+        用法:getComputedStyle(ele,"伪类");返回值是一个对象，对象里是所有计算后作用在元素身上的样式
+    */
+
     //封装设置或者获取css样式的一些方法 
     //查找值 
     function getCss(ele, attr) {
@@ -77,7 +84,10 @@ let utils = (function () {
             return;
         }
     }
-    return {
-        offset, win,setCss,getCss,css,setGroupCss
-    }
-})()
+    css(box, "width");
+    css(box, {
+        "width": 100,
+        "height": 300,
+        "background": "red"
+    })
+</script>

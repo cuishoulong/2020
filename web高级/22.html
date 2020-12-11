@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // function Fn(n, m) {
+    //     //10 20
+    //     n = n || 0;
+    //     m = m || 0;
+    //     this.x = n;
+    //     this.y = m;
+    //     this.getX = function () {
+    //         console.log(this.x);
+    //     }
+    //     return n + m;
+    // }
+    // Fn.prototype.sum = function () {
+    //     console.log(this.x + this.y);
+    // }
+    // Fn.prototype = {
+    //     getX: function () {
+    //         this.x += 1;
+    //         console.log(this.x);
+    //     },
+    //     getY: function () {
+    //         this.y -= 1;
+    //         console.log(this.y)
+    //     }
+    // }
+    // let f1 = new Fn(10, 20); //x=10 y=20 getX=000111
+    // let f2 = new Fn; //x=0 y=0-1 getX=000111
+    // console.log(f1.getX === f2.getX); //false
+    // console.log(f1.getY === f2.getY); //true
+    // console.log(f1.__proto__.getY === Fn.prototype.getY); //true
+    // console.log(Fn.prototype.getX === f2.getX); //false
+    // console.dir(f1.constructor); //Object
+    // f1.getX() //10
+    // Fn.prototype.getX() //NaN
+    // f2.getY() //-1
+    // Fn.prototype.getY() //NaN
+    // f1.sum() //报错
+    // debugger;
+    // var name = 'window'
+
+    // function A() {
+    //     //this b 10
+    //     console.log(1, this.name);
+    //     name = this.name;
+    // }
+
+    // function B() {
+    //     name = this.name;
+    //     console.log(2, this.name)
+    // }
+    // A.call(B, 10) //1 
+    // A.call.call.call(B);
+    // Function.prototype.call(B);
+    // Function.prototype.call.call.call(B)
+    // var name = 'window';
+
+    // function fn() {
+    //     console.log(this.name)
+    // }
+    // var obj = {
+    //     name: 'obj',
+    //     fn: () => {
+    //         console.log(this.name)
+    //     }
+    // }
+    // fn(); //"window"   
+    // obj.fn(); //"window"
+    // fn.call(obj); //"obj"
+    // window.onload = function () {
+    //     fn(); //window
+    //     obj.fn(); //window
+    // };
+    // fn.bind(obj) //无
+debugger;
+    var x = 1;
+    function func(x, y = function anonymousl() {
+        x = 2;
+    }) {
+        var x = 3; //
+        y();
+        console.log(x); //
+    }
+    func(5); //
+    console.log(x); //
+</script>

@@ -39,76 +39,72 @@
         </div>
         <!-- 图片列表 -->
         <ul class="lists">
-        </ul>
-    </div>
-</body>
-
-</html>
-<script>
-    var data = null;
-    var str = ``;
-    var lists = document.querySelector(".lists");
-    var links = document.querySelectorAll(".main .sortBtn");
-    // console.log(links);
-    var lis;
-    // 那数据ajax
-    var xhr = new XMLHttpRequest();
-    //打开请求地址
-    //true为异步，false为同步
-    xhr.open("get", "data/data.json", true);
-    xhr.onreadystatechange = function () {
-        //shr.status符合以2开头的三位数
-        if (xhr.readyState == 4 && /^2\d{2}/.test(xhr.status)) {
-            data = JSON.parse(xhr.responseText);
-            // console.log(data);
-            bindHTML(data);
-        }
-    }
-    //发送请求
-    xhr.send();
-    //绑定数据
-    function bindHTML(data) {
-        data.forEach(function (item, index) {
-            str += `
-            <li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src=${item.img} alt="">
+            <!-- <li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src=${item.img} alt="">
                 <p class="title">${item.title}</p>
                 <p>${item.time}</p>
                 <p class="numInfo">
                     <span>${item.price}</span>
                     <span>${item.hot}</span>
                 </p>
-            </li>`;
-        })
-        lists.innerHTML = str;
-        lis = Array.from(document.querySelectorAll("#main li"));
-    }
+            </li> -->
+        </ul>
+    </div>
+</body>
 
-    for (var i = 0; i < links.length; i++) {
-        var frg = document.createDocumentFragment();
-        links[i].flag=-1;
-        links[i].onclick = function () {
-            this.flag*=-1;
-            var arrowsAry = this.querySelectorAll("b");
-            var curs = document.querySelectorAll(".courr");
-            for (var i = 0; i < curs.length; i++) {
-                curs[i].classList.remove("courr");
+</html>
+
+<script>
+    var date;
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", "data/data.json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
+            date = JSON.parse(xhr.responseText);
+            bindHTML(date);
+        }
+    }
+    var str = ``;
+    var ulEle=document.querySelector(".lists");
+    xhr.send();
+    var lis;
+    function bindHTML(data) {
+        data.forEach(function (item, index) {
+            str += `<li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src=${item.img} alt="">
+                <p class="title">${item.title}</p>
+                <p>${item.time}</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li>`
+        })
+        ulEle.innerHTML=str;
+        lis=Array.from(document.querySelectorAll("li"));
+    }
+    var btn=document.querySelectorAll(".topBar .sortBtn");
+    for(var i=0;i<btn.length;i++){
+        var flag=-1;
+        btn[i].onclick=function(){
+            flag*=-1;
+            var sorrtFlag=this.getAttribute("sorrtFlag");
+            var bEle=this.querySelectorAll("b");
+            var cus=document.querySelectorAll(".courr");
+            for(var i=0;i<cus.length;i++){
+                cus[i].classList.remove("courr");
             }
-            if (this.flag == 1) {
-                arrowsAry[0].classList.add("courr");
-            } else {
-                arrowsAry[1].classList.add("courr");
+            if(flag==1){
+                bEle[0].classList.add("courr");
+            }else{
+                bEle[1].classList.add("courr");
             }
-            var sortFlag = this.getAttribute("sorrtFlag")
-            //排序
-            lis.sort(function (a, b) {
-                return (a.getAttribute(sortFlag).replace(/-/g, "") - b.getAttribute(sortFlag).replace(
-                    /-/g,
-                    "")) *that.flag;
-            });
-            for (var i = 0; i < lis.length; i++) {
-                frg.appendChild(lis[i]);
+            lis.sort(function(a,b){
+                return (a.getAttribute(sorrtFlag).replace(/-/g,"")-b.getAttribute(sorrtFlag).replace(/-/g,""))*flag
+            })
+            var nullDom=document.createDocumentFragment();
+            for(var i=0;i<lis.length;i++){
+                nullDom.appendChild(lis[i]);
             }
-            lists.appendChild(frg);
+            ulEle.appendChild(nullDom);
         }
     }
 </script>

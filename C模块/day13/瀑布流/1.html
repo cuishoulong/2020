@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            margin:500px auto;
+        }
+        img{
+            margin:0 auto;
+            display:block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../img/default.jpg" true-src="../img/1.jpg" alt="" class="a">
+        <img src="../img/default.jpg" true-src="../img/2.jpg" alt="" class="a">
+        <img src="../img/default.jpg" true-src="../img/3.jpg" alt="" class="a">
+        <img src="../img/default.jpg" true-src="../img/4.jpg" alt="" class="a">
+        <img src="../img/default.jpg" true-src="../img/5.jpg" alt="" class="a">
+        <img src="../img/default.jpg" true-src="../img/6.jpg" alt="" class="a">
+        <img src="../img/default.jpg" true-src="../img/7.jpg" alt="" class="a">
+    </div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    let imgs=document.querySelectorAll(".a");
+    function delay(){
+        //当函数执行的时候，咱们去循环每一张图片
+        for(var i=0;i<imgs.length;i++){
+            onimg(imgs[i])
+        }
+    }
+    function onimg(img){
+        let winH=utils.win("clientHeight");
+        let winT=utils.win("scrollTop");
+        let imgT=utils.offset(img).top;
+        let imgH=img.offsetHeight;
+        if(winH+winT>=imgT+imgH){
+            let newImg=new Image;
+            let trueSrc=img.getAttribute("true-src");
+            newImg.src=trueSrc;
+            // console.log(img)
+            newImg.onload=function(){
+                img.src=trueSrc;
+                img.class="";
+            }
+        }
+    }
+    onimg(imgs[0]);
+    window.onscroll=delay;
+</script>
