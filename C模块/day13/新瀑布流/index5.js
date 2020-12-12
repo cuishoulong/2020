@@ -1,6 +1,5 @@
 let uls = document.getElementsByTagName("ul");
 let data = null;
-// let imgs = document.querySelectorAll(".bg");
 let imgs = document.getElementsByClassName('bg');
 function getData(num) {
     let xhr = new XMLHttpRequest();
@@ -13,31 +12,29 @@ function getData(num) {
     xhr.send();
     renderHtml(data);
 }
-getData(1);
-console.log();
+getData();
 
 //渲染数据
 function renderHtml(data) {
     for (var i = 0; i < 20; i++) {
-        uls = Array.from(uls)
+        var ulsEle = Array.from(uls);
         let index = Math.round(Math.random() * 9);//随机索引
         let curImg = data[index];//随机抽取一张图片
         let li = document.createElement("li");
         let img = document.createElement("img");
         let p = document.createElement("p");
         img.style.height = Math.round(Math.random() * (250 - 180) + 180) + "px";//随机生成一个高250~180之间
-        img.setAttribute("true-src", curImg.src);//把图片的真实路径方法哦img元素的行间
+        img.setAttribute("true-src", curImg.src);//给图片添加私有属性true-src赋值curImg里面的src
         img.className = "bg";
         p.innerText = curImg.title;
         li.appendChild(img);
         li.appendChild(p);
-        uls.sort((a, b) => a.scrollHeight - b.scrollHeight);
-        uls[0].appendChild(li);
+        ulsEle.sort((a, b) => a.scrollHeight - b.scrollHeight);
+        ulsEle[0].appendChild(li);
     }
 }
-//使
 
-// console.log(imgs.length);
+//渲染图片,绑定src
 function delay(img) {
     let winH = utils.win("clientHeight");
     let winT = utils.win("scrollTop");
@@ -65,7 +62,7 @@ function isLoad(){
     let winH=utils.win("clientHeight");
     let winT=utils.win("scrollTop");
     let bodyH=utils.win("scrollHeight");
-    if(winH+winT+100>=bodyH){
+    if(winH+winT>=bodyH){
         getData();
     }
 }
