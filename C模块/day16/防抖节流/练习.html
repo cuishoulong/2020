@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            height: 100px;
+            background: rgb(206, 167, 167);
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    let num = 0;
+
+    function fn() {
+        ++num;
+        box.innerText = num;
+    }
+    //防抖，频繁触发时，只执行一次
+    //非立即执行
+    function debounce(func, wait) {
+        let timer;
+        return function(){
+            clearTimeout(timer);
+            timer=null;
+            let that=this;
+            timer=setTimeout(function(){
+                func.call(that);
+            },wait)
+        }
+    }
+    //立即执行
+    function debounce(func,wait){
+        let timer;
+        return function(){
+            clearTimeout(timer);
+            if(!timer){
+                func.call(this);
+            }
+            timer=setTimeout(function(){
+                    timer=null;
+                },wait)
+        }
+    }
+
+    //-------------------------
+    //节流,多次触发时,在间隔多少时间后执行一次
+    //立即执行,时间戳
+    function throttle(func,wait){
+        let oldDate=0;
+        return function(){
+            let newDate=Date.now();
+            if(newDate-oldDate>wait){
+                func.call(this);
+                oldDate=newDate;
+            }
+        }
+    }
+
+    //非立即执行,定时器
+    function throttle(func,wait){
+        let timer;
+        return function(){
+            let that=this;
+            if(!timer){
+                timer=setTimeout(function(){
+                    func.call(that);
+                    timer=null;
+                },wait)
+            }
+        }
+    }
+
+    //防抖
+    //非立即执行
+    function debounce(func,wait){
+        let timer;
+        return function(){
+            let that=this;
+            clearTimeout(timer);
+            timer=null;
+            timer=setTimeout(function(){
+                func.call(that);
+            },wait)
+        }
+    }
+    //立即执行
+    function debounce(func,wait){
+        let timer;
+        return function(){
+            clearTimeout(timer);
+            if(!timer){
+                func.call(this);
+            }
+            timer=setTimeout(function(){timer=null},wait)
+        }
+    }
+
+    //节流,多次触发情况下，间隔多长时间执行一次
+    function throttle(func,wait){
+        let old=0;
+        return function(){
+            let newDate=Date.now();
+            if(newDate-old>wait){
+                func.call(this);
+                old=newDate;
+            }
+        }
+    }
+
+    //非立即执行，定时器
+    function throttle(func,wait){
+        let timer;
+        return function(){
+            let that=this;
+            if(!timer){
+                timer=setTimeout(function(){
+                    func.call(that);
+                    timer=null;
+
+                },wait)
+            }
+        }
+    }
+
+
+    //防抖
+    function debounce(func,wait){
+        let timer;
+        return function(){
+            clearTimeout(timer);
+            timer=null;
+            let that=this;
+            timer=setTimeout(function(){
+                func.call(that)
+            },wait)
+        }
+    }
+
+    function debounce(func,wait){
+        let timer;
+        return function(){
+            clearTimeout(timer);
+            if(!timer){
+                func.call(this);
+            }
+            timer=setTimeout(function(){
+                timer=null;
+            },wait)
+        }
+    }
+//立即执行，时间戳节流
+    function throttle(func,wait){
+        let old=0;
+        return function(){
+            let newDate=Date.now();
+            if(newDate-old>wait){
+                func.call(this);
+            }
+        }
+    }
+
+    //非立即执行,定时器版本
+    function throttle(func,wait){
+        let timer;
+        return function(){
+            if(!timer){
+                timer=setTimeout(function(){
+                func.call(this);
+                timer=null;
+            },wait)
+            }
+        }
+    }
+    box.onclick=throttle(fn,1000);
+</script>

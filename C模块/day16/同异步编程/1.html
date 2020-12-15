@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /* 
+    js是一个单线程的
+
+    当打开一个页面的时候，浏览器会分配一个线程来执行页面的代码，而且把全部的同步代码执行完成以后才会执行异步代码
+
+    js队列分两种，主任务队列，异步任务队列，
+    主任务队列自上而下执行同步的代码，异步任务队列对异步任务进行计时，
+    当执行到异步代码时，将异步的给异步任务队列，开始计时，且按倒计时完成顺序来排队
+    然后当所有同步任务执行完成以后，把异步队列内的异步任务从上而下给主任务队列执行
+    */
+   console.log(100);
+   setTimeout(function(){console.log(300)},500)
+   for(var i=0;i<1000000000;i++){};
+   setTimeout(function(){console.log(400)},200)
+   console.log(900);
+</script>

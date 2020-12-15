@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" class="aa">132</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+
+</html>
+<script src="jquery/jquery.js"></script>
+<script>
+    let res = $("*");
+    console.dir(res);
+    console.log($("#box").html(999));
+    $("#box").toggleClass("ab"); //toggleClass("")检测是否存在一个类名，有就删除，没有就添加
+    $("ul li").click(function () {console.log(this);})
+    $("ul li").each(function(index,item){console.log(index,item)});//类数组也可以用，跟forEach一样，不过index与item顺序变了
+
+    $(doucment).ready(function(){
+        //在这里写你的代码
+        //当前函数会在页面的dom准备就绪以后执行
+        //这样js代码放到哪里都可以操作dom
+        //ready方法类似与onload
+    })
+</script>

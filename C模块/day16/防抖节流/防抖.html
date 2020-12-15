@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            height: 100px;
+            background: rgb(206, 167, 167);
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    let num = 0;
+
+    function fn() {
+        ++num;
+        box.innerText=num;
+    }
+
+    //非立即执行的防抖
+    function debounce(func, wait) {
+        let timer;
+        return function () {
+            let that = this;
+            clearTimeout(timer);
+            timer = null;
+            timer = setTimeout(function () {
+                res = func.apply(that)
+            }, wait)
+        }
+    }
+
+    //立即执行的防抖
+    function debounce(func, wait) {
+        let timer;
+        return function () {
+            clearTimeout(timer);
+            let now = !timer;
+            timer = setTimeout(function () {
+                timer = null;
+            }, wait)
+            if (now) {
+                func.call(this);
+            }
+        }
+    }
+    // box.onmouseover = debounce(fn, 1000);
+    box.onmouseover = debounce(fn, 1000);
+    //封装一个可以立即执行也可以非立即执行的防抖
+    function debounce(func,wait,immediate){
+        let timer;
+        return function(){
+            if(immediate){
+                clearTimeout(timer);
+                let now=!timer;
+                timer=setTimeout(function(){
+                    timer=null;
+                },wait)
+                if(now){
+                    func.call(this);
+                }
+            }else{
+                clearTimeout(timer);
+                let that=this;
+                timer=setTimeout(function(){
+                    func.call(that);
+                },wait)
+            }
+        }
+    }
+</script>

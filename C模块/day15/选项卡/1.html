@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        #main {
+            width: 500px;
+            margin: 0 auto;
+            /* font-size: 0; */
+        }
+
+        ul {
+            font-size: 0;
+        }
+
+        li {
+            font-size: 12px;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            top: 1px;
+            border: 1px solid red;
+            margin-left: 20px;
+        }
+
+        li:nth-child(1) {
+            margin: 0;
+        }
+
+        #main div {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            display: none;
+            border: 1px solid red;
+        }
+
+        #main li.appear {
+            background: green;
+            border-bottom-color: transparent;
+        }
+
+        #main div.appear {
+            background: green;
+            display: block;
+            /* border-bottom-color:transparent; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul>
+            <li class="appear">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="appear">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+
+</html>
+<script src="../jquery/jquery.js"></script>
+<script>
+    //拿jquery获取的才能用jquery方法，$(元素)将原生改为jquery式的
+    //jquery的返回值都是当前操作的$(this),方便链式调用
+    $("#main li").click(function () {
+        let index=$(this).index();
+        // $(this).addClass("appear").siblings().removeClass("appear");
+        // $('#main div').eq(index).addClass('appear').siblings('div').removeClass('appear');
+        $(this).addClass("appear").siblings().removeClass("appear").parent().siblings("div").eq(index).addClass("appear").siblings("div").removeClass("appear");
+    })
+</script>

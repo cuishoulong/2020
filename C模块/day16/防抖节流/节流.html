@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 1000px;
+        }
+
+        #box {
+            width: 100%;
+            height: 100px;
+            background: rgb(112, 100, 100);
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    let num = 0;
+
+    function fn() {
+        ++num;
+        box.innerText = num;
+    }
+
+/*     function throttle(fn, time) {
+        let previous = 0;
+        return function () {
+            let now = Date.now(); // 获取现在的时间，毫秒级的
+            if (now - previous >= time) { //第一次是新时间-0大于设定时间，立即执行，以后都是新时间-老时间，大于设定时间就执行，否则不执行
+                fn.call(this);
+                previous = now; //把上一次的获取时间赋值给previous
+            }
+        }
+    } */
+
+    function throttle(fn, time) {
+        let timer;
+        return function () {
+            if (!timer) {
+                // 如果不赋值为null，这个条件不成立；
+                timer = setTimeout(() => {
+                    timer = null;
+                    fn.call(this);
+                }, time);
+            }
+        }
+    }
+    box.onmouseover = throttle(fn, 1000);
+</script>

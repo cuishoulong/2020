@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="ad">哈哈哈</button>
+</body>
+
+</html>
+<script src="../../C模块/day15/jquery/jquery.js"></script>
+<script>
+    function debounce(func, wait, immediate) {
+        var timer = null,
+            result;
+        return function proxy() {
+            //如果timer不为空我们就清除timer
+            var self = this,
+                params = [].slice.call(arguments);
+            clearTimeout(timer);
+            timer = null;
+            timer = setTimeout(function () {
+                result = func.apply(self, params);
+                // console.log(result)
+                // return result;
+            }, wait)
+            return result;
+        };
+    }
+    const handle = function handle() {
+        console.log(1);
+        return 10;
+    }
+    ad.onclick = debounce(handle, 500);
+    var res=debounce(handle, 500)();
+    console.log(res)
+
+
+
+    // function getData() {
+    //     console.log(1);
+    //     return 12;
+    // }
+
+    // function debounce(func, wait, a) {
+    //     var timer = null,
+    //         res;
+    //     return function () {
+    //         var that = this,
+    //             arg = [].splice.call(arguments);
+    //         clearTimeout(timer);
+    //         timer=null;
+    //         timer = setTimeout(function () {
+    //             res = func.apply(that, ...arg)
+    //         }, wait)
+    //         return res;
+    //     }
+    // }
+    // ad.onclick=debounce(getData,500);
+</script>
