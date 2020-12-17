@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border-radius: 50%;
+            left: 0px;
+            position: absolute;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+</body>
+
+</html>
+<script src="./jquery-1.11.3.js"></script>
+<script>
+    let box = document.querySelector('#box')
+    function animate(ele, target, duration, callBack) {
+        function linear(t, d, c, b) {
+            return t / d * c + b
+        };
+        let begin = {};
+       
+        for (let key in target) {
+            begin[key] = parseFloat(getComputedStyle(ele)[key]);
+        }
+
+        let change = {};
+        for (let key in target) {
+            change[key] = parseFloat(target[key]) - parseFloat(begin[key])
+        }
+        console.log(change)
+        let time = 0;
+        let timer = setInterval(() => {
+            time += 17;
+            if (time >= duration   ){
+                clearInterval(timer);
+                for (let key in target) {
+                    ele.style[key] = target[key] + 'px';
+                }
+                callBack()
+                return
+            }
+
+            for (let key in change) {
+                box.style[key] = parseFloat(linear(time, duration, change[key], begin[key])) + 'px';
+                
+            }
+        }, 17);
+    }
+    animate(box, { width: 500, height: 500,left:200 }, 3000, () => {
+        console.log('执行完了');
+    });
+</script>

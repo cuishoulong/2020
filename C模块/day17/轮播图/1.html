@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #main {
+            margin-top: 20px;
+            width: 1532px;
+            height: 575px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ul {
+            position: absolute;
+        }
+
+        ul li {
+            width: 1532px;
+            height: 575px;
+            float: left;
+        }
+
+        ul li img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #bottom {
+            position: absolute;
+            display: flex;
+            width: 100vw;
+            top: 45%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul id="uls">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.webp" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.webp" alt=""></li>
+        </ul>
+        <div id="bottom">
+            <button id="btnL">左</button>
+            <button id="btnR">右</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    let left = 0;
+    let ulW = uls.scrollWidth * uls.querySelectorAll("li").length;
+    btnL.onclick = function () {
+        left -= 1532;
+        if (left <= (-ulW)) {
+            left=0;
+            uls.style.left = 0 + "px";
+            return;
+        }
+        uls.style.left = left + "px";
+    }
+    btnR.onclick = function () {
+        if(left==0){
+            left=-6128;
+        }
+        left+=1532;
+        uls.style.left = left + "px";
+    }
+</script>

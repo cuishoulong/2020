@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            width: 1000px;
+            height: 200px;
+            /* background:red; */
+            margin:0 auto;
+            display:flex;
+            align-items: flex-start;
+        }
+        ul{
+            list-style: none;
+            margin:0 0.5%;
+            /* background:black; */
+        }
+        div li{
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        div li img{
+            width: 100%;
+            display: block;
+            background:url(img/timg.gif) no-repeat center center;
+        }
+        #back{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            /* text-align: center; */
+            padding-left: 14px;
+            line-height: 100px;
+            background:green;
+            position:fixed;
+            bottom: 20px;
+            right:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <div id="back">回到顶部</div>
+    </div>
+</body>
+</html>
+<script src="../jquery/jquery.js"></script>
+<script src="1.js"></script>

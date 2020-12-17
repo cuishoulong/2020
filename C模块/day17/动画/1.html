@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: orangered;
+            border-radius: 50%;
+            left: 0;
+            position: absolute;
+        }
+
+        button {
+            position: absolute;
+            top: 300px;
+            width: 100px;
+        }
+
+        button:nth-child(1) {
+            left: 0
+        }
+
+        button:nth-child(2) {
+            left: 150px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <button id="right">往右</button>
+    <button id="left">往左</button>
+</body>
+
+</html>
+<script src="../jquery/jquery.js"></script>
+<script>
+    let box = document.getElementById('box');
+    let right = document.getElementById('right');
+    let left = document.getElementById('left');
+    let minLeft = 0;
+    let maxLeft = document.documentElement.clientWidth - box.offsetWidth; // 当前球的left的最大值
+    let timer;
+    //--------------------------------------------------
+    // $('#right').click(function(){
+    //   // animate第一个参数是一个对象，对象里存放的是当前元素某个样式的目标值，第二个参数是主要移动的总时间，第三个参数是动画的模式
+    //   $('#box').stop(true).animate({left:maxLeft},3000,'linear');
+    // });
+    // $('#left').click(function(){
+    //   $('#box').stop(true).animate({ left:0},3000,'linear')
+    // });
+    // stop:停止所有在指定元素上正在运行的动画。
+    //-----------------------------------------------------------
+    // 固定步长的动画
+    //-----------------------------------------
+ /*    let step = 10;
+    let timer;
+    right.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(() => {
+            // 先获取当前元素的left值
+            // 给当前元素的left值累加
+            // 设置回去
+            // 如果当前元素的left值大于等于maxLeft的时候就清除定时器
+            let left = parseFloat(getComputedStyle(box).left);
+            left += step; // 900 910
+            if (left >= maxLeft) {
+                clearInterval(timer);
+                box.style.left = maxLeft + 'px';
+                return;
+            }
+            box.style.left = left + 'px'; // 910
+        }, 17);
+    }
+
+    left.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(() => {
+            // 先获取当前元素的left值
+            // 给当前元素的left值累加
+            // 设置回去
+            // 如果当前元素的left值大于等于maxLeft的时候就清除定时器
+            let left = parseFloat(getComputedStyle(box).left);
+            left -= step; // 900 910
+            if (left <= 0) {
+                clearInterval(timer);
+                box.style.left = 0 + 'px';
+                return;
+            }
+            box.style.left = left + 'px';
+        }, 17);
+    } */
+    let timers=3000,time=0;
+    left.onclick = function () {
+        clearInterval(timer);
+        time=0;
+        let boxL=parseFloat(box.offsetLeft);
+        timer = setInterval(() => {
+            let left = parseFloat(getComputedStyle(box).left);
+            let step=boxL/(timers/17)
+            left -= step;
+            time+=17;
+            if (time >= timers) {
+                clearInterval(timer);
+                box.style.left = 0 + 'px';
+                return;
+            }
+            box.style.left = left + 'px';
+        }, 17);
+    }
+    right.onclick = function () {
+        clearInterval(timer);
+        time=0;
+        let boxR=maxLeft-parseFloat(box.offsetLeft);
+        timer = setInterval(() => {
+            let left = parseFloat(getComputedStyle(box).left);
+            let step=boxR/(timers/17)
+            left += step;
+            time+=17;
+            if (time >= timers) {
+                clearInterval(timer);
+                box.style.left = maxLeft + 'px';
+                return;
+            }
+            box.style.left = left + 'px';
+        }, 17);
+    }
+</script>
