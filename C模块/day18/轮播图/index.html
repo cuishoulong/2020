@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="outer">
+    <ul id="wrapper">
+      <!-- <li><img src="./img/banner1.jpg" alt=""></li> -->
+    </ul>
+    <ul id="list">
+      <!-- <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li> -->
+    </ul>
+    <a href="javascript:;" id="left">左</a>
+    <a href="javascript:;" id="right">右</a>
+  </div>
+</body>
+
+</html>
+<!-- <script src="utils.js"></script> -->
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.11.1.min.js"></script>
+<script>
+  $.ajax({
+    url: "banner.json",
+    success: function (data) {
+      bindLi(data)
+    }
+  });
+  function bindLi(data){
+    let wrapperItems=``;
+    let listItems=``;
+    $(data)
+  }
+</script>
