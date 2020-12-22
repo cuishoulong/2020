@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2286484_65of2z1rq5d.css">
     <style>
         * {
             margin: 0;
@@ -396,28 +397,102 @@
             margin-top: 1rem;
             line-height: 2rem;
         }
-        #move a:hover{
-            color:#f4930a;
+
+        #move a:hover {
+            color: #f4930a;
         }
-        #move li b{
+
+        #move li b {
             position: absolute;
-            left:1rem;
-            top:6rem;
+            left: 1rem;
+            top: 6rem;
             width: 3rem;
             height: 3rem;
-            background-color: rgba(0,0,0,0.3);
+            background-color: rgba(0, 0, 0, 0.3);
             border-radius: 50%;
-            border:2px solid #fff;
-            display:flex;
+            border: 2px solid #fff;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
-        #move li b span{
-            margin-left:1.2rem;
+
+        #move li b span {
+            margin-left: 1.2rem;
             width: 0;
             height: 0;
-            border:1rem solid #f4930a;
-            border-color:transparent transparent transparent #f4930a;
+            border: 1rem solid #f4930a;
+            border-color: transparent transparent transparent #f4930a;
+        }
+
+        .col {
+            color: #bd2980;
+        }
+
+        .col span {
+            background: #bd2980;
+        }
+        /* 近期热点 */
+        #hot li{
+            padding-bottom: 2rem;
+            border-bottom: 1px dotted #bababa;
+        }
+        .hotBox{
+            height: 2.7rem;
+            line-height: 2.7rem;
+            font-size: 1.2rem;
+            color:#999;
+            display:flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .hotBox span{
+            margin-right: 1rem;
+        }
+        .hotBox .iconfont{
+            font-size: 1.4rem;
+        }
+        .icon-naozhong{
+            color:#f4930a;
+        }
+        #hot a{
+            color:#555;
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+        #hot a:hover{
+            color:#f4930a; 
+        }
+        /* 底部 */
+        #footer{
+            margin-top: 6rem;
+            background-color: #989895;
+            padding:3.5rem 0;
+            font-size: 1.2rem;
+            
+        }
+        #footer .heart{
+            display:flex;
+            align-items: center;
+        }
+        #footer img{
+            display: block;
+            width: 6.3rem;
+            height: 6.3rem;
+        }
+        #footBox{
+            margin-left:2rem;
+            height: 6.3rem;
+            width: 50rem;
+        }
+        #footBox span{
+            font-size: 1.2rem;
+            color:#fff;
+            margin:0 1rem;
+        }
+        #footBox p{
+            margin-top:0.6rem;
+            color:#D4D4D4;
+            line-height: 2rem;
         }
     </style>
 </head>
@@ -428,7 +503,7 @@
             <h1 id="logo"><a href="javascript:;"></a></h1>
             <div id="headerCen">
                 <input type="text" name="" id="">
-                <span></span>
+                <span id="btn"></span>
             </div>
             <div id="headerRig">
                 <a href="" class="logo"></a>
@@ -441,18 +516,20 @@
         <!-- <div class="hr"></div> -->
         <hr>
         <ul id="headerBot" class="heart">
-            <li><a href="">首页</a></li>
-            <li><a href="">头条新闻</a></li>
-            <li><a href="">综合新闻</a></li>
-            <li class="active"><a href="">专题新闻</a></li>
-            <li><a href="">要闻聚焦</a></li>
-            <li><a href="">媒体清华</a></li>
-            <li><a href="">图说清华</a></li>
-            <li><a href="">视频空间</a></li>
-            <li><a href="">清华人物</a></li>
-            <li><a href="">校园写意</a></li>
-            <li><a href="">新闻排行</a></li>
-            <li><a href="">新闻合集</a></li>
+            <li><a href="javascript:;">首页</a></li>
+            <li><a href="javascript:;">头条新闻</a></li>
+            <li><a href="javascript:;">综合新闻</a></li>
+            <li class="active"><a href="javascript:;">专题新闻</a></li>
+            <li><a href="javascript:;">要闻聚焦</a></li>
+            <li><a href="javascript:;">媒体清华</a></li>
+            <li><a href="javascript:;">媒体清华</a></li>
+            <li><a href="javascript:;">图说清华</a></li>
+            <li><a href="javascript:;">视频空间</a></li>
+            <li><a href="javascript:;">清华人物</a></li>
+            <li><a href="javascript:;">清华人物</a></li>
+            <li><a href="javascript:;">校园写意</a></li>
+            <li><a href="javascript:;">新闻排行</a></li>
+            <li><a href="javascript:;">新闻合集</a></li>
         </ul>
     </div>
     <div id="content" class="heart">
@@ -472,7 +549,7 @@
             <!-- 头 -->
             <h2 class="cRT">
                 <div><span></span>图说清华</div>
-                <a href="">更多></a>
+                <a href="javascript:;">更多></a>
             </h2>
             <!-- 轮播壳子 -->
             <div id="swd">
@@ -497,10 +574,36 @@
             <!-- 头 -->
             <h2 class="cRT cdRt">
                 <div><span></span>精彩视频</div>
-                <a href="">更多></a>
+                <a href="javascript:;">更多></a>
             </h2>
             <ul id="move">
             </ul>
+            <!-- 近期热点 -->
+            <h2 class="cRT cdRt col">
+                <div><span></span>近期热点</div>
+            </h2>
+            <ul id="hot">
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="heart">
+            <img src="https://news.tsinghua.edu.cn/dfiles/20186/publish/thunews/images/thulogo.jpg" alt="">
+            <div id="footBox">
+                <div>
+                    <a href="javascript:;">网站新闻</a>
+                    <span>|</span>
+                    <a href="javascript:;">关于我们</a>
+                    <span>|</span>
+                    <a href="javascript:;">友情链接</a>
+                    <span>|</span>
+                    <a href="javascript:;">清华地图</a>
+                </div>
+                <p>
+                    清华大学新闻中心版权所有，清华大学新闻网编辑部维护，电子信箱:news@tsinghua.edu.cn<br>
+                    Copyright 2001-2020 news.tsinghua.edu.cn. All rights reserved.
+                </p>
+            </div>
         </div>
     </div>
 </body>
@@ -509,132 +612,159 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.11.1.min.js"></script>
 <script>
     let newLis = document.querySelector("#news ul");
-
-    function getData(url) {
-        let xhr = new XMLHttpRequest;
-        xhr.open("get", url);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
-                eachData(JSON.parse(xhr.responseText));
+    /* 请求绑定数据 */
+    let getData = (() => {
+        function getData(url) {
+            let xhr = new XMLHttpRequest;
+            xhr.open("get", url);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
+                    eachData(JSON.parse(xhr.responseText));
+                }
             }
+            xhr.send();
         }
-        xhr.send();
-    }
 
-    function eachData(data) {
-        let Inlis = ``;
-        let Inlistwo = ``;
-        let swiperItem = ``;
-        let moveItem=``;
-        data[0].forEach(item => {
-            Inlis +=
-                `<li><a href=""><img src="${item.src}"alt=""></a><div class="time"><p>${item.p}</p><span>${item.span}</span></div><a href="" class="title">${item.title}</a><p class="context">党的十九届五中全会在“两个一百年”奋斗目标的历史交汇点这一重要历史时刻召开，是一次具有全局性、历史性意义的会议。全会审议通过了习近平总书记亲自领导编写、汇聚全党全社会智慧的《中共中央关于.....</p></li>`;
-        });
-        data[1].forEach(item => {
-            Inlistwo +=
-                `                <li>
+        function eachData(data) {
+            let Inlis = ``;
+            let Inlistwo = ``;
+            let swiperItem = ``;
+            let moveItem = ``;
+            let hotItem=``;
+            data[0].forEach(item => {
+                Inlis +=
+                    `<li><a href="javascript:;"><img src="${item.src}"alt=""></a><div class="time"><p>${item.p}</p><span>${item.span}</span></div><a href="javascript:;" class="title">${item.title}</a><p class="context">党的十九届五中全会在“两个一百年”奋斗目标的历史交汇点这一重要历史时刻召开，是一次具有全局性、历史性意义的会议。全会审议通过了习近平总书记亲自领导编写、汇聚全党全社会智慧的《中共中央关于.....</p></li>`;
+            });
+            data[1].forEach(item => {
+                Inlistwo +=
+                    `                <li>
                     <div class="time contTime">
                         <p>${item.p}</p>
                         <span>${item.span}</span>
                     </div>
                     <div class="cont">
-                        <a href="" class="title contT">${item.title}</a>
+                        <a href="javascript:;" class="title contT">${item.title}</a>
                         <p class="context">${item.context}</p>
                     </div>
                 </li>`;
-        });
-        data[2].forEach(item => {
-            swiperItem += `                    <li>
+            });
+            data[2].forEach(item => {
+                swiperItem += `                    <li>
                         <img src="${item.src}"
                             alt="">
-                        <span>【组图】${item.span}</span>
+                        <span>${item.span}</span>
 
                     </li>`
-        })
-        data[3].forEach(item=>{
-            moveItem+=`                <li>
-                <a href="">
+            })
+            data[3].forEach(item => {
+                moveItem += `                <li>
+                <a href="javascript:;">
                     <img src="${item.src}"
                         alt=""></a>
-                    <a href="">${item.a}</a>
+                    <a href="javascript:;">${item.a}</a>
                     <b><span></span></b>
                 </li>`;
-        })
-        newLis.innerHTML = Inlis;
-        colum.innerHTML = Inlistwo;
-        swiperItem += `<li>
+            })
+            data[4].forEach(item=>{
+                hotItem+=`                <li>
+                    <div class="hotBox">
+                        <span class="iconfont icon-naozhong"></span>
+                        <span>${item.span1}</span>
+                        <span class="iconfont icon-yanjing"></span>
+                        <span>${item.span2}</span>
+                    </div>
+                    <p><a href="javascript:;">${item.a}</a></p>
+                </li>`
+            })
+            newLis.innerHTML = Inlis;
+            colum.innerHTML = Inlistwo;
+            swiperItem += `<li>
                         <img src="${data[2][0].src}"
                             alt="">
                         <span>【组图】${data[2][0].span}</span>
 
                     </li>`
-        swipUl.innerHTML = swiperItem;
-        move.innerHTML=moveItem;
-    }
-    getData("qinghua.json");
-    /* 
-    轮播
-    */
-    let step = 0;
-
-    function autoMove(index) {
-        step++;
-        typeof index === "undefined" ? null : step = index;
-        if (step >= swipUl.querySelectorAll("li").length) {
-            step = 1;
-            swipUl.style.left = 0 + "px";
+            swipUl.innerHTML = swiperItem;
+            move.innerHTML = moveItem;
+            hot.innerHTML=hotItem;
         }
-        appearSpot()
-        $("#swipUl").animate({
-            left: -step * 291.21
-        }, 500)
-    }
-    /* 左右按钮 */
-    let btnL = document.querySelectorAll(".btn span")[0];
-    let btnR = document.querySelectorAll(".btn span")[1];
-    /* 鼠标悬浮 */
-    let timer = setInterval(autoMove, 1000);
-    let swd = document.querySelector("#swd");
-    swd.onmouseover = function () {
-        clearInterval(timer);
-        btnL.style.display = "block";
-        btnR.style.display = "block";
-    }
-    swd.onmouseout = function () {
-
-        timer = setInterval(autoMove, 1000);
-        btnL.style.display = "none";
-        btnR.style.display = "none";
-    }
-    let spotEle = document.querySelectorAll("#spot li");
-
-    function appearSpot() {
-        for (var i = 0; i < spotEle.length; i++) {
-            if (step == i) {
-                spotEle[i].classList.add("spactive");
+        getData("qinghua.json");
+    })()
+    /* 导航input按钮 */
+    let inp = (() => {
+        let btn = document.querySelector("#btn");
+        btn.onclick = function btnOn() {
+            let inpContext = document.querySelector("#headerCen input").innerText;
+            if (inpContext) {
+                alert("输入无效，没设置")
             } else {
-                spotEle[i].classList.remove("spactive")
-            }
-            if (step == 3) {
-                spotEle[0].classList.add("spactive");
+                alert("请输入搜索内容")
             }
         }
-    }
-    appearSpot();
-    for (let i = 0; i < spotEle.length; i++) {
-        spotEle[i].onclick = function () {
-            autoMove(i)
+    })()
+    /* 轮播 */
+    let swp = (() => {
+        let step = 0;
+
+        function autoMove(index) {
+            step++;
+            typeof index === "undefined" ? null : step = index;
+            if (step >= swipUl.querySelectorAll("li").length) {
+                step = 1;
+                swipUl.style.left = 0 + "px";
+            }
+            appearSpot()
+            $("#swipUl").animate({
+                left: -step * 291.21
+            }, 500)
         }
-    }
-    btnR.onclick = function () {
-        autoMove()
-    }
-    btnL.onclick = function () {
-        step -= 2;
-        if (step == -2) {
-            swipUl.style.left = (swipUl.querySelectorAll("li").length - 1) * -291.21 + "px";
-            step = swipUl.querySelectorAll("li").length - 3;
+        /* 左右按钮 */
+        let btnL = document.querySelectorAll(".btn span")[0];
+        let btnR = document.querySelectorAll(".btn span")[1];
+        /* 鼠标悬浮 */
+        let timer = setInterval(autoMove, 1000);
+        let swd = document.querySelector("#swd");
+        swd.onmouseover = function () {
+            clearInterval(timer);
+            btnL.style.display = "block";
+            btnR.style.display = "block";
         }
-        autoMove()
-    }
+        swd.onmouseout = function () {
+
+            timer = setInterval(autoMove, 1000);
+            btnL.style.display = "none";
+            btnR.style.display = "none";
+        }
+        let spotEle = document.querySelectorAll("#spot li");
+
+        function appearSpot() {
+            for (var i = 0; i < spotEle.length; i++) {
+                if (step == i) {
+                    spotEle[i].classList.add("spactive");
+                } else {
+                    spotEle[i].classList.remove("spactive")
+                }
+                if (step == 3) {
+                    spotEle[0].classList.add("spactive");
+                }
+            }
+        }
+        appearSpot();
+        for (let i = 0; i < spotEle.length; i++) {
+            spotEle[i].onclick = function () {
+                autoMove(i)
+            }
+        }
+        btnR.onclick = function () {
+            autoMove()
+        }
+        btnL.onclick = function () {
+            step -= 2;
+            if (step == -2) {
+                swipUl.style.left = (swipUl.querySelectorAll("li").length - 1) * -291.21 + "px";
+                step = swipUl.querySelectorAll("li").length - 3;
+            }
+            autoMove()
+        }
+    })()
 </script>
