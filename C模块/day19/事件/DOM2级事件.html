@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">123</div>
+</body>
+</html>
+<script>
+    function fn(){
+        console.log(123);
+    }
+    box.addEventListener("click",fn)//设置事件
+    box.removeEventListener("click",fn);//卸载事件的方法的时候给removeEventListener传递的参数要和绑定的时候严格一致
+</script>

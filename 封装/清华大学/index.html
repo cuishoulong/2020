@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            color: #f4930a;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        html {
+            font-size: 10px;
+            background: url(https://news.tsinghua.edu.cn/dfiles/20186/publish/thunews/images/bg_02.jpg);
+        }
+
+        .heart {
+            width: 120rem;
+            margin: 0 auto;
+        }
+
+        /* 抬头 */
+        #header {
+            width: 100%;
+            height: 16rem;
+            background: url(https://news.tsinghua.edu.cn/dfiles/20186/publish/thunews/images/bg_01.jpg) center center;
+            box-sizing: border-box;
+            padding-top: 2.5rem;
+        }
+
+        /* 版心 */
+        #headerTop {
+            height: 7.5rem;
+        }
+
+        hr {
+            border: none;
+            border-bottom: 1px solid #9450df;
+        }
+
+        /* logo */
+        #logo a {
+            display: block;
+            width: 26.8rem;
+            height: 5.5rem;
+            margin-left: 1rem;
+            margin-bottom: 2rem;
+            background: url(https://news.tsinghua.edu.cn/dfiles/20186/publish/thunews/images/logo.jpg)no-repeat center center;
+            background-size: contain;
+        }
+
+        #headerCen input {
+            width: 29rem;
+            height: 3.6rem;
+            padding: 0 1rem;
+            border: 0;
+            outline: none;
+        }
+
+        #headerCen span {
+            display: inline-block;
+            outline: none;
+            width: 5rem;
+            height: 3.6rem;
+            background-color: #f4930a;
+        }
+
+        #headerRig {
+            display: flex;
+            align-items: center;
+            margin-right: 2.6rem;
+            text-align: center;
+            line-height: 2.6rem;
+            width: 24.6rem;
+            justify-content: space-between;
+        }
+
+        #headerRig a {
+            display: inline-block;
+            height: 2.6rem;
+        }
+
+        #headerRig a:nth-child(4) {
+            width: 5.2rem;
+            height: 2.6rem;
+            padding: 0 1.5rem;
+            background-color: #f4930a;
+            margin-right: 2rem;
+        }
+
+        #headerRig a:nth-child(4):hover {
+            background-color: #fff;
+        }
+
+
+        .logo {
+            width: 2.6rem;
+            background-color: #fff;
+        }
+
+        #headerTop {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #headerCen {
+            display: flex;
+            align-items: center;
+        }
+
+        #headerBot {
+            font-size: 1.5rem;
+            height: 6rem;
+            line-height: 6rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #headerBot li {
+            padding: 0 1.2rem;
+        }
+
+        #headerBot .active {
+            height: 5.7rem;
+            border-bottom: 3px solid #f4930a;
+        }
+
+        /* 内容 */
+        #content {
+            box-sizing: border-box;
+            padding-top: 4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #contLeft {
+            width: 65rem;
+        }
+
+        #contRight {
+            width: 29rem;
+        }
+
+        #news>h2 {
+            height: 3.44rem;
+            padding-bottom: 2.38rem;
+            font-size: 2.8rem;
+            color: #59228A;
+            border-bottom: 2px solid #59228A;
+        }
+
+        #news>ul {
+            padding-top: 3.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #news>ul li {
+            width: 31rem;
+            height: 38rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        #news>ul li img {
+            display: block;
+            width: 30.8rem;
+            height: 19rem;
+        }
+
+        .time {
+            width: 5rem;
+            box-sizing: border-box;
+            background-color: rgba(244, 147, 10, 0.8);
+            padding-top: 0.7rem;
+            text-align: center;
+            color: #fff;
+            height: 5.2rem;
+            position: absolute;
+            left: 2rem;
+            top: 12rem;
+        }
+
+        .time p {
+            font-size: 2.4rem;
+            font-weight: bold;
+            line-height: 2.4rem;
+            margin-bottom: 0.16rem;
+        }
+
+        .time span {
+            font-size: 1.2rem;
+        }
+
+        .title {
+            display: block;
+            font-size: 1.6rem;
+            color: #333;
+            padding: 1.6rem 0 1.2rem;
+        }
+
+        .context {
+            font-size: 1.2rem;
+            color: #777;
+            line-height: 2rem;
+            padding-right: 1rem;
+        }
+
+        /* 左边的文字列表 */
+        #colum {
+            border-top: 0.2rem solid #d0d0d0;
+            padding-top: 1rem;
+        }
+
+        .contT {
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .contTime {
+            position: static;
+            height: 6rem;
+            color: #8c7a9c;
+            background-color: transparent;
+        }
+
+        #colum li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #dcdcdc;
+            padding: 1.5rem 0;
+            align-items: center;
+        }
+
+        .cont {
+            width: 58rem;
+        }
+
+        /* 右边栏 */
+        .cRT {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #471b6f;
+            line-height: 3.6rem;
+            font-weight: normal;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cRT span {
+            width: 3.6rem;
+            height: 3.6rem;
+            background-color: #59228a;
+            margin-right: 1.5rem;
+        }
+
+        .cRT div {
+            display: flex;
+        }
+
+        .cRT a {
+            font-size: 1.2rem;
+            color: #999;
+        }
+
+        /* 轮播 */
+        #swiper {
+            overflow: hidden;
+            height: 17.9rem;
+            position: relative;
+        }
+
+        #swipUl {
+            height: 17.9rem;
+            left: 0;
+            position: absolute;
+            display: flex;
+        }
+
+        #swipUl li {
+            position: relative;
+        }
+
+        #swipUl li img {
+            display: block;
+            height: 17.9rem;
+        }
+
+        #swipUl li span {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            padding: 1.625rem 1.95rem;
+            font-size: 1.3rem;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #spot {
+            width: 29rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        #spot li {
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #ABABAB;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            cursor: pointer;
+        }
+
+        /* 轮播的左右按钮 */
+        .btn {
+            height: 6rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            width: 29rem;
+            justify-content: space-between;
+        }
+
+        .btn span {
+            width: 5rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            line-height: 6rem;
+            display: none;
+        }
+
+        .btn span:hover {
+            color: #f4930a;
+        }
+
+        #spot li.spactive {
+            background-color: #f4930a;
+        }
+
+        /* 抬头2 */
+        .cdRt {
+            margin-top: 2.4rem;
+            padding-bottom: 2rem;
+            border-bottom: 0.2rem solid #d6d6d6;
+        }
+
+        /* 精彩视频 */
+        #move {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        #move li {
+            width: 13.5rem;
+            padding-top: 2rem;
+            position: relative;
+        }
+
+        #move img {
+            display: block;
+            height: 8.4rem;
+        }
+
+        #move a {
+            font-size: 1.2rem;
+            color: #555;
+            /* 多行超出省略的必备条件 */
+            display: -webkit-box;
+            /* 弹性盒模型 */
+            -webkit-box-orient: vertical;
+            /* 元素垂直居中*/
+            -webkit-line-clamp: 2;
+            /*  文字显示的行数*/
+            overflow: hidden;
+            margin-top: 1rem;
+            line-height: 2rem;
+        }
+        #move a:hover{
+            color:#f4930a;
+        }
+        #move li b{
+            position: absolute;
+            left:1rem;
+            top:6rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            border:2px solid #fff;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #move li b span{
+            margin-left:1.2rem;
+            width: 0;
+            height: 0;
+            border:1rem solid #f4930a;
+            border-color:transparent transparent transparent #f4930a;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="headerTop" class="heart">
+            <h1 id="logo"><a href="javascript:;"></a></h1>
+            <div id="headerCen">
+                <input type="text" name="" id="">
+                <span></span>
+            </div>
+            <div id="headerRig">
+                <a href="" class="logo"></a>
+                <a href="" class="logo"></a>
+                <a href="" class="logo"></a>
+                <a href=""></a>
+                <a href="">清华主页</a>
+            </div>
+        </div>
+        <!-- <div class="hr"></div> -->
+        <hr>
+        <ul id="headerBot" class="heart">
+            <li><a href="">首页</a></li>
+            <li><a href="">头条新闻</a></li>
+            <li><a href="">综合新闻</a></li>
+            <li class="active"><a href="">专题新闻</a></li>
+            <li><a href="">要闻聚焦</a></li>
+            <li><a href="">媒体清华</a></li>
+            <li><a href="">图说清华</a></li>
+            <li><a href="">视频空间</a></li>
+            <li><a href="">清华人物</a></li>
+            <li><a href="">校园写意</a></li>
+            <li><a href="">新闻排行</a></li>
+            <li><a href="">新闻合集</a></li>
+        </ul>
+    </div>
+    <div id="content" class="heart">
+        <!-- 内容左 -->
+        <div id="contLeft">
+            <!-- 专题新闻 -->
+            <div id="news">
+                <h2>专题新闻</h2>
+                <ul>
+                </ul>
+            </div>
+            <ul id="colum">
+            </ul>
+        </div>
+        <!-- 内容右 -->
+        <div id="contRight">
+            <!-- 头 -->
+            <h2 class="cRT">
+                <div><span></span>图说清华</div>
+                <a href="">更多></a>
+            </h2>
+            <!-- 轮播壳子 -->
+            <div id="swd">
+                <!-- 轮播 -->
+                <div id="swiper">
+                    <ul id="swipUl">
+                    </ul>
+                    <!-- 轮播左右按钮 -->
+                    <div class="btn">
+                        <span>
+                            <</span> <span>>
+                        </span>
+                    </div>
+                </div>
+                <!-- 轮播下面的点点 -->
+                <ul id="spot">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <!-- 头 -->
+            <h2 class="cRT cdRt">
+                <div><span></span>精彩视频</div>
+                <a href="">更多></a>
+            </h2>
+            <ul id="move">
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.11.1.min.js"></script>
+<script>
+    let newLis = document.querySelector("#news ul");
+
+    function getData(url) {
+        let xhr = new XMLHttpRequest;
+        xhr.open("get", url);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
+                eachData(JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.send();
+    }
+
+    function eachData(data) {
+        let Inlis = ``;
+        let Inlistwo = ``;
+        let swiperItem = ``;
+        let moveItem=``;
+        data[0].forEach(item => {
+            Inlis +=
+                `<li><a href=""><img src="${item.src}"alt=""></a><div class="time"><p>${item.p}</p><span>${item.span}</span></div><a href="" class="title">${item.title}</a><p class="context">党的十九届五中全会在“两个一百年”奋斗目标的历史交汇点这一重要历史时刻召开，是一次具有全局性、历史性意义的会议。全会审议通过了习近平总书记亲自领导编写、汇聚全党全社会智慧的《中共中央关于.....</p></li>`;
+        });
+        data[1].forEach(item => {
+            Inlistwo +=
+                `                <li>
+                    <div class="time contTime">
+                        <p>${item.p}</p>
+                        <span>${item.span}</span>
+                    </div>
+                    <div class="cont">
+                        <a href="" class="title contT">${item.title}</a>
+                        <p class="context">${item.context}</p>
+                    </div>
+                </li>`;
+        });
+        data[2].forEach(item => {
+            swiperItem += `                    <li>
+                        <img src="${item.src}"
+                            alt="">
+                        <span>【组图】${item.span}</span>
+
+                    </li>`
+        })
+        data[3].forEach(item=>{
+            moveItem+=`                <li>
+                <a href="">
+                    <img src="${item.src}"
+                        alt=""></a>
+                    <a href="">${item.a}</a>
+                    <b><span></span></b>
+                </li>`;
+        })
+        newLis.innerHTML = Inlis;
+        colum.innerHTML = Inlistwo;
+        swiperItem += `<li>
+                        <img src="${data[2][0].src}"
+                            alt="">
+                        <span>【组图】${data[2][0].span}</span>
+
+                    </li>`
+        swipUl.innerHTML = swiperItem;
+        move.innerHTML=moveItem;
+    }
+    getData("qinghua.json");
+    /* 
+    轮播
+    */
+    let step = 0;
+
+    function autoMove(index) {
+        step++;
+        typeof index === "undefined" ? null : step = index;
+        if (step >= swipUl.querySelectorAll("li").length) {
+            step = 1;
+            swipUl.style.left = 0 + "px";
+        }
+        appearSpot()
+        $("#swipUl").animate({
+            left: -step * 291.21
+        }, 500)
+    }
+    /* 左右按钮 */
+    let btnL = document.querySelectorAll(".btn span")[0];
+    let btnR = document.querySelectorAll(".btn span")[1];
+    /* 鼠标悬浮 */
+    let timer = setInterval(autoMove, 1000);
+    let swd = document.querySelector("#swd");
+    swd.onmouseover = function () {
+        clearInterval(timer);
+        btnL.style.display = "block";
+        btnR.style.display = "block";
+    }
+    swd.onmouseout = function () {
+
+        timer = setInterval(autoMove, 1000);
+        btnL.style.display = "none";
+        btnR.style.display = "none";
+    }
+    let spotEle = document.querySelectorAll("#spot li");
+
+    function appearSpot() {
+        for (var i = 0; i < spotEle.length; i++) {
+            if (step == i) {
+                spotEle[i].classList.add("spactive");
+            } else {
+                spotEle[i].classList.remove("spactive")
+            }
+            if (step == 3) {
+                spotEle[0].classList.add("spactive");
+            }
+        }
+    }
+    appearSpot();
+    for (let i = 0; i < spotEle.length; i++) {
+        spotEle[i].onclick = function () {
+            autoMove(i)
+        }
+    }
+    btnR.onclick = function () {
+        autoMove()
+    }
+    btnL.onclick = function () {
+        step -= 2;
+        if (step == -2) {
+            swipUl.style.left = (swipUl.querySelectorAll("li").length - 1) * -291.21 + "px";
+            step = swipUl.querySelectorAll("li").length - 3;
+        }
+        autoMove()
+    }
+</script>

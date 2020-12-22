@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(212, 73, 73);
+            cursor: pointer;
+        }
+        #inp{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" contenteditable="true">132</div>
+    <input type="text" id="inp">
+</body>
+
+</html>
+<script>
+    /* 
+    DOM0级事件
+    鼠标事件
+    onclick单击
+    ondblclick双击
+    onmouseover鼠标划过
+    onmouseout鼠标划出
+    onmouseenter鼠标移入
+    onmouseleave鼠标移出
+    onmousewheel滚轮
+    onmousedown鼠标按下
+    onmouseup鼠标抬起
+    */
+    // box.onclick=function(){
+    //     console.log("单击");
+    // }
+    /*     box.ondblclick = function () {
+            console.log("双击");
+        }
+        box.onmousewheel = function () {
+            console.log("滚轮")
+        }
+        box.onmousedown = function () {
+            console.log("按下")
+        }
+        box.onmouseup = function () {
+            console.log("抬起")
+        }
+        box.onmouseenter = function () {
+            console.log("移入")
+        }
+        box.onmouseleave = function () {
+            console.log("移出")
+        } */
+
+    //需求：单击出现123，双击出现456
+/*     box.onclick = function () {
+        clearTimeout(this.timer);
+        this.flag = false;
+        this.timer = setTimeout(function () {
+            if (box.flag) {
+                return
+            };
+            console.log("单击");
+        }, 300)
+    }
+    box.ondblclick = function () {
+        this.flag = true;
+        console.log("双击")
+    } */
+
+    /* 
+    键盘事件
+    onkeydown键盘按下
+    onkeyup键盘抬起
+    能绑定键盘事件的有:window input textarea document.body 基本上这几个，绑定其他的不起作用，如div
+    如果想让其他的也可以绑定键盘事件，那就给哪个元素添加一个contenteditable="true"
+    键盘按下是上一次的值，键盘抬起是最新的值,键盘按下去了也是上一次的值，且再按下后面执行
+    */
+   inp.onkeydown=function(){
+       console.log("键盘按下",this.value)
+   }
+   inp.onkeyup=function(){
+       console.log("键盘抬起",this.value)
+   }
+   inp.onkeypress=function(){
+       console.log("按下去了",this.value)
+   }
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            border: 10px solid black;
+            width: 100px;
+            height: 100px;
+            background: orangered;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /* transform: translate(-50%, -50%); */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">111</div>
+</body>
+
+</html>
+<script>
+    let box = document.getElementById("box");
+    box.onclick = function (a) {
+        //当用户通过键盘或鼠标去触发一些对应的事件的时候，浏览器会把当前事件的一些信息以实参的形式传递给当前的方法
+        console.log(a.offsetX)
+        /* 
+        clientX 当前鼠标点击的位置距离浏览器(一屏幕)左侧的长度
+        clientY 当前鼠标点击的位置距离浏览器(一屏幕)上侧的长度
+
+        offsetX当前盒子点击的位置距离当前的盒子的最左侧内边框的长度,左边border的不算(点进去就是-的)，右边的算
+        offsetY当前盒子点击的位置距离当前的盒子的最上侧内边框的长度,上边border的不算(点进去就是-的)，下边的算
+
+        pageX 当前鼠标点击的位置距离body的最左侧的位置
+        pageY 当前鼠标点击的位置距离body的最上侧的位置
+
+        target目标源，点击的dom元素
+
+        type:事件类型,如click
+
+
+        冒泡机制
+        当大盒子里有个小盒子，两个都绑定点击事件，点击小盒子的时候，两个盒子的事件都触发，如果点击大盒子，那小盒子不触发
+        想关闭这种机制就添加个cancelBubble=true或e.stopPropagation();
+
+        阻止事件传播
+        意思是阻止默认的事件；
+        如:当我们点击a标签时，想让他只执行我们的东西，但不跳转
+        e.retrunValue=false或return false或PreventDefault()
+
+        */
+    }
+    window.oncontextmenu = function (e) {
+        e.returnValue = false;//鼠标右键就不出小框了
+    }
+</script>

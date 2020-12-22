@@ -1,5 +1,5 @@
 let outer = document.getElementById("outer");
-let btn=outer.getElementsByTagName("a");
+let btn = outer.getElementsByTagName("a");
 let wrapper = document.getElementById("wrapper");
 let list = document.getElementById("list");
 let lis = list.getElementsByTagName("li");
@@ -28,10 +28,12 @@ function renderHTML() {
   list.innerHTML = listItems;
 }
 renderHTML();
+
+
 let step = 0;
 function autoMove(index) {
   step++;
-  typeof index==="undefined"?null:step=index;
+  typeof index === "undefined" ? null : step = index;
   if (step == 5) {
     wrapper.style.left = 0;
     step = 0;
@@ -65,25 +67,25 @@ function changeTip() {
 changeTip()
 
 //-------------------------------------------
-function bindClick(){
+function bindClick() {
 
 }
-for(let i=0;i<lis.length;i++){
-  lis[i].onclick=function(){
+for (let i = 0; i < lis.length; i++) {
+  lis[i].onclick = function () {
     // step=i-1;
     autoMove(i)
   }
 }
 
 //点击小耳朵实现图片切换
-right.onclick=function(){
+right.onclick = function () {
   autoMove()
 }
-left.onclick=function(){
-  step-=2;
-  if(step==-2){
-    wrapper.style.left=-3200+"px";
-    step=2;
+left.onclick = function () {
+  step -= 2;
+  if (step == -2) {
+    wrapper.style.left = -3200 + "px";
+    step = 2;
   }
   autoMove()
 }

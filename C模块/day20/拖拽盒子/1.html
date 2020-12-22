@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: orange;
+            position: absolute;
+        }
+
+        h3 {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h3 id="title">9875436</h3>
+    </div>
+    <script>
+        let curL = (document.body.clientWidth - box.offsetWidth) / 2;
+        let curT = (document.documentElement.clientHeight - box.offsetHeight) / 2;
+        box.style.left = curL + "px";
+        box.style.top = curT + "px";
+
+        //当用户按下鼠标的时候，开始给当前title绑定鼠标移动事件，当用户抬起鼠标的时候，移出title的移动事件
+
+        title.onmousedown = function (e) {
+            this.titleL = e.offsetX;
+            this.titleT = e.offsetY;
+
+            function move(e) {
+                /* 
+                盒子每移动一次就需要dom的回流和重绘一次，消耗性能，这时候如果鼠标移动的太快，那浏览器计算盒子的位置的速度跟不上你的鼠标移动的速度，所以鼠标就跑出了盒子之外，那这时候你在盒子外边抬起鼠标，并没有触发title的onmouseup事件，这时候title的onmousemove事件没有被清除
+                */
+                let boxL2 = e.clientX;
+                let boxT2 = e.clientY;
+                box.style.left = boxL2 - this.titleL + "px";
+                box.style.top = boxT2 - this.titleT + "px";
+            }
+            document.onmousemove = function (e) {
+                // this-->document
+                move.call(title, e);
+            }
+        }
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    </script>
+</body>
+
+</html>

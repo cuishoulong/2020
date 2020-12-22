@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding:0;
+      margin: 0;
+      user-select: none;
+    }
+    #box {
+      width: 200px;
+      height: 200px;
+      background: orangered;
+      position: absolute;
+    }
+    h3 {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background: greenyellow;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <h3 id="title">骨架终结者</h3>
+  </div>
+  <script>
+    let box = document.getElementById('box');
+    let title = document.getElementById('title');
+    let left = (document.documentElement.clientWidth - box.offsetWidth)/2;
+    let t = (document.documentElement.clientHeight - box.offsetHeight)/2;
+    box.style.left = left + 'px';
+    box.style.top = t + 'px';
+
+
+    title.onmousedown = function(e){
+      // this-->title
+
+      title.oldClientX = e.clientX;
+      title.oldClientY = e.clientY;
+
+      title.l = parseFloat(box.style.left);
+      title.t = parseFloat(box.style.top);
+
+      // document.onmousemove = move.bind(this);
+      document.onmousemove = function(e){
+        // this-->document
+        move.call(title,e);
+      }
+    }
+
+    function move(e){
+      // this是title
+      let curLeft = e.clientX- this.oldClientX + this.l + 'px';
+      let curTop = e.clientY- this.oldClientY + this.t + 'px';
+      box.style.left = curLeft;
+      box.style.top = curTop;
+      console.log('move');
+    }
+
+    document.onmouseup = function(){
+      document.onmousemove = null;
+    }
+
+  </script>
+</body>
+
+</html>

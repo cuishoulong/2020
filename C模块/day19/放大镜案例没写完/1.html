@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            position: relative;
+            margin:200px auto;
+        }
+        #mark{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.2);
+            cursor:move;
+            position:absolute;
+            /* transform: translate(-50%,-50%); */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!-- <div id="mark"></div> -->
+    </div>
+</body>
+</html>
+<script>
+    let mark;
+    box.onmouseenter=function(e){
+        mark=document.createElement("div");
+        mark.id="mark";
+        box.appendChild(mark);
+
+    }
+    box.onmousemove=function(e){
+        //当前mark的left值=e.clientX-box.offsetLeft
+        let curLeft=e.clientX-box.offsetLeft-mark.offsetWidth/2;
+        let curTop=e.clientY-box.offsetTop-mark.offsetHeight/2;
+        // console.log(curLeft)
+        if(curLeft<=0){
+            curLeft=0;
+        }
+        if(curTop<=50){
+            curTop=0;
+        }
+        mark.style.left=curLeft+"px";
+        mark.style.top=curTop+"px";
+    }
+    box.onmouseleave=function(){
+        
+        box.removeChild(mark);
+    }
+</script>

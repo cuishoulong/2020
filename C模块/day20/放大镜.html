@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box,
+        #bigBox {
+            width: 350px;
+            height: 350px;
+            border: 1px solid red;
+            position: relative;
+            overflow: hidden;
+            cursor: move;
+        }
+
+        #bigBox {
+            display: none;
+            left: 400px;
+            top: -350px;
+        }
+
+        #bigBox img {
+            display: block;
+            width: 700px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #mark {
+            width: 175px;
+            height: 175px;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"><img src="img/iphone.jpg" alt=""></div>
+    <div id="bigBox"><img src="img/iphone_big.jpg" alt=""></div>
+</body>
+
+</html>
+<script>
+    let box = document.getElementById("box");
+    let img = bigBox.getElementsByTagName("img")[0];
+
+    let mark;
+    box.onmouseenter = function (e) {
+        //动态创建mark,然后添加
+        mark = document.createElement("div");
+        mark.id = "mark";
+        box.appendChild(mark);
+        //大盒子显示
+        bigBox.style.display = "block";
+    }
+    box.onmousemove = function (e) {
+        let curX = e.clientX - box.offsetLeft - mark.offsetWidth / 2;
+        let curY = e.clientY - box.offsetTop - mark.offsetHeight / 2;
+        let minL = 0,
+            minT = 0;
+        let maxL = box.offsetWidth - mark.offsetWidth;
+        let maxT = box.offsetHeight - mark.offsetHeight;
+        if (curX <= minL) {
+            curX = minL;
+        }
+        if (curX >= maxL) {
+            curX = maxL;
+        }
+        if (curY <= minT) {
+            curY = minT;
+        }
+        if (curY >= maxT) {
+            curY = maxT;
+        }
+        mark.style.left = curX + "px";
+        mark.style.top = curY + "px";
+        img.style.left = -(curX * 2) + 'px';
+        img.style.top = -curY * 2 + 'px';
+    }
+    box.onmouseleave = function () {
+        box.removeChild(mark);
+        bigBox.style.display = "none"
+    }
+</script>

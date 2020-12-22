@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="aa b sd"></div>
+    <p class="b aa" aa="c"></p>
+    <a class="aa"></a>
+    <a class="aa b"></a>
+</body>
+
+</html>
+<script>
+    let attr = function attr(key, value) {
+        let str = [];
+        Array.from(document.querySelectorAll("*")).forEach(item => {
+            if (item.getAttribute(key)) {
+                let reg = new RegExp(`\\b${value}\\b`, "g");
+                if (reg.test(item.getAttribute(key))) {
+                    str[str.length] = item;
+                }
+            }
+        });
+        if(str.length==0){
+            return "一个都没有"
+        }
+        return str;
+    }
+    let a=attr("class", "b");
+    console.log(a);
+</script>
