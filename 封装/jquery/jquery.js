@@ -13,6 +13,7 @@
  */
 
 (function( global, factory ) {
+
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper window is present,
 		// execute the factory and get jQuery
@@ -164,10 +165,10 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// For internal use only.
-    // Behaves like an Array's method, not like a jQuery method.
-    push: push,
-        sort: deletedIds.sort,
-        splice: deletedIds.splice
+	// Behaves like an Array's method, not like a jQuery method.
+	push: push,
+	sort: deletedIds.sort,
+	splice: deletedIds.splice
 };
 
 jQuery.extend = jQuery.fn.extend = function() {
@@ -207,8 +208,8 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 				// Prevent never-ending loop
 				if ( target === copy ) {
-                    continue;
-                }
+					continue;
+				}
 
 				// Recurse if we're merging plain objects or arrays
 				if ( deep && copy && ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
@@ -2773,7 +2774,6 @@ var rootjQuery,
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
 	init = jQuery.fn.init = function( selector, context ) {
-
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
@@ -2786,7 +2786,6 @@ var rootjQuery,
 			if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
 				// Assume that strings that start and end with <> are HTML and skip the regex check
 				match = [ null, selector, null ];
-				console.log(match);
 
 			} else {
 				match = rquickExpr.exec( selector );
@@ -2794,10 +2793,11 @@ var rootjQuery,
 
 			// Match html or make sure no context is specified for #id
 			if ( match && (match[1] || !context) ) {
+
 				// HANDLE: $(html) -> $(array)
 				if ( match[1] ) {
 					context = context instanceof jQuery ? context[0] : context;
-                   console.log(context);
+
 					// scripts is true for back-compat
 					// Intentionally let the error be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
@@ -2857,7 +2857,6 @@ var rootjQuery,
 
 		// HANDLE: $(DOMElement)
 		} else if ( selector.nodeType ) {
-
 			this.context = this[0] = selector;
 			this.length = 1;
 			return this;
@@ -8264,10 +8263,10 @@ jQuery.extend({
 if ( !support.hrefNormalized ) {
 	// href/src property should get the full normalized URL (#10299/#12915)
 	jQuery.each([ "href", "src" ], function( i, name ) {
-            jQuery.propHooks[ name ] = {
-            get: function( elem ) {
-                return elem.getAttribute( name, 4 );
-            }
+		jQuery.propHooks[ name ] = {
+			get: function( elem ) {
+				return elem.getAttribute( name, 4 );
+			}
 		};
 	});
 }
@@ -8952,7 +8951,7 @@ jQuery.extend({
 	// Main method
 	ajax: function( url, options ) {
 
-		// If 2.url is an object, simulate pre-1.5 signature
+		// If url is an object, simulate pre-1.5 signature
 		if ( typeof url === "object" ) {
 			options = url;
 			url = undefined;
@@ -9075,8 +9074,8 @@ jQuery.extend({
 
 		// Remove hash character (#7531: and string promotion)
 		// Add protocol if not provided (#5866: IE7 issue with protocol-less urls)
-		// Handle falsy 2.url in the settings object (#10093: consistency with old signature)
-		// We also use the 2.url parameter if available
+		// Handle falsy url in the settings object (#10093: consistency with old signature)
+		// We also use the url parameter if available
 		s.url = ( ( url || s.url || ajaxLocation ) + "" ).replace( rhash, "" ).replace( rprotocol, ajaxLocParts[ 1 ] + "//" );
 
 		// Alias method option to type as per ticket #12004
@@ -9130,14 +9129,14 @@ jQuery.extend({
 		// More options handling for requests with no content
 		if ( !s.hasContent ) {
 
-			// If data is available, append data to 2.url
+			// If data is available, append data to url
 			if ( s.data ) {
 				cacheURL = ( s.url += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data );
 				// #9682: remove data so that it's not used in an eventual retry
 				delete s.data;
 			}
 
-			// Add anti-cache in 2.url if needed
+			// Add anti-cache in url if needed
 			if ( s.cache === false ) {
 				s.url = rts.test( cacheURL ) ?
 
@@ -9879,7 +9878,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			s.jsonpCallback() :
 			s.jsonpCallback;
 
-		// Insert callback into 2.url or form data
+		// Insert callback into url or form data
 		if ( jsonProp ) {
 			s[ jsonProp ] = s[ jsonProp ].replace( rjsonp, "$1" + callbackName );
 		} else if ( s.jsonp !== false ) {
@@ -9968,7 +9967,7 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
 var _load = jQuery.fn.load;
 
 /**
- * Load a 2.url into a page
+ * Load a url into a page
  */
 jQuery.fn.load = function( url, params, callback ) {
 	if ( typeof url !== "string" && _load ) {
@@ -10340,9 +10339,13 @@ jQuery.noConflict = function( deep ) {
 // Expose jQuery and $ identifiers, even in
 // AMD (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
-if ( typeof noGlobal === "undefined" ) {
+if ( typeof noGlobal === strundefined ) {
 	window.jQuery = window.$ = jQuery;
 }
+
+
+
+
 return jQuery;
 
 }));
