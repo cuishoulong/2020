@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // node -v  npm -v
+    // node 是一种语言后台 更应该是一种环境\
+    // 在安装node的过程中会自动把npm一块下载下来，npm可以在咱们的项目中下载各种依赖(插件)，在说通俗一点就是可以方便的管理咱们的项目
+    // https://www.npmjs.com/ 可以支持查看当前npm说能下载的模块
+
+    // npm install jquery
+
+    // npm install 模块名称 下载当前依赖(默认下载最新的)
+    // npm install 模块名@1.1.1
+
+    // npm uninstall 模块名
+
+    // 当你第一次下载模块(依赖)的时候，在当前项目里会自动生成一个node_modules文件夹，里边存放的就是你下载的模块
+
+    //-----------------------
+    // 一般情况下对于一个项目来说，咱们所做的第一件事就是执行 npm init -y 生成配置化清单
+
+    // npm init -y 初始化你的项目(会默认生成一个package.json文件)
+    // npm install 按照package.json里的模块配置一次下载所需的依赖
+
+    //--------------------------------
+    // npm init -y 初始化你的项目(会默认生成一个package.json文件)
+
+    // npm install 按照package.json里的模块配置一次就能下载所有需要的依赖
+
+    // npm install 模块名称 下载当前依赖(默认下载最新的)
+    // npm install 模块名@1.1.1
+
+    // npm uninstall 模块名
+
+    // 一个新的项目的流程 -->创建一个文件夹-->吧当前文件夹变成仓库(git init)-->初始化当前项目(npm init -y)-->下载所需的依赖(npm install ...) -->正常开发-->把本地的项目上传到远程仓库(上传的时候是不包括node_modules的)
+
+    // 作为一个项目的开发成员，所做的事-->git clone当前项目-->跑环境(npm install)-->正常开发
+  </script>
+</body>
+
+</html>

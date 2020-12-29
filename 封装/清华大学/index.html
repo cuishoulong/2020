@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>清华大学-新闻大学新闻网</title>
+    <link rel="shortcut icon" href="https://news.tsinghua.edu.cn/favicon.ico">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2286484_65of2z1rq5d.css">
     <style>
         * {
@@ -179,11 +180,20 @@
             margin-bottom: 3rem;
             position: relative;
         }
-
+        #news>ul li .scal{
+            display: block;
+            width: 30.8rem;
+            height: 19rem;
+            overflow: hidden;
+        }
         #news>ul li img {
             display: block;
             width: 30.8rem;
             height: 19rem;
+        }
+        #news>ul li img:hover{
+            transform: scale(1.04);
+            transition:all 0.5s linear;
         }
 
         .time {
@@ -431,68 +441,86 @@
         .col span {
             background: #bd2980;
         }
+
         /* 近期热点 */
-        #hot li{
+        #hot li {
             padding-bottom: 2rem;
             border-bottom: 1px dotted #bababa;
         }
-        .hotBox{
+
+        .hotBox {
             height: 2.7rem;
             line-height: 2.7rem;
             font-size: 1.2rem;
-            color:#999;
-            display:flex;
+            color: #999;
+            display: flex;
             align-items: center;
             margin-bottom: 1rem;
         }
-        .hotBox span{
+
+        .hotBox span {
             margin-right: 1rem;
         }
-        .hotBox .iconfont{
+
+        .hotBox .iconfont {
             font-size: 1.4rem;
         }
-        .icon-naozhong{
-            color:#f4930a;
+
+        .icon-naozhong {
+            color: #f4930a;
         }
-        #hot a{
-            color:#555;
+
+        #hot a {
+            color: #555;
             font-size: 1.2rem;
             line-height: 2rem;
         }
-        #hot a:hover{
-            color:#f4930a; 
+
+        #hot a:hover {
+            color: #f4930a;
         }
+
         /* 底部 */
-        #footer{
+        #footer {
             margin-top: 6rem;
             background-color: #989895;
-            padding:3.5rem 0;
+            padding: 3.5rem 0;
             font-size: 1.2rem;
-            
+
         }
-        #footer .heart{
-            display:flex;
+
+        #footer .heart {
+            display: flex;
             align-items: center;
         }
-        #footer img{
+
+        #footer img {
             display: block;
             width: 6.3rem;
             height: 6.3rem;
         }
-        #footBox{
-            margin-left:2rem;
+
+        #footBox {
+            margin-left: 2rem;
             height: 6.3rem;
             width: 50rem;
         }
-        #footBox span{
+
+        #footBox span {
             font-size: 1.2rem;
-            color:#fff;
-            margin:0 1rem;
+            color: #fff;
+            margin: 0 1rem;
         }
-        #footBox p{
-            margin-top:0.6rem;
-            color:#D4D4D4;
+
+        #footBox p {
+            margin-top: 0.6rem;
+            color: #D4D4D4;
             line-height: 2rem;
+        }
+        video{
+            overflow:-Scroll;overflow-x:hidden;
+            width: 100%;
+            display: none;
         }
     </style>
 </head>
@@ -531,6 +559,7 @@
             <li><a href="javascript:;">新闻排行</a></li>
             <li><a href="javascript:;">新闻合集</a></li>
         </ul>
+
     </div>
     <div id="content" class="heart">
         <!-- 内容左 -->
@@ -576,6 +605,7 @@
                 <div><span></span>精彩视频</div>
                 <a href="javascript:;">更多></a>
             </h2>
+            <!-- 精彩视频 -->
             <ul id="move">
             </ul>
             <!-- 近期热点 -->
@@ -606,6 +636,7 @@
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>
@@ -630,10 +661,12 @@
             let Inlistwo = ``;
             let swiperItem = ``;
             let moveItem = ``;
-            let hotItem=``;
+            let hotItem = ``;
             data[0].forEach(item => {
                 Inlis +=
-                    `<li><a href="javascript:;"><img src="${item.src}"alt=""></a><div class="time"><p>${item.p}</p><span>${item.span}</span></div><a href="javascript:;" class="title">${item.title}</a><p class="context">党的十九届五中全会在“两个一百年”奋斗目标的历史交汇点这一重要历史时刻召开，是一次具有全局性、历史性意义的会议。全会审议通过了习近平总书记亲自领导编写、汇聚全党全社会智慧的《中共中央关于.....</p></li>`;
+                    `<li>
+                        <a href="javascript:;" class="scal"><img src="${item.src}"alt=""></a>
+                        <div class="time"><p>${item.p}</p><span>${item.span}</span></div><a href="javascript:;" class="title">${item.title}</a><p class="context">${item.context}</p></li>`;
             });
             data[1].forEach(item => {
                 Inlistwo +=
@@ -659,14 +692,14 @@
             data[3].forEach(item => {
                 moveItem += `                <li>
                 <a href="javascript:;">
-                    <img src="${item.src}"
-                        alt=""></a>
+                    <img src="${item.src}"alt="">
+                </a>
                     <a href="javascript:;">${item.a}</a>
                     <b><span></span></b>
                 </li>`;
             })
-            data[4].forEach(item=>{
-                hotItem+=`                <li>
+            data[4].forEach(item => {
+                hotItem += `                <li>
                     <div class="hotBox">
                         <span class="iconfont icon-naozhong"></span>
                         <span>${item.span1}</span>
@@ -686,7 +719,7 @@
                     </li>`
             swipUl.innerHTML = swiperItem;
             move.innerHTML = moveItem;
-            hot.innerHTML=hotItem;
+            hot.innerHTML = hotItem;
         }
         getData("qinghua.json");
     })()
@@ -767,4 +800,17 @@
             autoMove()
         }
     })()
+    /* 顶部栏切换 */
+    let header = (function () {
+        let headerBot = document.getElementById("headerBot");
+        let headerAc = headerBot.getElementsByClassName("active");
+        headerBot.onclick = function (e) {
+            let item = e.target;
+            if (item.id === "headerBot" || item.nodeName === "LI") return;
+            [].forEach.call(headerAc, (item) => {
+                item.classList.remove("active");
+            })
+            item.nodeName === "A" ? item.parentNode.classList.add("active") : null;
+        }
+    }())
 </script>

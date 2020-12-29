@@ -50,3 +50,47 @@ for(let key in obj){
 Object.prototype.hasPubProperty=function hasPubProperty(attr){
 
 }
+
+/* 
+深浅克隆
+浅克隆：新开辟一个堆内存，只克隆表面，但其中引用数据类型的引用地址相同    展开运算符，循环，Object.assign
+深克隆 新开辟一个堆内存，从头到尾全部重新开辟空间     
+JSON.parse(JSON.stringify())过程是先转json格式字符串，再转引用数据类型
+有缺陷：如果是 值是正则/Math，那正则那一项会转为空{},如果为Symbol/函数/undefined，那么会直接删除当前项，如果为bigint那么会报错,日期对象会变为字符串
+
+ */
+let obj1={
+    a:1,
+    b:2,
+    c:{
+        d:1
+    }
+}
+let obj2=Object.assign({},obj1);
+console.log(obj2===obj1);
+console.log(obj2.c===obj1.c);
+
+
+/* 封装一下 */
+// 获取所有的私有属性，包含Symbol私有属性
+function getOwnPropertys(obj){
+    if(obj==null)return[];//排除undefined和null
+    return[
+        ...Object.keys(obj),
+        ...Object.getOwnPropertySymbols(obj)
+    ]
+}
+/* 浅克隆 */
+function shallowClon(obj){
+    //只处理对象和数组
+    let keys=getOwnPropertys(obj),
+    clone={};
+    Array.isArray(obj)?clone=[]:null;
+    keys.forEach(key=>{clone[key]=obj[key]})
+    return clone;
+}
+
+/* 浅比较
+Object.assign，直接替换相同的
+*/
+/* 封装实现合并 */

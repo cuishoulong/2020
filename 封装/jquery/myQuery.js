@@ -85,6 +85,58 @@
         each: function (callback, args) {
             return myQuery.each(this, callback, args);
         }
+        /* 
+            each: function( obj, callback, args ) {
+        var value,
+            i = 0,
+            length = obj.length,
+            isArray = isArraylike( obj );
+
+        if ( args ) {
+            if ( isArray ) {
+                for ( ; i < length; i++ ) {
+                    value = callback.apply( obj[ i ], args );
+
+                    if ( value === false ) {
+                        break;
+                    }
+                }
+            } else {
+                //在for in循环中，如果obj不是一个对象的话，会默认转换为Object(obj),就是默认把它转换为所属类型的对象，如为10，就是new Number(10)
+                
+                for ( i in obj ) {
+                    value = callback.apply( obj[ i ], args );
+                    //forEach不支持循环结束，但是自己封装的each支持
+                    if ( value === false ) {
+                        break;
+                    }
+                }
+            }
+
+        // A special, fast, case for the most common use of each
+        } else {
+            if ( isArray ) {
+                for ( ; i < length; i++ ) {
+                    value = callback.call( obj[ i ], i, obj[ i ] );
+
+                    if ( value === false ) {
+                        break;
+                    }
+                }
+            } else {
+                for ( i in obj ) {
+                    value = callback.call( obj[ i ], i, obj[ i ] );
+
+                    if ( value === false ) {//forEach不支持循环结束，但是自己封装的each支持
+                        break;
+                    }
+                }
+            }
+        }
+
+        return obj;
+    }
+        */
     }
 
     var rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/;

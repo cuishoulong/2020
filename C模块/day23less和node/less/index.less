@@ -1,0 +1,87 @@
+/* 
+less会自动生成css，然后更改less，css会自动更新
+
+less支持变量和嵌套
+*/
+@width:200px;//创建一个200px的变量
+@name:#box;//创建一个代表#box的变量,不过名字要用@{名字}
+//地址的话需要加''如,且用的时候要用''包起来
+@w:width;
+@bgurl:'./img';
+@{name}{
+    @w: @width;
+    height: @width;
+    background:black;
+    background:url('@url/123');
+    p{
+        height: @width;
+        width: @w;
+    }
+}
+
+#box:hover{color:black};
+#box{//&代表的是最近的父级,也可以理解为本身
+    &:hover{
+        color: black;
+    }
+}
+
+/* 可以相加:如颜色
+px，100px+200rem的时候以第一个为主，如果px在前就是300px，如果rem在前，就是300rem
+
+*/
+@a:#111;
+@b:#222;
+@c:@a+@b;//#333
+
+
+//可以传函数,函数如果有形参不可以不传，哪怕不用
+.public(@f,@d){
+    width: @f;
+    height: 100px;
+    background-color: @d;
+}
+#box{
+    .public(100px,red);
+}
+
+//如果想偷个懒,可以用@arguments,但形参必须要有,注意，@arguments与形参不干扰，形参可以正常使用，但@arguments可以拿到所有的传参
+.public(@f,@d,@a){
+    width: @f;
+    height: 100px;
+    background-color: @d;
+    border:@arguments;
+}
+#box{
+    .public(100px,solid,red);
+}
+//或
+.public(@f,...){
+    width: @f;
+    height: 100px;
+    border:@arguments;
+}
+#box{
+    .public(100px,solid,red);
+}
+
+@var:"font";
+//less从右往左解析  如@@var 先解析@var=font 然后解析@font
+
+
+//继承&:extend(想要继承的)
+.box{
+    width: 100px;
+    height: 100px;
+}
+#title{
+    &:extend(.box);//继承
+}
+
+//支持逻辑判断
+.pub(@wen) when(@wen<100){
+    width: 100px;
+}
+#box{
+    .pub(10)
+}

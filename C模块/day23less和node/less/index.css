@@ -1,0 +1,50 @@
+/* 
+less会自动生成css，然后更改less，css会自动更新
+
+less支持变量和嵌套
+*/
+#box {
+  height: 200px;
+  background: black;
+  background: url('@url/123');
+}
+#box p {
+  height: 200px;
+  width: 200px;
+}
+#box:hover {
+  color: black;
+}
+#box:hover {
+  color: black;
+}
+/* 可以相加:如颜色
+px，100px+200rem的时候以第一个为主，如果px在前就是300px，如果rem在前，就是300rem
+
+*/
+#box {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  border: 100px red;
+}
+#box {
+  background-color: solid;
+  width: 100px;
+  height: 100px;
+  border: 100px solid red;
+}
+#box {
+  background-color: solid;
+  width: 100px;
+  height: 100px;
+  border: 100px solid red;
+}
+.box,
+#title {
+  width: 100px;
+  height: 100px;
+}
+#box {
+  width: 100px;
+}

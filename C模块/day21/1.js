@@ -28,6 +28,7 @@ findIndex 发现的意思，依次便历，参数为回调函数,找到符合规
 Array.prototype.myFilter = function myFilter(fn) {
     let obj = [];
     let res;
+    if(typeof fn!=="function"&&fn==null)return;
     for (var i = 0; i < this.length; i++) {
         res = fn(this[i], i);
         if (res) {
@@ -44,6 +45,7 @@ console.log(res);
 
 Array.prototype.mySome = function mySome(fn) {
     let res;
+    if(typeof fn!=="function"&&fn==null)return;
     for (var i = 0; i < this.length; i++) {
         res = fn(this[i], i);
         if(res)return true;
@@ -52,6 +54,38 @@ Array.prototype.mySome = function mySome(fn) {
 
 let a = [1, 200, 300, 2];
 let res = a.mySome((item) => {
+    return item > 1
+})
+console.log(res);
+
+Array.prototype.myEvery = function myEvery(fn) {
+    let res;
+    if(typeof fn!=="function"&&fn==null)return;
+    for (var i = 0; i < this.length; i++) {
+        res = fn(this[i], i);
+        if(!res)return false;
+    }
+    return res;
+}
+
+let a = [1, 200, 300, 2];
+let res = a.myEvery((item) => {
+    return item > 200
+})
+console.log(res);
+
+
+Array.prototype.myFind = function myFind(fn) {
+    let res;
+    if(typeof fn!=="function"&&fn==null)return;
+    for (var i = 0; i < this.length; i++) {
+        res = fn(this[i], i);
+        if(res)return this[i];
+    }
+}
+
+let a = [1, 200, 300, 2];
+let res = a.myFind((item) => {
     return item > 1
 })
 console.log(res);
