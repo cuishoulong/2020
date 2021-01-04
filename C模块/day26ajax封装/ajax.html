@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    jq版的ajax是在jquery自己身上存放的，当时用的时候让其执行，并且给其传递一个对象，对象里存储的键值对就是当前请求所需的参数或配置
+     */
+    // $.ajax({
+    //     url: "xxx",
+    //     methed: "GET",
+    //     /* methed可以换成type */
+    //     data: {},
+    //     /* 请求携带的参数，格式可以是对象和字符串,如果是对象，就会将对象转换为字符串，如name:10转换为name=10 
+    //              如果是get请求就放到url后面就可以了，如果是post就放在send中
+    //              */
+    //     async: true,
+    //     /* 同异步，默认为true异步 */
+    //     dataType: "json",
+    //     /* 服务器端返回的数据格式，默认返回的是json格式的对象 */
+    //     cache: true,
+    //     /* 是否走缓存，只在get系列请求下有效(默认是true，走缓存) */
+    //     success: null,
+    //     /* 当前请求成功以后执行的回调函数，此函数的形参就是当前服务器返回的结果,默认为null， (data,statusText,xhr)=>{}*/
+    //     error: null,
+    //     /* 如果当前请求失败，那error对应的回调函数就会执行，默认为null */
+    //     complete: null,
+    //     /* 只要请求完了，不管当前是请求失败还是请求成功，只要请求完成就会执行，默认为null，可以设置为函数 */
+    //     timeOut: null,
+    //     /* 设置当前请求超时的时间 */
+    //     headers: null,
+    //     /* 设置请求头的信息，传递的值是对象类型的,不要传汉字，如果要传汉字的话，将其进行转码 */
+    //     contentType: "application/x-www-form-urlencoded",
+    //     /* 前端传递给后端的数据的类型   
+    //              application/x-www-form-urlencoded 默认的 name=1&age=2  */
+    // })
+
+    /* ----------------------------------------------------------------------------------------------------------------- */
+    //封装
+    (function () {
+        let defaults = {
+            url: "",
+            method: "GET",
+            data: null,
+            dataType: "JSON",
+            async: true,
+            cache: true,
+            timeOut: null,
+            headers: null,
+            success: null,
+            error: null,
+        };
+
+        function ajax(options) {
+            return new init(options);
+        };
+
+        function init(options) {
+            this.options = {
+                ...defaults,
+                ...options
+            };
+            this.send();
+        };
+        init.prototype = ajax.prototype = {
+            constructor: ajax,
+            send: function () {
+                let {
+                    method,
+                    url,
+                    async,
+                    data,
+                    cache,
+                    timeOut,
+                    headers,
+                    success,
+                    error,
+                    dataType
+                } = this.options;
+                let xhr =this.xhr=new XMLHttpRequest;
+                xhr.open(method, url, async);
+                data = this.handleData();
+                /* 如果是get请求，检测data是否为空，如果不是就拼在url上 */
+                let reg = /^(GET|DELETE|HEAD|OPTIONS)$/i;
+                if (data && reg.test(method)) {
+                    url += `${this.hasWenHao(url)}${data}`;
+                    data = null;
+                };
+                /* 如果是get系列，且cache的值是false，说明不走缓存，加一个时间戳 */
+                if (reg.test(method) && !cache) {
+                    let num = new Date().getTime();
+                    url += `${this.hasWenHao(url)}${num}`;
+                }
+                /* 处理请求超时的时间 */
+                timeOut ? xhr.timeout = timeOut : null;
+
+                /* 请求头 */
+                if (headers && toString.call(headers) === "[object Object]") {
+                    for (let key in headers) {
+                        if (!headers.hasOwnProperty(key)) break;
+                        xhr.setRequestHeader(key, encodeURI(headers[key])); //如果是中文就转码
+                    }
+                }
+                xhr.onreadystatechange = function () {
+                    let {
+                        readyState,
+                        status,
+                        statusText,
+                        responseText,
+                        response
+                    } = xhr;
+                    let res = ``;
+                    if (readyState === 4) {
+                        if (/^2\d{2}$/.test(status)) {
+                            /* 成功处理 */
+                            switch (dataType.toUpperCase()) {
+                                case "JSON":
+                                    res = JSON.parse(response);
+                                    break;
+                                case "TEXT":
+                                    res = JSON.parse(responseText);
+                                    break;
+                            }
+                            success && success(res, statusText, xhr);
+                        } else {
+                            /* 失败处理 */
+                            error && error(null, statusText, xhr)
+                        }
+                    }
+
+                };
+                //如果是get请求就把data改为空，如果是post请求，那不管他，下面的data正常
+                xhr.send(data);
+            },
+            /* 封装一个方法专门用来解决对象转字符串的 */
+            handleData: function () {
+                let {
+                    data
+                } = this.options;
+                if (data === null || typeof data === "string") return data;
+                let dataItem = ``;
+                for (let key in data) {
+                    if (!data.hasOwnProperty(key)) break;
+                    dataItem += `${key}=${data[key]}&`;
+                }
+                data = dataItem.slice(0, dataItem.length - 1)
+                return data;
+            },
+            hasWenHao: function (url) {
+                /* 此函数会直接返回问号或者& */
+                return url.includes("?") ? "&" : "?";
+            }
+        };
+
+        window.ajax = ajax;
+    })()
+    ajax({
+        url: "xxx",
+        method: "GET",
+        data: "name=1&data=1",
+        dataType: "JSON",
+        async: true,
+        cache: false,
+        timeOut: null,
+        headers: {
+            ss: 100,
+            aa: 200
+        },
+        success: (data, statusText, xhr) => {
+            console.log(data, statusText, xhr);
+        },
+        error: (data, statusText, xhr) => {
+            console.log(xhr);
+        }
+    })
+</script>

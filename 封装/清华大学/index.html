@@ -180,20 +180,23 @@
             margin-bottom: 3rem;
             position: relative;
         }
-        #news>ul li .scal{
+
+        #news>ul li .scal {
             display: block;
             width: 30.8rem;
             height: 19rem;
             overflow: hidden;
         }
+
         #news>ul li img {
             display: block;
             width: 30.8rem;
             height: 19rem;
         }
-        #news>ul li img:hover{
+
+        #news>ul li img:hover {
             transform: scale(1.04);
-            transition:all 0.5s linear;
+            transition: all 0.5s linear;
         }
 
         .time {
@@ -517,10 +520,37 @@
             color: #D4D4D4;
             line-height: 2rem;
         }
-        video{
-            overflow:-Scroll;overflow-x:hidden;
+
+        video {
+            overflow: -Scroll;
+            overflow-x: hidden;
             width: 100%;
             display: none;
+        }
+
+        #paging {
+            margin: 1.4rem auto;
+            width: 300px;
+            display: flex;
+        }
+
+        #paging ul {
+            display: flex;
+        }
+
+        #paging ul li,
+        #paging span {
+            padding: 0.5rem 0.8rem;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+        #paging ul li.active {
+            background-color: #461B6E;
+            border-color: #461B6E;
+            color: #fff;
         }
     </style>
 </head>
@@ -572,6 +602,16 @@
             </div>
             <ul id="colum">
             </ul>
+            <div id='paging'>
+                <span>上一页</span>
+                <ul>
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+                <span>下一页</span>
+            </div>
         </div>
         <!-- 内容右 -->
         <div id="contRight">
@@ -636,26 +676,29 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 
 </html>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.11.1.min.js"></script>
 <script>
     let newLis = document.querySelector("#news ul");
+    let pag1;
     /* 请求绑定数据 */
     let getData = (() => {
-        function getData(url) {
+        return function getData(url, callback) {
             let xhr = new XMLHttpRequest;
             xhr.open("get", url);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
-                    eachData(JSON.parse(xhr.responseText));
+                    callback(JSON.parse(xhr.responseText));
                 }
             }
             xhr.send();
         }
-
+    })()
+    //绑定数据
+    let bind = (() => {
         function eachData(data) {
             let Inlis = ``;
             let Inlistwo = ``;
@@ -711,6 +754,7 @@
             })
             newLis.innerHTML = Inlis;
             colum.innerHTML = Inlistwo;
+            pag1 = colum.querySelectorAll("li");
             swiperItem += `<li>
                         <img src="${data[2][0].src}"
                             alt="">
@@ -720,8 +764,10 @@
             swipUl.innerHTML = swiperItem;
             move.innerHTML = moveItem;
             hot.innerHTML = hotItem;
+            return Inlistwo;
         }
-        getData("qinghua.json");
+
+        getData("qinghua.json", eachData)
     })()
     /* 导航input按钮 */
     let inp = (() => {
@@ -813,4 +859,40 @@
             item.nodeName === "A" ? item.parentNode.classList.add("active") : null;
         }
     }())
+    /* 分页 */
+    let pag = (() => {
+        let left = paging.querySelector("span")[0];
+        let right = paging.querySelector("span")[1];
+        let lis = paging.querySelector("li");
+        let ulEle = paging.querySelector("ul");
+
+        function bindpag(data) {
+            let pagItem = ``;
+            data=`data${targT-1}`;
+            [].forEach.call(data, item => {
+                pagItem += `<li>
+                    <div class="time contTime">
+                        <p>${item.p}</p>
+                        <span>${item.span}</span>
+                    </div>
+                    <div class="cont">
+                        <a href="javascript:;" class="title contT">${item.title}</a>
+                        <p class="context">${item.context}</p>
+                    </div>
+                </li>`
+            })
+            colum.innerHTML = pagItem;
+        }
+        paging.onclick = function (e) {
+            let targ = e.target,
+                targN = targ.tagName,
+                targT = targ.innerText;
+            if (e.target.tagName === "SPAN") {
+                // getData(pag.json,bindpag);
+            }
+            if (e.target.tagName === "LI") {
+                getData(pag.json,bindpag);
+            }
+        }
+    })()
 </script>

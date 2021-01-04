@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    HTTP请求方式
+    GET系列
+        Delect一般告诉服务器删除某些信息
+        HEAD只获取响应头的内容，响应主体内容不要
+        OPTIONS试探性的请求，给服务器发送个请求，看看服务器能不能接收到，如果接受到能不能正常的返回
+    POST系列
+        PUT和DELTE是相对应的，告诉服务器要存储某些东西
+
+    GET和POST的区别
+       1. GET是在URL后问号传参
+        POST是在send()内传参,而且只有在send中的数据才叫做请求体
+
+        get传递给服务器的参数要比post少，因为浏览器对url的长度有限制(IE一般是2kb左右，谷歌的限制一般是6到7kb左右)
+        所以一般get用来获取，因为获取不需要传递参数
+
+        post是在()内传参，他没有限制，所以一般用来获取
+
+        2. get传参相对来说不安全(因为在url中，可以看到)，post(在请求体中)相对安全一点
+            GET相对于POST来说不安全，因为GET请求是基于问号传参，有一种技术就是URL劫持，这样别人就可以拿到你的参数或者篡改你的参数，POST是基于请求体传参的，他相对来说还安全一些
+
+        3. get请求会产生缓存，如果没一次请求的地址一模一样，这样他就会走缓存
+            'http://www.baidu.com:8080/index.html?name=1&age=2'
+            'http://www.baidu.com:8080/index.html?name=1&age=3'
+            如果你不想走缓存，只要保证每一次请求的地址有不一样的地方就可以(一般都是参数)
+
+            let flag = Date.now() // 获取时间戳 // 不让这次请求走缓存的办法(flag永远不会重复)
+            'http://www.baidu.com:8080/index.html?name=9&age=2&flag=' + flag;
+
+            利用随机数
+            let num = Math.random(); // 获取0-1之间的随机小数
+            console.log(num);
+            'http://www.baidu.com:8080/index.html?name=9&age=2&flag=' + num;
+
+     */
+</script>

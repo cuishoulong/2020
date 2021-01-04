@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    jq版的ajax是在jquery自己身上存放的，当时用的时候让其执行，并且给其传递一个对象，对象里存储的键值对就是当前请求所需的参数或配置
+     */
+    // $.ajax({
+    //     url: "xxx",
+    //     methed: "GET",
+    //     /* methed可以换成type */
+    //     data: {},
+    //     /* 请求携带的参数，格式可以是对象和字符串,如果是对象，就会将对象转换为字符串，如name:10转换为name=10 
+    //              如果是get请求就放到url后面就可以了，如果是post就放在send中
+    //              */
+    //     async: true,
+    //     /* 同异步，默认为true异步 */
+    //     dataType: "json",
+    //     /* 服务器端返回的数据格式，默认返回的是json格式的对象 */
+    //     cache: true,
+    //     /* 是否走缓存，只在get系列请求下有效(默认是true，走缓存) */
+    //     success: null,
+    //     /* 当前请求成功以后执行的回调函数，此函数的形参就是当前服务器返回的结果,默认为null， (data,statusText,xhr)=>{}*/
+    //     error: null,
+    //     /* 如果当前请求失败，那error对应的回调函数就会执行，默认为null */
+    //     complete: null,
+    //     /* 只要请求完了，不管当前是请求失败还是请求成功，只要请求完成就会执行，默认为null，可以设置为函数 */
+    //     timeOut: null,
+    //     /* 设置当前请求超时的时间 */
+    //     headers: null,
+    //     /* 设置请求头的信息，传递的值是对象类型的,不要传汉字，如果要传汉字的话，将其进行转码 */
+    //     contentType: "application/x-www-form-urlencoded",
+    //     /* 前端传递给后端的数据的类型   
+    //              application/x-www-form-urlencoded 默认的 name=1&age=2  */
+    // })
+
+    /* ----------------------------------------------------------------------------------------------------------------- */
+    //封装
+    (function () {
+        let total = {
+            url: "",
+            method: "GET",
+            data: null,
+            dataType: "JSON",
+            async: true,
+            cache: false,
+            timeOut: null,
+            headers: null,
+            success: null,
+            error: null
+        }
+
+        function ajax(total) {
+            return new init(total);
+        }
+
+        function init(myTotal) {
+            myTotal = {
+                ...total,
+                ...myTotal
+            };
+
+            this.send(myTotal);
+        }
+        init.prototype = ajax.prototype = {
+            constructor: ajax,
+            send: function (myTotal) {
+                let {
+                    method,
+                    url,
+                    async,
+                    data,
+                    cache,
+                    timeOut,
+                    headers,
+                    success,
+                    error,
+                    dataType
+                } = myTotal;
+                let xhr = new XMLHttpRequest;
+                xhr.open(method, url, async);
+                /* 如果data是对象，将他转换为字符串 */
+                data && toString.call(data) === "[object Object]" ? data = this.toString(data) : null;
+                /* 如果是GET类型的请求，就将data放在url后，然后将data变为空，如果不是就不管 */
+                let reg = /^(GET|DELETE|HEAD|OPTIONS)$/
+                /*  3.如果当前是get系列请求，并且cache的值是false，说明不走缓存(在url后面拼接一个时间戳或者随机数) */
+                reg.test(method) ? ((data ? (url += `${this.isWenHao(url)}${data}`, data = null) : null), (!
+                    cache ? url += `${this.isWenHao(url)}${new Date().getTime()}` : null)) : null;
+
+                /* 4.处理请求超时的时间设置 */
+                timeOut ? xhr.timeout(timeOut) : null;
+                /* 5.设置请求头(设置请求头必须在open之后，send之前) headers是一个对象 */
+                headers && toString.call(headers) === "[object Object]" ? this.openHead(xhr, headers) :
+                    null;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (/^2\d{2}$/.test(xhr.status)) {
+                            /* 判断dataType的类型 */
+                            let res;
+                            res = JSON.parse(xhr[(dataType === "JSON" ? "response" : "response" +
+                                dataType)])
+                            /* 成功 */
+                            success&&success(res,xhr.statusText,xhr)
+                        } else {
+                            /* 失败 */
+                            error&&error(null,xhr.statusText,xhr)
+                        }
+                    }
+                };
+                xhr.send(data);
+            },
+            toString: function (data) {
+                /* data对象转字符串 */
+                let str = ``,key;
+                for (key in data) {
+                    if (!data.hasOwnProperty(key)) break;
+                    str += `${key}=${data[key]}&`;
+                }
+                return data = str.slice(0, str.length - 1)
+            },
+            isWenHao: function (url) {
+                return url.includes("?") ? "&" : "?";
+            },
+            openHead: function (xhr, headers) {
+                /* 请求头 */
+                let key;
+                for (key in headers) {
+                    if (!headers.hasOwnProperty(key)) break;
+                    xhr.setRequestHeader(key, headers[key])
+                }
+            }
+        }
+        window.ajax = ajax;
+    })()
+    ajax({
+        url: "pag.json",
+        method: "GET",
+        data: {
+            name: 1,
+            age: 2
+        },
+        dataType: "Text",
+        async: true,
+        cache: false,
+        timeOut: null,
+        headers: {
+            ss: 100,
+            aa: 200
+        },
+        success: (data, statusText, xhr) => {
+            console.log(data, statusText, xhr);
+        },
+        error: (data, statusText, xhr) => {
+            console.log(xhr);
+        }
+    })
+</script>

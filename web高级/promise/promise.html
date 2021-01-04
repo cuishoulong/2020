@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    (function(){
+        /* 核心 */
+        function Promise(){};
+        Promise.prototype={
+            constructor:Promise,
+            customer:true,/* 这句没什么用，就是告诉别人这个是自己封装的 */
+            then:function(){},
+            catch:function(){},
+            finally:function(){}
+        }
+        if(typeof Promise!=="undefined"){
+            Promise.prototype[Symbol.toStringTag]="Promise";
+        }
+
+        /* 暴露api */
+        if(typeof window!=="undefined"){
+            window.Promise=Promise;
+        }   
+    })()    
+</script>
+
+<script>
+    function* fn1(){
+        yield 2;
+        yield 3;
+        return 4;
+    }
+    function* fn2(){
+        yield 1;
+        yield* fn1();
+        yield 5;
+    }
+    let a=fn2();
+    // console.log(a);
+    // console.log(a.next());
+    // console.log(a.next());
+    // console.log(a.next());
+    // console.log(a.next());
+    // console.log(a.next());
+    // console.log(a.next());
+    // console.log(a.next());
+    for(let key of a){
+        console.log(a.next(),1)
+        // console.log(1)
+    }
+</script>

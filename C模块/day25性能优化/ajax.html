@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+;
+  <script>
+    let xhr = new XMLHttpRequest; // 创建一个ajax
+    console.log(xhr.readyState,12); // 0 刚刚创建了一个ajax
+    xhr.open('get','./data.json',true); // 打开一个请求
+    console.log(xhr.readyState,14); // 1 已经打开了一个请求(配置好了请求)
+    // params1:请求的方式
+    // params2:请求的资源链接
+    // params3：是否同异步，不传默认是true就是异步，传递false就是同步
+
+    // 监听当前请求的状态
+    xhr.onreadystatechange = function(){
+      console.log(xhr.readyState);
+      // 如果当前的状态码是2，那就说明已经把响应头接受完毕了
+      // 如果当前的状态码是3，那说明客户端已经开始接受响应体(如果在状态码是3的时候就获取响应体，那有可能获取的不完全)
+      // 如果当前的状态码是4，说明客户端已经把响应体接受完毕
+      // console.log(xhr.getAllResponseHeaders());
+      console.log(xhr.response);
+    }
+    
+    xhr.send(); // 发送一个请求
+  </script>
+</body>
+</html>

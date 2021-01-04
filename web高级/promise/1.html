@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="jquery.js"></script>
+<script>
+    let data;
+    const api1 = () => {
+        return new Promise((res, rej) => {
+            $.ajax({
+                type: "get",
+                url: "1.json",
+                success: (data) => {
+                    console.log("第一次" + data)
+                    res();
+                }
+            });
+        })
+    }
+    const api2 = () => {
+        return new Promise(res => {
+            $.ajax({
+                type: "get",
+                url: "2.json",
+                success: (data) => {
+                    console.log("第二次" + data);
+                    res();
+                }
+            })
+        })
+    }
+    const api3 = () => {
+        return new Promise(res => {
+            $.ajax({
+                type: "get",
+                url: "3.json",
+                success: (data) => {
+                    console.log("第三次" + data);
+                    res();
+                }
+            })
+        })
+    }
+    // api1().then(res => {
+    //         return api2()
+    //     }).then(res => {
+    //         return api3()
+    //     })
+
+
+    // (async function () {
+    //     let res = await api1();
+    //     res = await api2();
+    //     res = await api3();
+    // })()
+    // console.log(api1())
+    let api4 = Promise.resolve("ok");
+    console.log(api4)
+</script>
+
+<script>
+    //想要用await 必须拿async修饰
+    //await后面一个放置一个Promise实例 (我们书写的不是 浏览器也会把起变为promise实例)，await中断函数体中 其下面的代码执行
+    // await表达式会暂停整个async函数执行进程并让出其控制权  只有等待await后面的Promise实例是成功态之后 才会把之前暂停的代码继续执行 如果后面promise实例是失败的 则下面的代码不执行
+    // await是异步微任务
+    // 函数体中遇到await，后面的代码该咋地咋地 但是下面的代码会暂停执行  把它们当做一个任务 放置在EvenQueue的微任务中
+    new Promise(resolve => {
+        console.log('promise1');
+        resolve();
+    }).then(() => {
+        console.log('then11');
+        // return 
+        new Promise(resolve => {
+            console.log('promise2');
+            resolve();
+        }).then(() => {
+            console.log('then21');
+            return new Promise.resolve();
+        }).then(() => {
+            console.log('then22');
+        });
+    }).then(() => {
+        console.log('then12');
+    });
+
+    let cc = function () {
+        return new Promise(res => {
+            
+                res("so");
+           
+
+        })
+    }
+    async function aa(){
+        let dd=cc();
+        console.log(dd)
+    }
+    aa()
+</script>

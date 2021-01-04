@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!-- 
+ES6新规范
+1.let const
+let,const不能重复声明会报错--》不能在声明前使用==》const为基本数据类型的时候，不能更改，为引用数据类型的时候，不改变引用地址的情况下可以更改==》阻断与window的关系==》不存在变量提升
+
+2.剩余展开运算符...,是个接收后是个数组
+
+3.块级作用域
+正常情况下{}内的变量会被外界使用，如果加了let，const就不会，就是私有变量
+
+4.模板字符串${}
+
+5.箭头函数()=>{}
+是匿名函数，不能作为构造函数，没有this，如果内部用的话，点前面是谁，就是谁，没有.指的是window===>没有原型对象
+
+6.数组新增方法:some filter reduce
+7.对象新增方法:Object.assign()合并给第一个对象,改变第一个对象   Object.create()创建一个对象，__proto__指向传参
+Object.keys()获取传参的所有可枚举属性，symbol除外，如果是字符串就是获取全部索引，返回数组     Object.values()将值转换为数组，并且按索引分割
+
+8.数组去重new set
+
+9.解构赋值
+
+10.新增symbol类
+
+11.class类
+
+--------------------------------------------------------
+
+基本数据类 Number String Boolean Null Undefined
+引用:Function  Object=>Math Data Array regExp 
+ES6新增 Symbol
+ES7新增 BigInt
+
+--------------------------------------------
+基本数据类型与引用数据类型的区别:基本数据类型按值操作，引用数据类型按空间地址操作
+常用的数据类型检测方式:construntor instanceof typeOf Object.prototype.tyString.call()
+ 检验有效数字的方法：isNaN
+ 布尔值转换:0 "" NaN null undefined false 为false其他都为true
+-----------------------------------------
+比较运算符:==会先转换再比较  ===绝对比较，不会进行转换
+逻辑运算符:||逻辑或只要有一个成立就可以   &&逻辑与要全部成立
+
+------------------------------
+定义函数的方法:
+function 名字(){}  函数表达式 
+let 名字=()=>{}匿名函数   
+let fn=new Function("形参","函数体") 构造函数
+
+------------------------------
+作用域
+函数在哪定义的函数，那么函数的上级作用域就是谁[[scope]]
+-->
+<script>
+    let p1=Promise.resolve(10);
+    p1.then();
+</script>
