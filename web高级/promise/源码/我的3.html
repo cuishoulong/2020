@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function () {
+        "use strict"
+
+        function Promise(executor) {
+            /* 只允许当成构造函数执行，不允许当成普通函数执行 */
+            /* 如果executor如果不是函数，抛出错误 */
+            var self = this;
+            if (self === "undefined") throw TypeError("只能用于new")
+            if (typeof executor !== "function") throw TypeError(`Promise ${executor} is not a function`);
+
+            /* 添加私有属性 */
+            self.state = "pending";
+            self.result = "undefined";
+            self.resPone = [];
+            self.rejPone = [];
+
+            /* change */
+            function change(state, result) {
+                if (self.state !== "pending") return;
+                self.state = state;
+                self.result = result;
+            }
+            /* 执行函数，防止报错，用try包裹,如果报错就是失败态 */
+            try {
+                executor(function (result) {
+                    change("fulifilled", result)
+                }, function (rejson) {
+                    change("resjected", rejson)
+                })
+            } catch (err) {
+                change("resjected", err)
+            }
+            /* 如果当前then对应的函数没有，那么就创建一个，让他顺延 */
+            /* 判断一下state ，执行对应的方法*/
+            /* 如果是pending的话，就先把函数存起来 */
+        }
+        Promise.prototype = {
+            constructor: Promise,
+            then: function (res, rej) {
+                var self = this;
+                /* 如果不是函数，就进行顺延 */
+                if (typeof res !== "function") {
+                    res = function (result) {
+                        return result;
+                    }
+                }
+                if (typeof rej !== "function") {
+                    rej = function (result) {
+                        return result;
+                    }
+                }
+
+                /* 根据状态决定事件 */
+                switch (self.state) {
+                    case "fulfilled":
+                        setTimeout(function () {
+                            res(self.result);
+                        });
+                        break;
+                    case "rejected":
+                        setTimeout(function () {
+                            rej(self.result);
+                        });
+                        break;
+                    default:
+                        self.resPone.push(res);
+                        self.rejPone.push(rej);
+                }
+            }
+        }
+        window.Promise = Promise;
+    })()
+    // let p1=new Promise(1)
+    // let p1=Promise(function(){})
+    let p1 = new Promise(function (reslove, reject) {
+        reslove(10);
+    })
+    p1.then(10)
+</script>

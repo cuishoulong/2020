@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    axios是一个函数
+    在自己身上还存储了一些常用的方法
+    get delete head options
+    oatch post put
+    defaults
+    all
+    */
+    (function () {
+        class PromiseSend {
+            constructor(url, options) {
+                return new Promise((resolve, reject) => {
+                    /* 在这里发送ajax请求，当请求成功以后，调用resolve,失败调用reject */
+                    let {
+                        methed,
+                        data,
+                        params,
+                        baseURL,
+                        timeout,
+                        headers,
+                        transformRequest,
+                        cache
+                    } = options;
+                    let reg = /^(GEI|DELETE|HEAD|OPTIONS)$/i;
+                    if (reg.test(methed) && params) {
+                        let str = ``;
+                        for (let key in params) {
+                            if (!params.hasOwnProperty(key)) break;
+                            str += `${key}=${params[key]}&`
+                        }
+                        params = str.slice(0, str.length - 1);
+
+                        url += (url.includes("?") ? "&" : "?" + params);
+
+                    };
+
+                    if (!reg.test(methed)){
+                        data=transformRequest(data);/* 当前这个函数的返回值就是处理好的参数 */
+                    }
+                    let xhr = new XMLHttpRequest;
+                    xhr.open(methed, url);
+                    /* 请求头 */
+                    if (headers) {
+                        for (let key in headers) {
+                            if (!headers.hasOwnProperty(key)) break;
+                            xhr.setRequestHeader(key, encodeURI(headers[key]));
+                        }
+                    }
+                    /* 如果当前的timeout有值，就设置 */
+                    if (timeout) {
+                        xhr.timeout = timeout;
+                    }
+                    xhr.onreadystatechange = function () {};
+                    xhr.send(data);
+                });
+            }
+        }
+
+        function axios() {
+
+        }
+
+        function mergeOptions(options) {
+            /* 合并参数用的 */
+            let headers = {
+                ...axios.defaults.headers,
+                ...options.headers
+            };
+            return {
+                ...axios.defaults,
+                ...options,
+                headers
+            };
+        };
+        axios.get = function (url, options) {
+            let res = mergeOptions(options);
+            return new PromiseSend(url, res);
+        };
+        axios.post = function (url,data,options) {
+            options.data=data;
+            options.methed="post";
+            let res=mergeOptions(options);
+            return new PromiseSend(url,res);
+        };
+        axios.defaults = {
+            baseURL: "",
+            params: null, //get系列请求的参数
+            data: null, //post请求的参数
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded"
+            },
+            transformRequest: function (data) {
+                if (!data) return data;
+                let str = ``;
+                for (let key in data) {
+                    str += `${key}=${data[key]}&`
+                }
+                return str.slice(0, str.length - 1);
+            },
+            transformResponse: function (data) {
+                return JSON.parse(data);
+            },
+            timeout: null,
+            cache: null,
+        }
+        axios.all = function (promiseAry = []) {
+            return Promise.all(promiseAry);
+        };
+        window.axios = axios;
+    }())
+    let a = axios.post("url", {
+        cache: 1,
+        name:1
+    },{
+        headers:{ss:100},
+        timeout:3000
+    })
+</script>

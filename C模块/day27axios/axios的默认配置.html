@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <script>
+    // 对axios进行二次的配置
+    axios.defaults.baseURL = 'xxxxx';
+    axios.defaults.timeout = 3000;
+    axios.defaults.transformRequest = function (data, headers) {
+      let str = ``;
+      for (let key in data) {
+        str += `${key}=${data[key]}&`
+      }
+      return str.slice(0, str.length - 1);
+    }
+    axios.defaults.withCredentials = true;
+    axios.defaults.transformResponse = function (data) {
+      let res = JSON.parse(data);
+      return res;
+    };
+    axios.defaults.headers = {
+      // 增加请求头
+    }
+    // 添加响应拦截器
+    axios.interceptors.response.use(function (response) {
+      // 对响应数据做点什么
+      // 做完之后不要忘记给人家return回去
+      console.log(137);
+      return response.data;
+    });
+
+
+    
+    // axios.post().then(function (config) {
+    //   // 是当前返回的所有的数据
+    //   return config.data;
+    // }).then((res) => {
+    //   console.log(res);
+    // }).catch(() => {
+
+    // })
+
+
+  </script>
+</body>
+
+</html>

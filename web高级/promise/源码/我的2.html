@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function () {
+        "use strict"
+
+        function Promise(executor) {
+            var self = this;
+            /* 只允许当成构造函数执行，不允许当成普通函数执行 */
+            if (typeof self === "undefined") throw new TypeError("undefined is not a promise");
+            /* 如果executor如果不是函数，抛出错误 */
+            if (typeof executor !== "function") throw new TypeError(
+                `Promise resolver ${executor} throw new not a function`);
+
+            /* 添加私有属性 */
+            self.state = 'pending'; //默认为pending
+            self.result = undefined; //默认为undefined
+            self.onFulfilledCallbacks = []; //成功池子
+            self.onRejectedCallbacks = []; //失败池子
+
+            function change(state, result) {
+                if (self.state !== "pending") return;
+                /* 改状态和参数 */
+                self.state = state;
+                self.result = result;
+
+                /* 通知存储的方法执行 */
+                if (self.onFulfilledCallbacks.length === 0 && self.onRejectedCallbacks.length === 0) return;
+                setTimeout(function () {
+                    var i = 0,
+                        callbacks = self.state === "fulfilled" ? self.onFulfilledCallbacks : self
+                        .onRejectedCallbacks,
+                        len = callbacks.length,
+                        item;
+                    for (; i < len; i++) {
+                        item = callbacks[i];
+                        typeof item === "function" ? item(self.result) : null;
+                    }
+                })
+            }
+
+            /* 执行函数，防止报错，用try包裹,如果报错就是失败态 */
+            try {
+                executor(function resolve(result) {
+                    change('fulfilled', result);
+                }, function reject(reason) {
+                    change('rejected', reason);
+                });
+            } catch (err) {
+                change('rejected', err);
+            }
+
+        }
+        Promise.prototype = {
+            constructor: Promise,
+            then: function (onfulfilled, onrejected) {
+                /* 如果当前then对应的函数没有，那么就创建一个，让他顺延 */
+                if (typeof onfulfilled !== "function") {
+                    onfulfilled = function onfulfilled(result) {
+                        return result;
+                    }
+                }
+                if (typeof onrejected !== "function") {
+                    onrejected = function onrejected(rason) {
+                        throw reason;
+                    }
+                }
+                /* 判断一下state ，执行对应的方法*/
+                var self = this;
+                switch (self.state) {
+                    case "fulfilled":
+                        setTimeout(function () {
+                            onfulfilled(self.result);
+                        });
+                        break;
+                    case "rejected":
+                        setTimeout(function () {
+                            onrejected(self.result);
+                        });
+                        break;
+                    default:
+                        /* 如果是pending的话，就先把函数存起来 */
+                        self.onfulfilledCallbacks.push(onfulfilled);
+                        self.onRejectedCallbacks.push(onrejected);
+                }
+            }
+        }
+        window.Promise = Promise;
+    })()
+    let p1 = new Promise(function (res, rej) {
+        console.log(11);
+        setTimeout(() => {
+            console.log(2)
+            res();
+        }, 5000)
+    })
+    console.log(p1)
+</script>

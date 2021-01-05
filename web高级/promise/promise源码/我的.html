@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function () {
+        "use strict"
+        function Promise(executor) {
+            /* 传参是可执行函数 */
+            /* 每个Promise自带有两个属性 */
+            var self = this;
+            self.state = "pending";
+            self.result = "undefined";
+            /* state是状态，状态只能改变一次，result是传参 */
+            function change(res, rej) {
+                if (self.state !== "pending") return;
+                self.state = res;
+                self.result = rej;
+            }
+            try {
+                executor(function (result) {
+                    change('fulfilled', result)
+                }, function reject(reason) {
+                    change('rejected', reason);
+                });
+            } catch (err) {
+                change('rejected', err);
+            }
+        }
+        Promise.prototype = {
+            constructor: Promise,
+            then: function (res, rej) {
+                var self = this;
+                if (self.state === "pending") return;
+                setTimeout(function () {
+                    res(self.result);
+                })
+
+            }
+        }
+        /* 暴露api */
+        window.Promise = Promise;
+    })()
+</script>
+<script>
+    /* 测试 */
+    //let p1 = new Promise(1);
+    //TypeError: Promise resolver 1 is not a function
+
+    let p1 = new Promise(function (res, ret) {
+        /* new Promise的时候，有两个形参，都是函数，是同步改变实例的state状态的 */
+        res(2);
+    });
+    console.dir(p1.then(function (res) {
+        setTimeout(() => {
+            console.log("成功", res)
+        },1000)
+    }, function (rej) {
+        console.log("失败", rej)
+    }))
+</script>

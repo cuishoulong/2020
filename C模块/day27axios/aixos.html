@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <script>
+    // 
+    // axios({
+    //   uel:'xxx',
+    //   method:'get',
+    //   params:{},
+    //   data:{}
+    // })
+    // axios.get(url,{
+    //   params:{},
+
+    // })
+    // axios.post(url,{name:1,age:2},{
+
+    // })
+    // axios.post(url,{
+    //   data:{},
+    // });
+
+    // axios.defaults.timeout = 1000;
+    // axios.defaults.baseURL = 'http://www.baidu.com/box'
+    // // 现在的content-type是啥
+    // axios.defaults.transformRequest = function (data, headers, w) {
+    //   // 会在请求发送出去之前执行，对data进行处理
+    //   let str = ``;
+    //   for (let key in data) {
+    //     str += `${key}=${data[key]}&`
+    //   }
+    //   str = str.slice(0, str.length - 1);
+    //   str += '&ss=100'
+    //   return str;
+    // }
+    // console.log(axios.defaults);
+
+
+    // 假设项目里有100个请求， 90个请求时可以走defaults默认配置的，
+    // 但是有10个请求时不能走defaults默认配置的
+    // axios.post(url,{name:1,age:2},{
+    //   timeout:2000
+    // });
+    // axios.post(url,{name:1,age:2},{
+    //   timeout:2000
+
+    // })
+
+
+
+    // const instance1 = axios.create({ // 创建一个新的axios实例(可以发送请求,可以给某一组有特殊配置的请求进行参数配置)
+    //   timeout: 2000,
+    //   baseURL: 'xxx1'
+    // });
+    // const instance2 = axios.create({ // 创建一个新的axios实例(可以发送请求,可以给某一组有特殊配置的请求进行参数配置)
+    //   timeout: 5000,
+    //   baseURL: 'xxx2'
+    // });
+
+    // instance1.post(url,{name:1,age:2});
+    // instance2.post(url,{name:1,age:2},{
+    //   timeout:10000
+    // });
+    // axios.post(url,{name:1,age:2});
+
+
+
+    //---------------------------------------------
+
+    // axios.defaults.timeout = 10;
+    // 如果当前请求超出了timeout的时间，那就会关闭当前请求，然后执行失败的回调函数
+    // axios.get('data.json').then((res)=>{
+    //   console.log(res);
+    // }).catch((res)=>{
+    //   console.log(res);
+    // })
+
+
+    // axios中常用得分配置
+    // baseURL：默认路径 (当发送请求的时候默认路径会和当前的url拼接起来)
+    // timeout：请求超时的时间
+    // transformRequest：在请求发送出去之前可以在data参数进行设置(不要忘了写return值)
+    // headers：配置当前的请求头
+    // params：get系列请求发送的参数
+    // data：post系列请求发送的参数
+    // withCredentials, // 表示跨域请求时是否需要使用凭证
+    // responseType：表示服务器响应的数据类型，(默认是json对象)
+
+
+    // `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte
+    // validateStatus: function (status) {
+    //   return status >= 200 && status < 300; // default
+    // },
+
+    // axios.defaults.validateStatus = function (status) {
+    //   // 此函数会在响应成功之后，axios调用resolve之前执行
+    //   console.log(status);
+    //   // 当前的函数的return值直接能够影响当前promise的状态
+    //   return  status>=200 && status<400;
+    // }
+    // axios.defaults.transformResponse = function(data){
+    //   // 此函数会在响应成功之后，axios调用resolve之前执行
+    //   // data是服务器给前端返回的数据(响应主体)
+    //   // 可以对响应体进行个性化配置
+    //   console.log(data,111);
+    //   let res = JSON.parse(data);
+    //   if(res.code === 0){
+    //     return res.data;
+    //   }
+    //   else {
+    //     return []
+    //   }
+
+    // }
+
+    // 添加请求拦截器
+    axios.interceptors.request.use(function (config) {
+      // 在发送请求之前做些什么
+      // 在这里你可以对当前请求的所有配置做出修改
+      // console.log(config);
+      config.params.ss = 100;
+      // config.url = 'xxx';
+      return config;
+    });
+
+    // 添加响应拦截器
+    axios.interceptors.response.use(function (response) {
+      // 对响应数据做点什么
+      // 做完之后不要忘记给人家return回去
+      console.log(137);
+      return response.data;
+    });
+    // use可以传递两个回调函数，第一个是请求成功的执行函数，第二个是请求失败的执行函数，而且这两个函数的返回值会影响下边then中的回调函数的执行
+    axios.get('./dta.json', { params: { name: 1, age: 2 } }).then((res) => {
+      console.log(res);
+    }).catch((res) => {
+      console.log(res);
+    })
+
+
+    let p1 = new Promise((resolve,reject)=>{
+
+      resolve()
+    });
+
+    p1.then(()=>{ // 此处的then就相当于use函数
+      return config.data
+      return Promise.reject(111)
+    }).then((res)=>{
+
+    }).catch(()=>{
+
+    })
+
+    let p1=axios.get("xxx");
+    let p2=axios.get("xxx");
+    /* axios.all与Promise.all一样 */
+    axios.all([p1,p2]).then(()=>{},()=>{})
+  </script>
+</body>
+
+</html>
