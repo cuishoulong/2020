@@ -73,7 +73,7 @@
                     }
                 }
                 if (typeof onrejected !== "function") {
-                    onrejected = function onrejected(rason) {
+                    onrejected = function onrejected(reason) {
                         throw reason;
                     }
                 }
@@ -99,12 +99,17 @@
         }
         window.Promise = Promise;
     })()
-    let p1 = new Promise(function (res, rej) {
-        console.log(11);
-        setTimeout(() => {
-            console.log(2)
-            res();
-        }, 5000)
-    })
-    console.log(p1)
+    var p1 = new Promise(function (resolve, reject) {
+        /* setTimeout(() => {
+            reject('NO');
+        }, 1000); */
+        reject('NO');
+    });
+    p1.then(function (result) {
+        console.log('成功', result);
+    });
+    p1.then(null, function (reason) {
+        console.log('失败', reason);
+    });
+    console.log(1);
 </script>

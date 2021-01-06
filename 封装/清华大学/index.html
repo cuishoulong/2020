@@ -754,7 +754,7 @@
             })
             newLis.innerHTML = Inlis;
             colum.innerHTML = Inlistwo;
-            pag1 = colum.querySelectorAll("li");
+            pag1 = colum.innerHTML;
             swiperItem += `<li>
                         <img src="${data[2][0].src}"
                             alt="">
@@ -861,37 +861,67 @@
     }())
     /* 分页 */
     let pag = (() => {
-        let left = paging.querySelector("span")[0];
-        let right = paging.querySelector("span")[1];
-        let lis = paging.querySelector("li");
+        let lisEle = paging.querySelectorAll("li");
         let ulEle = paging.querySelector("ul");
 
-        function bindpag(data) {
-            let pagItem = ``;
-            data=`data${targT-1}`;
-            [].forEach.call(data, item => {
-                pagItem += `<li>
-                    <div class="time contTime">
-                        <p>${item.p}</p>
-                        <span>${item.span}</span>
-                    </div>
-                    <div class="cont">
-                        <a href="javascript:;" class="title contT">${item.title}</a>
-                        <p class="context">${item.context}</p>
-                    </div>
-                </li>`
-            })
-            colum.innerHTML = pagItem;
-        }
         paging.onclick = function (e) {
             let targ = e.target,
                 targN = targ.tagName,
                 targT = targ.innerText;
+
+            function bindpag(data) {
+                let pagItem = ``;
+                let index = targT;
+                if (index == 0) {
+                    colum.innerHTML = pag1;
+                    return;
+                }
+                data[index].forEach(item => {
+                    pagItem += `<li>
+                        <div class="time contTime">
+                            <p>${item.p}</p>
+                            <span>${item.span}</span>
+                        </div>
+                        <div class="cont">
+                            <a href="javascript:;" class="title contT">${item.title}</a>
+                            <p class="context">${item.context}</p>
+                        </div>
+                    </li>`
+                })
+                colum.innerHTML = pagItem;
+            }
+
+            let lis = this.querySelector(".active"),
+                lisT = +lis.innerHTML;
             if (e.target.tagName === "SPAN") {
-                // getData(pag.json,bindpag);
+                if (targT === "上一页") {
+                    targT = lisT - 2;
+                    targ = lis.previousElementSibling;
+                    if (targT === -1) {
+                        targT = 3;
+                        console.log(lisEle[lisEle.length-1])
+                        targ=lisEle[lisEle.length-1];
+                    }
+                    getData("pag.json", bindpag);
+                    lis.classList.remove("active");
+                    targ.classList.add("active");
+                } else {
+                    targT = lisT;
+                    targ = lis.nextElementSibling;
+                    if (targT === 4) {
+                        targT = 0;
+                        targ=lisEle[0];
+                    }
+                    lis.classList.remove("active");
+                    targ.classList.add("active");
+                    getData("pag.json", bindpag);
+                }
             }
             if (e.target.tagName === "LI") {
-                getData(pag.json,bindpag);
+                targT=+targT-1
+                getData("pag.json", bindpag);
+                lis.classList.remove("active");
+                targ.classList.add("active");
             }
         }
     })()

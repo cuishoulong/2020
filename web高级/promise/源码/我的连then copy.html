@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function () {
+        "use strict"
+
+        function Promise(executor) {
+            var self = this;
+            /* 只允许当成构造函数执行，不允许当成普通函数执行 */
+            if (typeof self === "undefined") throw new TypeError("undefined is not a promise");
+            /* 如果executor如果不是函数，抛出错误 */
+            if (typeof executor !== "function") throw new TypeError(
+                `Promise resolver ${executor} throw new not a function`);
+
+            /* 添加私有属性 */
+            self.state = 'pending'; //默认为pending
+            self.result = undefined; //默认为undefined
+            self.onFulfilledCallbacks = []; //成功池子
+            self.onRejectedCallbacks = []; //失败池子
+
+            function isPromise(x) {
+                /* 检测是否是一个有then方法 */
+                if (x == null) return false;
+                if (/^(object|function)$/i.test(typeof x)) {
+                    if (typeof x.then === "function") {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            /* 如果不出意外，handle就把上一个当参数，传递给成功函数 */
+            function handle(promise, x, resolve, reject) {
+                if (x === promise) throw new TypeError('你的跟前面的相同了，报错');
+                if (isPromise(x)) {
+                    try {
+                        x.then(resolve, reject);
+                    } catch (err) {
+                        reject(err);
+                    }
+                }
+                resolve(x);
+            }
+
+            function change(state, result) {
+                if (self.state !== "pending") return;
+                /* 改状态和参数 */
+                self.state = state;
+                self.result = result;
+
+                /* 通知存储的方法执行 */
+                if (self.onFulfilledCallbacks.length === 0 && self.onRejectedCallbacks.length === 0) return;
+                setTimeout(function () {
+                    var i = 0,
+                        callbacks = self.state === "fulfilled" ? self.onFulfilledCallbacks : self
+                        .onRejectedCallbacks,
+                        len = callbacks.length,
+                        item;
+                    for (; i < len; i++) {
+                        item = callbacks[i];
+                        typeof item === "function" ? item(self.result) : null;
+                    }
+                })
+            }
+
+            /* 执行函数，防止报错，用try包裹,如果报错就是失败态 */
+            try {
+                executor(function resolve(result) {
+                    change('fulfilled', result);
+                }, function reject(reason) {
+                    change('rejected', reason);
+                });
+            } catch (err) {
+                change('rejected', err);
+            }
+
+        }
+        Promise.prototype = {
+            constructor: Promise,
+            then: function (onfulfilled, onrejected) {
+                /* 如果当前then对应的函数没有，那么就创建一个，让他顺延 */
+                if (typeof onfulfilled !== "function") {
+                    onfulfilled = function onfulfilled(result) {
+                        return result;
+                    }
+                }
+                if (typeof onrejected !== "function") {
+                    onrejected = function onrejected(reason) {
+                        throw reason;
+                    }
+                }
+                /* 判断一下state ，执行对应的方法*/
+                var self = this,
+                    x,PromiseNew;
+                PromiseNew = new Promise(function (resolve, reject) {
+                    switch (self.state) {
+                        case "fulfilled":
+                            setTimeout(function () {
+                                try {
+                                    x = onfulfilled(self.result);
+                                    handle(PromiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err)
+                                }
+                            });
+                            break;
+                        case "rejected":
+                            setTimeout(function () {
+                                try {
+                                    x = onrejected(self.result);
+                                    handle(PromiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err)
+                                }
+                            });
+                            break;
+                        default:
+                            /* 如果是pending的话，就先把函数存起来 */
+                            self.onfulfilledCallbacks.push((function (result) {
+                                try {
+                                    x = onfulfilled(result);
+                                    handle(promiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err);
+                                }
+                            }));
+                            self.onRejectedCallbacks.push(function (reason) {
+                                try {
+                                    x = onrejected(reason);
+                                    handle(promiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err);
+                                }
+                            });
+                    }
+                })
+                return PromiseNew;
+
+            },
+            catch: function (onrejected) {
+                var self = this;
+                return self.then(null, onrejected);
+            }
+        }
+        window.Promise = Promise;
+    })()
+    // var p1 = new Promise(function (resolve, reject) {
+    //     /* setTimeout(() => {
+    //         reject('NO');
+    //     }, 1000); */
+    //     reject('NO');
+    // });
+    // p1.then(function (result) {
+    //     console.log('成功', result);
+    // });
+    // p1.then(null, function (reason) {
+    //     console.log('失败', reason);
+    // });
+    // console.log(1);
+    var p1 = new Promise(function (resolve, reject) {
+        resolve('OK');
+    }).then(function (result) {
+        console.log('成功', result);
+        return a;
+    }).then(function (result) {
+        console.log('成功', result);
+    }).catch(function (reason) {
+        console.log('失败', reason);
+    });
+</script>

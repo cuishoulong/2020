@@ -103,7 +103,7 @@
             reject(value);
         });
     };
-    Promise.all = function all(promises) {};
+    Promise.all = function all(promises) { };
 
     /* 暴露API */
     if (typeof window !== "undefined") {

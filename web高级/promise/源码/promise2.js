@@ -178,7 +178,7 @@
 })();
 
 //===========测试
-/* var p1 = new Promise(function (resolve, reject) {
+var p1 = new Promise(function (resolve, reject) {
     resolve('OK');
 }).then(function (result) {
     console.log('成功', result);
@@ -187,7 +187,7 @@
     console.log('成功', result);
 }).catch(function (reason) {
     console.log('失败', reason);
-}); */
+});
 
 /* const query = interval => {
     return new Promise((resolve, reject) => {
