@@ -862,21 +862,17 @@
     /* 分页 */
     let pag = (() => {
         let lisEle = paging.querySelectorAll("li");
-        let ulEle = paging.querySelector("ul");
-
         paging.onclick = function (e) {
             let targ = e.target,
                 targN = targ.tagName,
                 targT = targ.innerText;
-
             function bindpag(data) {
                 let pagItem = ``;
-                let index = targT;
-                if (index == 0) {
+                if (targT == 0) {
                     colum.innerHTML = pag1;
                     return;
                 }
-                data[index].forEach(item => {
+                data[targT].forEach(item => {
                     pagItem += `<li>
                         <div class="time contTime">
                             <p>${item.p}</p>
@@ -893,36 +889,31 @@
 
             let lis = this.querySelector(".active"),
                 lisT = +lis.innerHTML;
-            if (e.target.tagName === "SPAN") {
+            if (targN === "UL") return;
+            if (targN === "DIV") return;
+            if (targN === "SPAN") {
                 if (targT === "上一页") {
                     targT = lisT - 2;
                     targ = lis.previousElementSibling;
                     if (targT === -1) {
                         targT = 3;
-                        console.log(lisEle[lisEle.length-1])
-                        targ=lisEle[lisEle.length-1];
+                        targ = lisEle[lisEle.length - 1];
                     }
-                    getData("pag.json", bindpag);
-                    lis.classList.remove("active");
-                    targ.classList.add("active");
                 } else {
                     targT = lisT;
                     targ = lis.nextElementSibling;
                     if (targT === 4) {
                         targT = 0;
-                        targ=lisEle[0];
+                        targ = lisEle[0];
                     }
-                    lis.classList.remove("active");
-                    targ.classList.add("active");
-                    getData("pag.json", bindpag);
                 }
             }
-            if (e.target.tagName === "LI") {
-                targT=+targT-1
-                getData("pag.json", bindpag);
-                lis.classList.remove("active");
-                targ.classList.add("active");
+            if (targN === "LI") {
+                targT = +targT - 1
             }
+            getData("pag.json", bindpag);
+            lis.classList.remove("active");
+            targ.classList.add("active");
         }
     })()
 </script>
